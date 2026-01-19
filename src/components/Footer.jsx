@@ -30,7 +30,7 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-sm font-bold font-sans mb-md uppercase tracking-wide">Contact</h4>
             <div className="text-white text-sm space-y-xs opacity-90">
-              <p><a href="mailto:info@theolivegreen.com" className="hover:opacity-80 transition-opacity">info@theolivegreen.com</a></p>
+              <p><a href="mailto:olivegreenmartinborough@gmail.com" className="hover:opacity-80 transition-opacity">olivegreenmartinborough@gmail.com</a></p>
               <p><a href="tel:+15551234567" className="hover:opacity-80 transition-opacity">+1 (555) 123-4567</a></p>
               <p>Open Saturday & Sunday<br />11AM - 3PM</p>
             </div>

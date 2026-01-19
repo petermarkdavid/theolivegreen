@@ -71,7 +71,7 @@ const AboutUs = () => {
             <Link to="/accommodation">
               <Button variant="secondary">Plan Your Visit</Button>
             </Link>
-            <a href="mailto:info@theolivegreen.com">
+            <a href="mailto:olivegreenmartinborough@gmail.com">
               <Button variant="primary">Contact Us</Button>
             </a>
           </div>
