@@ -1,109 +1,155 @@
-# The Olive Green Design System
+# The Olive Green
 
-A comprehensive design system implementation built with React, Vite, and Tailwind CSS v3.
+A premium olive oil brand website built with React, Vite, and Tailwind CSS. This site showcases the brand's commitment to quality, tradition, and the grove through a clean, editorial design system.
 
-## Source of Truth
+## 🌐 Live Site
 
-**`design/design-system.json` is the single source of truth** for all design decisions. This comprehensive file contains exact styling specifications, component APIs, and design guidelines for AI and developers.
+**Website:** [https://petermarkdavid.github.io/theolivegreen/](https://petermarkdavid.github.io/theolivegreen/)
 
-See [design/README.md](./design/README.md) for details on using and maintaining the design system.
+## ✨ Features
 
-## Features
+- **Multi-page website** with React Router
+- **Premium design system** following brand guidelines
+- **Responsive design** optimized for all devices
+- **Modern stack**: React 18, Vite, Tailwind CSS v3
+- **GitHub Pages** deployment ready
 
-- Complete design system with all UI components
-- Tailwind CSS v3 configuration matching design.json specifications
-- Responsive design following the design principles
-- Component showcase dashboard
+## 📄 Pages
 
-## Getting Started
+- **Homepage** - Hero section, featured products, and grove visit information
+- **Shop** - Product listings with pricing and cart functionality
+- **Accommodation** - Room listings and booking information
+- **Harvest** - Harvest story, timeline, and tasting notes
+- **About** - Brand story, values, and contact information
+
+## 🎨 Design System
+
+The design system is documented in `design/design-system.json` and serves as the single source of truth for all styling decisions.
+
+### Color Palette
+- **Olive Green** (#6B8E23) - Primary brand color
+- **Warm Off-White** (#FAF8F3) - Main background
+- **Soft Charcoal** (#2C2C2C) - Primary text
+- **Deep Olive** (#3D4A2E) - Accent sections
+- **Muted Gold** (#C9A961) - Logo and highlights
+
+### Typography
+- **Modern Sans-Serif** - Logo only
+- **Sans-Serif** - All other text
+- Editorial hierarchy with sentence case headings
+
+### Design Principles
+- **Restraint** - Minimal, intentional design choices
+- **Provenance** - Rooted in the grove and tradition
+- **Editorial** - Clear content hierarchy
+- **Craft** - Quality and attention to detail
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
 
 ### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/petermarkdavid/theolivegreen.git
+cd theolivegreen
+
+# Install dependencies
 npm install
 ```
 
 ### Development
 
 ```bash
+# Start development server
 npm run dev
-```
 
-The application will be available at `http://localhost:5173`
+# The site will be available at http://localhost:5173
+```
 
 ### Build
 
 ```bash
+# Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
-### Design System Utilities
+## 📦 Scripts
 
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run deploy` - Build and deploy to GitHub Pages
+- `npm run sync:design-system` - Validate design system sync
+- `npm run generate:tailwind` - Generate Tailwind config from design system
+
+## 🎯 Design System Management
+
+The design system is the single source of truth. When making changes:
+
+1. Update `design/design-system.json`
+2. Run `npm run generate:tailwind` to sync Tailwind config
+3. Update components to match new specifications
+4. Run `npm run sync:design-system` to validate
+
+## 📁 Project Structure
+
+```
+theolivegreen/
+├── design/
+│   ├── design-system.json    # Design system source of truth
+│   ├── COLORS.md              # Color palette documentation
+│   └── README.md              # Design system guide
+├── src/
+│   ├── components/            # Reusable React components
+│   ├── pages/                 # Page components
+│   ├── App.jsx                # Main app with routing
+│   └── main.jsx               # Entry point
+├── scripts/                   # Build and sync scripts
+├── public/                    # Static assets
+└── package.json
+```
+
+## 🛠️ Tech Stack
+
+- **React 18** - UI library
+- **React Router** - Client-side routing
+- **Vite** - Build tool and dev server
+- **Tailwind CSS v3** - Utility-first CSS framework
+- **PostCSS** - CSS processing
+
+## 📝 Deployment
+
+The site is deployed to GitHub Pages. See `DEPLOY.md` for detailed deployment instructions.
+
+To deploy updates:
 ```bash
-# Sync and validate design system (from design/design-system.json)
-npm run sync:design-system
-
-# Generate tailwind.config.js from design-system.json
-npm run generate:tailwind
-
-# Validate codebase matches design system
-npm run validate:design-system
+npm run deploy
 ```
 
-**Important:** Always reference `design/design-system.json` when building features. It contains exact styling specifications for all components.
+## 🎨 Brand Voice
 
-## Design System Components
+The Olive Green represents a premium, provenance-led olive oil brand. The design system emphasizes:
 
-The design system includes:
+- **Craft-centric** language over design-centric
+- **Confident restraint** in design choices
+- **Editorial sophistication** in typography
+- **Connection to the grove** in color and imagery
 
-- **Header** - Full-width navigation with logo, announcement, and user actions
-- **Hero** - Large impactful section with background image and text overlay
-- **Content Section** - Split layout sections with headings and body text
-- **Buttons** - Primary, accent, and secondary variants
-- **Icons** - Simple, clean line icons (cart, user, menu, close, arrow)
-- **Text Blocks** - Typography components with various heading sizes
-- **Cards** - Default, elevated, and dark variants
-- **Navigation** - Uppercase navigation links with hover states
-- **Cart Icon** - Shopping cart with count badge
+## 📄 License
 
-## Color Palette
+This project is private and proprietary.
 
-- **Olive Green** (#6B8E23) - Primary background (OliveDrab)
-- **Golden Yellow** (#d4af37) - Logo and accents
-- **Light Blue** (#e8f4f8) - Content sections
-- **Deep Purple** (#4a2c5a) - Accents and depth
-- **White** (#ffffff) - Text on dark backgrounds
-- **Black** (#000000) - Text on light backgrounds
+## 👤 Author
 
-## Typography
+**Peter Mark David**
+- GitHub: [@petermarkdavid](https://github.com/petermarkdavid)
 
-- **Serif** - Logo and brand name
-- **Sans-serif** - All other text (navigation, headings, body)
+---
 
-## Design Principles
-
-- Nature First
-- Quality
-- Approachability
-- Clarity
-- Breathing Room
-
-## Project Structure
-
-```
-src/
-  components/
-    Header.jsx
-    Hero.jsx
-    Button.jsx
-    Navigation.jsx
-    ContentSection.jsx
-    Icon.jsx
-    TextBlock.jsx
-    Card.jsx
-    CartIcon.jsx
-    Logo.jsx
-  App.jsx
-  main.jsx
-  index.css
-```
+*Quietly Crafted. Exceptionally Pure.*
