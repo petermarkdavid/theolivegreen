@@ -1,6 +1,6 @@
 # Custom Domain Setup Guide
 
-## Domain: www.theolivegreenmartinborough.com
+## Domain: www.olivegreenmartinborough.com
 
 ### Step 1: DNS Configuration
 
@@ -40,7 +40,7 @@ You should see the records pointing to GitHub Pages.
 
 1. Go to your repository: https://github.com/petermarkdavid/theolivegreen
 2. Settings → Pages
-3. Under "Custom domain", enter: `www.theolivegreenmartinborough.com`
+3. Under "Custom domain", enter: `www.olivegreenmartinborough.com`
 4. Check "Enforce HTTPS" (will be available after DNS is verified)
 
 ### Step 4: Deploy
@@ -76,7 +76,7 @@ GitHub will automatically verify your DNS configuration. This can take:
 
 ### Current Configuration
 
-- **CNAME file:** `public/CNAME` → `www.theolivegreenmartinborough.com`
+- **CNAME file:** `public/CNAME` → `www.olivegreenmartinborough.com`
 - **Base path:** `/` (for custom domain)
 - **Repository:** petermarkdavid/theolivegreen
 
