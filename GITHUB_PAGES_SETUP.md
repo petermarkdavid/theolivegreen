@@ -22,7 +22,7 @@ Under "Source":
 
 ### 4. Custom Domain (if configured)
 If you've set up the custom domain:
-- Under "Custom domain", enter: `www.theolivegreenmartinborough.com`
+- Under "Custom domain", enter: `www.olivegreenmartinborough.com`
 - Check "Enforce HTTPS" (after DNS is verified)
 
 ## Verify Deployment
