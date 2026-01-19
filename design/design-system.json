@@ -1,0 +1,671 @@
+{
+  "meta": {
+    "name": "The Olive Green Design System",
+    "version": "2.0.0",
+    "lastUpdated": "2024",
+    "sourceOfTruth": true,
+    "purpose": "Comprehensive design guide for a premium, provenance-led olive oil brand. This system prioritizes craft, restraint, and brand coherence over generic UI patterns.",
+    "note": "ALWAYS reference this file when building features. This system reflects a confident, provenance-led brand with longevity. If it isn't found in an olive grove, it doesn't belong in the palette.",
+    "brandPositioning": "Premium olive oil brand - quietly crafted, exceptionally pure. Rooted in nature, guided by the grove."
+  },
+  
+  "brandVoice": {
+    "philosophy": "Craft-centric, not design-centric. Provenance-led, not generic-modern.",
+    "tone": {
+      "primary": "Confident restraint. One strong sentence is better than three explanatory ones.",
+      "characteristics": [
+        "Quietly confident",
+        "Provenance-focused",
+        "Editorial sophistication",
+        "Warm but refined",
+        "Storytelling over selling"
+      ]
+    },
+    "contentDensity": {
+      "rule": "One strong sentence is better than three explanatory ones.",
+      "guidelines": [
+        "Prefer brevity over explanation",
+        "Let imagery and space tell the story",
+        "Avoid manifesto tones",
+        "Use restraint in copy",
+        "Trust the product to speak"
+      ],
+      "examples": {
+      "good": [
+        "Quietly Crafted. Exceptionally Pure.",
+        "Rooted in Nature",
+        "Guided by the Grove",
+        "The harvest, captured at its peak"
+      ],
+      "avoid": [
+        "SERIOUSLY GOOD DESIGN",
+        "Design System Components",
+        "Nature First - Our commitment to...",
+        "We focus on growing grapes and ethical production..."
+      ]
+      }
+    }
+  },
+  
+  "designPhilosophy": {
+    "overview": "A confident, provenance-led olive oil brand with longevity. The system balances editorial sophistication with warmth, reflecting connection to the grove and craft.",
+    "principles": {
+      "restraint": {
+        "description": "Less is more. Restraint signals confidence.",
+        "manifestation": "Limited color palette, minimal UI elements, generous white space, fewer button variants"
+      },
+      "provenance": {
+        "description": "Rooted in the grove. Every element should feel connected to olive oil production.",
+        "manifestation": "Color palette from grove (olive, earth, harvest gold), photography of groves and harvest, craft-focused language"
+      },
+      "editorial": {
+        "description": "Editorial sophistication over UI components.",
+        "manifestation": "Sentence case headings, generous line-height for reading, editorial card styles, photography-first layouts"
+      },
+      "craft": {
+        "description": "Craft-centric, not design-centric.",
+        "manifestation": "Language focuses on making, harvesting, tradition. Visuals show process, place, people."
+      },
+      "breathingRoom": {
+        "description": "Generous spacing prevents crowding and allows content to breathe.",
+        "manifestation": "Ample padding, comfortable line heights (1.6-1.7), space between elements, section separation"
+      }
+    }
+  },
+  
+  "colors": {
+    "rule": "If it isn't found in an olive grove, it doesn't belong in the palette.",
+    "status": "LOCKED - These colors are final and should not be changed without design system review.",
+    "core": {
+      "oliveGreen": {
+        "value": "#6B8E23",
+        "tailwindClass": "olive-green",
+        "status": "LOCKED",
+        "usage": "Primary brand anchor. 90% usage. Headers, navigation, key UI elements.",
+        "contrast": "Use with warm-off-white or white text",
+        "examples": ["bg-olive-green", "text-olive-green", "border-olive-green"],
+        "brandConnection": "The grove itself"
+      },
+      "warmOffWhite": {
+        "value": "#FAF8F3",
+        "tailwindClass": "warm-off-white",
+        "status": "LOCKED",
+        "usage": "Main background color. Replaces generic white. Creates warmth and premium feel.",
+        "contrast": "Use with soft-charcoal or deep-olive text",
+        "examples": ["bg-warm-off-white"],
+        "brandConnection": "Linen, natural fibers, paper"
+      },
+      "softCharcoal": {
+        "value": "#2C2C2C",
+        "tailwindClass": "soft-charcoal",
+        "status": "LOCKED",
+        "usage": "Primary text color on light backgrounds. Softer than pure black.",
+        "contrast": "High contrast on warm-off-white",
+        "examples": ["text-soft-charcoal"],
+        "brandConnection": "Rich earth, aged wood"
+      },
+      "deepOlive": {
+        "value": "#3D4A2E",
+        "tailwindClass": "deep-olive",
+        "status": "LOCKED",
+        "usage": "Alternative text color, deeper sections. Darker than olive-green.",
+        "contrast": "Use with warm-off-white text",
+        "examples": ["bg-deep-olive", "text-deep-olive"],
+        "brandConnection": "Deep grove shadows"
+      }
+    },
+    "accent": {
+      "mutedGold": {
+        "value": "#C9A961",
+        "tailwindClass": "muted-gold",
+        "status": "LOCKED",
+        "usage": "Sparingly used accent. ≤10% usage. Logo, subtle highlights only.",
+        "contrast": "Use on dark backgrounds",
+        "examples": ["text-muted-gold", "bg-muted-gold"],
+        "brandConnection": "Harvest gold, olive oil color"
+      }
+    },
+    "utility": {
+      "white": {
+        "value": "#FFFFFF",
+        "tailwindClass": "white",
+        "status": "LOCKED",
+        "usage": "Text on dark backgrounds (olive green, deep olive). Not for backgrounds.",
+        "contrast": "High contrast on olive green and deep olive",
+        "examples": ["text-white"],
+        "note": "Use warm-off-white for backgrounds instead"
+      }
+    },
+    "removed": {
+      "lightBlue": {
+        "reason": "Not found in olive grove. Off-brand.",
+        "replacement": "warm-off-white"
+      },
+      "deepPurple": {
+        "reason": "Not found in olive grove. Off-brand.",
+        "replacement": "deep-olive for depth"
+      },
+      "goldenYellow": {
+        "reason": "Too bright, not harvest-appropriate",
+        "replacement": "muted-gold"
+      }
+    }
+  },
+  
+  "typography": {
+    "philosophy": "Editorial sophistication. Sentence case over all caps. Generous line-height for long-form storytelling.",
+    "fontFamilies": {
+      "modern": {
+        "family": "-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+        "tailwindClass": "font-modern",
+        "usage": "Logo and brand name ONLY.",
+        "characteristics": "Contemporary, sophisticated, premium feel"
+      },
+      "sans": {
+        "family": "sans-serif",
+        "tailwindClass": "font-sans",
+        "usage": "All other text - body, headings, navigation, UI elements.",
+        "characteristics": "Clean, readable, editorial"
+      }
+    },
+    "scale": {
+      "logo": {
+        "tailwindClasses": {
+          "container": "flex flex-col font-modern",
+          "the": "text-muted-gold text-xs font-normal leading-tight tracking-wider",
+          "oliveGreen": "text-muted-gold text-3xl font-bold leading-tight tracking-tight"
+        },
+        "usage": "Brand name display - 'THE' smaller (text-xs), 'OLIVE GREEN' larger (text-3xl), stacked vertically.",
+        "weight": "bold for 'OLIVE GREEN', normal for 'THE'",
+        "letterSpacing": "wider tracking for 'THE' (tracking-wider), tighter tracking for 'OLIVE GREEN' (tracking-tight)"
+      },
+      "hero": {
+        "tailwindClasses": "text-white text-5xl md:text-6xl font-bold leading-tight tracking-tight",
+        "usage": "Main hero heading - editorial, impactful. Use sentence case, not all caps.",
+        "weight": "bold",
+        "color": "white (on dark backgrounds)",
+        "case": "sentence case",
+        "letterSpacing": "slightly tighter (tracking-tight)",
+        "examples": {
+          "good": "The harvest, captured at its peak",
+          "avoid": "SERIOUSLY GOOD DESIGN"
+        }
+      },
+      "sectionHeading": {
+        "tailwindClasses": "text-soft-charcoal text-4xl md:text-5xl font-bold font-sans mb-lg tracking-tight",
+        "usage": "Section headings. Editorial tone. Sentence case preferred.",
+        "weight": "bold",
+        "color": "soft-charcoal",
+        "case": "sentence case",
+        "examples": {
+          "good": "Rooted in Nature",
+          "good": "Guided by the Grove",
+          "avoid": "NATURE FIRST"
+        }
+      },
+      "eyebrow": {
+        "tailwindClasses": "text-muted-gold text-xs uppercase tracking-wider font-sans mb-sm",
+        "usage": "Micro-heading above sections. Small caps or subtle tracking. Used for: 'From the Grove', 'Harvest 2025', etc.",
+        "weight": "normal",
+        "color": "muted-gold or olive-green",
+        "case": "uppercase or small caps",
+        "letterSpacing": "wider (tracking-wider)"
+      },
+      "body": {
+        "tailwindClasses": "text-soft-charcoal text-base md:text-lg font-sans leading-relaxed",
+        "usage": "Paragraph text, descriptions, long-form storytelling. Optimized for reading.",
+        "weight": "normal",
+        "color": "soft-charcoal",
+        "lineHeight": "1.6-1.7 (leading-relaxed)",
+        "size": "text-base on mobile, text-lg on desktop for better readability"
+      },
+      "navigation": {
+        "tailwindClasses": "text-white text-sm md:text-base font-sans tracking-wide",
+        "usage": "Navigation links. Consider sentence case or small caps instead of all caps for warmth.",
+        "weight": "normal",
+        "color": "white",
+        "case": "sentence case or small caps (not all caps)",
+        "letterSpacing": "slightly wider (tracking-wide)"
+      },
+      "small": {
+        "tailwindClasses": "text-soft-charcoal text-sm font-sans",
+        "usage": "Secondary information, harvest notes, tasting profiles, fine print",
+        "weight": "normal"
+      }
+    }
+  },
+  
+  "spacing": {
+    "principle": "Generous spacing creates breathing room and emphasizes content hierarchy. Use consistent spacing units throughout.",
+    "scale": {
+      "xs": { "value": "4px", "tailwindClass": "xs", "usage": "Inline elements only" },
+      "sm": { "value": "8px", "tailwindClass": "sm", "usage": "Tight grouping, inline elements" },
+      "md": { "value": "16px", "tailwindClass": "md", "usage": "Standard component spacing" },
+      "lg": { "value": "24px", "tailwindClass": "lg", "usage": "Internal grouping within sections" },
+      "xl": { "value": "32px", "tailwindClass": "xl", "usage": "Internal grouping, component spacing" },
+      "2xl": { "value": "48px", "tailwindClass": "2xl", "usage": "Medium section spacing" },
+      "3xl": { "value": "64px", "tailwindClass": "3xl", "usage": "Large section separation" },
+      "4xl": { "value": "96px", "tailwindClass": "4xl", "usage": "Major section separation" }
+    },
+    "usageRules": {
+      "large": "64-96px (3xl-4xl): Section separation, major breaks",
+      "medium": "24-48px (lg-2xl): Internal grouping, component spacing",
+      "small": "8-16px (sm-md): Inline elements, tight grouping only"
+    },
+    "application": {
+      "sections": "No gaps between major sections - seamless flow (0px)",
+      "components": "Generous padding within sections (py-4xl px-xl for content sections)",
+      "text": "Comfortable line heights (leading-relaxed, 1.6-1.7) and paragraph spacing (space-y-md)"
+    }
+  },
+  
+  "components": {
+    "Logo": {
+      "description": "Brand logo component with stacked text",
+      "file": "src/components/Logo.jsx",
+      "props": {},
+      "exactImplementation": {
+        "container": "flex flex-col font-modern",
+        "the": "text-muted-gold text-xs font-normal leading-tight tracking-wider",
+        "oliveGreen": "text-muted-gold text-3xl font-bold leading-tight tracking-tight"
+      },
+      "usage": "Use in Header component. Do not modify styling."
+    },
+    
+    "Header": {
+      "description": "Full-width navigation bar with olive green background",
+      "file": "src/components/Header.jsx",
+      "props": {},
+      "exactImplementation": {
+        "container": "w-full bg-olive-green",
+        "innerContainer": "px-xl py-md",
+        "announcement": "text-white text-xs mb-2 text-center opacity-90",
+        "mainContent": "flex items-center justify-between",
+        "logoContainer": "flex-shrink-0",
+        "navigationContainer": "flex-1 flex justify-center",
+        "userActionsContainer": "flex items-center gap-lg",
+        "loginButton": "text-white text-sm md:text-base font-sans tracking-wide hover:opacity-80 transition-opacity"
+      },
+      "structure": {
+        "announcement": "Above main navigation - small white text, centered (optional)",
+        "logo": "Far left - Logo component",
+        "navigation": "Center - Navigation component",
+        "userActions": "Far right - LOGIN button and CartIcon"
+      },
+      "usage": "Use at top of every page. Contains Logo, Navigation, and user actions."
+    },
+    
+    "Navigation": {
+      "description": "Navigation links component - considered, not generic",
+      "file": "src/components/Navigation.jsx",
+      "props": {
+        "items": "array of strings (recommended: ['Home', 'Our Grove', 'The Oil', 'Shop'])",
+        "activeItem": "string (optional) - currently active item"
+      },
+      "exactImplementation": {
+        "container": "flex items-center gap-xl",
+        "link": "text-white text-sm md:text-base font-sans tracking-wide hover:opacity-80 transition-opacity",
+        "activeLink": "text-white text-sm md:text-base font-sans tracking-wide opacity-100 underline transition-opacity"
+      },
+      "recommendedItems": ["Home", "Our Grove", "The Oil", "Shop"],
+      "case": "Sentence case (not all caps) for warmth",
+      "usage": "Use in Header. Restraint signals confidence - fewer items preferred."
+    },
+    
+    "Hero": {
+      "description": "Large, impactful section with background image/gradient and text overlay",
+      "file": "src/components/Hero.jsx",
+      "props": {
+        "heading": "string (optional) - main heading text (sentence case)",
+        "supportingText": "string (optional) - supporting paragraph text",
+        "backgroundImage": "string (optional) - CSS background-image value"
+      },
+      "exactImplementation": {
+        "container": "relative w-full min-h-[600px] flex items-center justify-center overflow-hidden",
+        "background": "absolute inset-0 bg-cover bg-center",
+        "overlay": "absolute inset-0 bg-black/20",
+        "contentContainer": "relative z-10 w-full max-w-7xl mx-auto px-xl py-4xl",
+        "contentGrid": "flex flex-col md:flex-row items-start gap-3xl",
+        "heading": "text-white text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-lg",
+        "supportingText": "text-white text-lg md:text-xl leading-relaxed space-y-md max-w-xl",
+        "diagonalElement": "absolute right-0 top-0 w-32 h-full bg-white/5 transform rotate-12 origin-top"
+      },
+      "defaultBackground": "linear-gradient(135deg, #3D4A2E 0%, #6B8E23 100%)",
+      "backgroundFilter": "blur(1px) or none",
+      "overlay": "bg-black/20 (subtle, not heavy)",
+      "headingCase": "sentence case",
+      "usage": "Use for hero sections. Heading should be editorial, not all caps."
+    },
+    
+    "ContentSection": {
+      "description": "Editorial section with warm background and text content",
+      "file": "src/components/ContentSection.jsx",
+      "props": {
+        "heading": "string (optional) - section heading (sentence case)",
+        "content": "string | ReactNode (optional) - body content",
+        "background": "string (default: 'warm-off-white') - 'warm-off-white' or 'white'",
+        "layout": "string (default: 'split') - 'split' or 'centered'"
+      },
+      "exactImplementation": {
+        "container": "w-full bg-warm-off-white py-4xl px-xl",
+        "innerContainer": "max-w-7xl mx-auto",
+        "splitLayout": "grid grid-cols-1 md:grid-cols-2 gap-3xl items-start",
+        "heading": "text-soft-charcoal text-4xl md:text-5xl font-bold font-sans mb-lg tracking-tight",
+        "content": "text-soft-charcoal text-base md:text-lg font-sans leading-relaxed space-y-md",
+        "contentMaxWidth": "max-w-2xl",
+        "centeredLayout": "max-w-4xl mx-auto text-center"
+      },
+      "usage": "Use for content sections. Warm-off-white background creates premium feel."
+    },
+    
+    "Button": {
+      "description": "Button component - reduced to 2 variants only",
+      "file": "src/components/Button.jsx",
+      "philosophy": "Restraint signals confidence. Only 2 button styles.",
+      "props": {
+        "children": "ReactNode - button text/content",
+        "variant": "string (default: 'primary') - 'primary' | 'secondary'",
+        "onClick": "function (optional) - click handler",
+        "className": "string (optional) - additional classes",
+        "type": "string (default: 'button') - button type"
+      },
+      "exactImplementation": {
+        "baseClasses": "px-xl py-md font-sans text-base tracking-wide transition-all duration-200",
+        "variants": {
+          "primary": {
+            "classes": "bg-olive-green text-white hover:bg-opacity-90",
+            "usage": "Shop, Buy, Subscribe - main actions"
+          },
+          "secondary": {
+            "classes": "bg-transparent text-olive-green border-2 border-olive-green hover:bg-olive-green hover:text-white",
+            "usage": "Learn more, Our story - secondary actions"
+          }
+        }
+      },
+      "removed": {
+        "primaryAccent": "Too many variants create decision fatigue",
+        "secondaryDark": "Not needed with reduced palette"
+      },
+      "hover": {
+        "philosophy": "Subtle darkening or desaturation. No scaling, no animation gimmicks.",
+        "implementation": "hover:bg-opacity-90 or hover:bg-olive-green (subtle state change)"
+      },
+      "usage": "Use for all interactive buttons. Only 2 variants - primary and secondary."
+    },
+    
+    "Card": {
+      "description": "Editorial card component - editorial blocks, not UI components",
+      "file": "src/components/Card.jsx",
+      "philosophy": "Editorial sophistication over UI components. Spacing and background contrast over borders.",
+      "props": {
+        "title": "string (optional) - card title",
+        "description": "string (optional) - card description",
+        "image": "string | ReactNode (optional) - card image",
+        "action": "ReactNode (optional) - action button/link",
+        "variant": "string (default: 'editorial') - 'editorial' | 'product' | 'note'"
+      },
+      "exactImplementation": {
+        "baseClasses": "rounded-sm overflow-hidden transition-opacity hover:opacity-95",
+        "variants": {
+          "editorial": {
+            "classes": "bg-warm-off-white",
+            "usage": "Story, philosophy, editorial content"
+          },
+          "product": {
+            "classes": "bg-white border-0",
+            "usage": "Oil product display"
+          },
+          "note": {
+            "classes": "bg-warm-off-white border-l-4 border-muted-gold",
+            "usage": "Harvest notes, tasting profile"
+          }
+        },
+        "imageContainer": "w-full h-64 bg-deep-olive bg-cover bg-center",
+        "contentContainer": "p-xl",
+        "title": "text-soft-charcoal text-xl font-bold font-sans mb-md",
+        "description": "text-soft-charcoal text-base font-sans leading-relaxed mb-lg",
+        "actionContainer": "mt-lg"
+      },
+      "removed": {
+        "borders": "Replaced with spacing and background contrast",
+        "elevation": "Shadows removed or barely perceptible",
+        "hoverScale": "Replaced with subtle opacity change"
+      },
+      "usage": "Use for displaying content. Prefer soft background shifts (warm-off-white → white) over borders."
+    },
+    
+    "Icon": {
+      "description": "Icon component - minimal and meaningful",
+      "file": "src/components/Icon.jsx",
+      "philosophy": "Use less, or make them meaningful. Keep functional icons minimal and invisible.",
+      "props": {
+        "name": "string - functional: 'cart' | 'menu' | 'close' | 'arrow' | brand: 'olive-branch' | 'grove' | 'sun' | 'bottle'",
+        "color": "string (default: 'white') - 'white' | 'soft-charcoal' | 'olive-green' | 'muted-gold'",
+        "size": "string (default: 'md') - 'sm' | 'md' | 'lg'",
+        "className": "string (optional) - additional classes"
+      },
+      "exactImplementation": {
+        "sizes": {
+          "sm": "w-4 h-4",
+          "md": "w-6 h-6",
+          "lg": "w-8 h-8"
+        },
+        "colors": {
+          "white": "text-white",
+          "soft-charcoal": "text-soft-charcoal",
+          "olive-green": "text-olive-green",
+          "muted-gold": "text-muted-gold"
+        },
+        "container": "inline-block"
+      },
+      "svgSpecs": {
+        "strokeWidth": 1.5,
+        "strokeLinecap": "round",
+        "strokeLinejoin": "round",
+        "fill": "none"
+      },
+      "brandIcons": {
+        "recommended": ["olive-branch", "grove-rows", "sun-harvest", "bottle-press"],
+        "characteristics": "Single-weight, rounded ends, calm geometry"
+      },
+      "usage": "Keep functional icons minimal. Introduce brand icons for meaningful expression."
+    },
+    
+    "CartIcon": {
+      "description": "Shopping cart icon with prominent count badge",
+      "file": "src/components/CartIcon.jsx",
+      "props": {
+        "count": "number (default: 0) - number of items in cart"
+      },
+      "exactImplementation": {
+        "container": "relative flex items-center",
+        "icon": "w-6 h-6 text-white transition-all (scale-110 when hasItems)",
+        "badge": "absolute -top-2 -right-2 bg-muted-gold text-olive-green text-sm font-bold rounded-full min-w-[24px] h-6 px-2 flex items-center justify-center shadow-lg border-2 border-white",
+        "badgeBehavior": "Shows count, displays '99+' for counts over 99, white border for high contrast against olive green background, shadow for depth"
+      },
+      "visualStates": {
+        "empty": "Standard icon size, no badge",
+        "hasItems": "Icon slightly larger (scale-110), prominent badge with white border and shadow for maximum visibility"
+      },
+      "usage": "Use in Header for shopping cart. Badge is highly visible when count > 0 with white border, shadow, and larger size for clear indication of cart contents."
+    },
+    
+    "TextBlock": {
+      "description": "Typography component with heading and text",
+      "file": "src/components/TextBlock.jsx",
+      "props": {
+        "heading": "string (optional) - heading text (sentence case)",
+        "text": "string (optional) - body text",
+        "headingSize": "string (default: 'section') - 'eyebrow' | 'section' | 'hero'",
+        "textColor": "string (default: 'soft-charcoal') - 'soft-charcoal' | 'white' | 'olive-green'",
+        "className": "string (optional) - additional classes"
+      },
+      "exactImplementation": {
+        "container": "space-y-md",
+        "headingSizes": {
+          "eyebrow": "text-muted-gold text-xs uppercase tracking-wider font-sans mb-sm",
+          "section": "text-soft-charcoal text-4xl md:text-5xl font-bold font-sans mb-lg tracking-tight",
+          "hero": "text-white text-5xl md:text-6xl font-bold leading-tight tracking-tight"
+        },
+        "heading": "font-bold font-sans mb-lg",
+        "text": "text-base md:text-lg font-sans leading-relaxed",
+        "textColors": {
+          "soft-charcoal": "text-soft-charcoal",
+          "white": "text-white",
+          "olive-green": "text-olive-green"
+        }
+      },
+      "usage": "Use for text blocks. Includes new 'eyebrow' tier for micro-headings."
+    }
+  },
+  
+  "photography": {
+    "style": {
+      "principle": "Very important for olive oil brand. Photography should tell the story.",
+      "characteristics": [
+        "Natural light, golden hour preferred",
+        "Close-ups of olives, groves, harvest",
+        "People in groves (craft, tradition)",
+        "Process shots (pressing, bottling)",
+        "Warm, earthy tones",
+        "Soft focus for depth",
+        "Rich colors but not oversaturated"
+      ],
+      "subjects": [
+        "Olive groves (rows, trees, landscape)",
+        "Harvest (hands picking, baskets)",
+        "Olives (close-ups, texture)",
+        "Process (press, bottling, labeling)",
+        "People (growers, family, tradition)",
+        "Product (bottles, oil, tasting)"
+      ],
+      "avoid": [
+        "Stock photography feel",
+        "Over-stylized",
+        "Cold, clinical",
+        "Too bright or oversaturated"
+      ]
+    },
+    "usage": {
+      "hero": "Full-width, impactful. Natural elements, grove scenes.",
+      "cards": "Supporting content. Process, people, product.",
+      "backgrounds": "Subtle, with overlay for text readability."
+    }
+  },
+  
+  "layout": {
+    "principle": "Full-width sections stacked vertically. Each section is a distinct visual block with its own background color.",
+    "patterns": {
+      "header": {
+        "background": "olive-green",
+        "layout": "flex, horizontal",
+        "alignment": "items-center, justify-between"
+      },
+      "hero": {
+        "background": "image/gradient with subtle overlay",
+        "layout": "full-width, centered content",
+        "alignment": "content positioned center-left",
+        "overlay": "bg-black/20 (subtle, not heavy)"
+      },
+      "content": {
+        "background": "warm-off-white (preferred) or white",
+        "layout": "two-column split or centered",
+        "alignment": "left: heading, right: body text (split) or centered"
+      }
+    },
+    "grid": {
+      "principle": "Flexible, responsive grid system",
+      "maxWidth": "max-w-7xl for main containers",
+      "responsive": "grid-cols-1 md:grid-cols-2 for split layouts"
+    }
+  },
+  
+  "effects": {
+    "transitions": {
+      "principle": "Smooth, subtle transitions. No animation gimmicks.",
+      "duration": "duration-200",
+      "properties": "transition-all or transition-opacity"
+    },
+    "hover": {
+      "buttons": "hover:bg-opacity-90 (subtle darkening)",
+      "links": "hover:opacity-80",
+      "cards": "hover:opacity-95 (subtle, no scaling)"
+    },
+    "overlays": {
+      "hero": "bg-black/20 (subtle, not heavy)",
+      "images": "Ensure text contrast - white text on dark images"
+    }
+  },
+  
+  "responsive": {
+    "principle": "Design adapts gracefully across screen sizes",
+    "breakpoints": {
+      "mobile": "Stack navigation, adjust text sizes, full-width sections maintained",
+      "tablet": "Adjust column layouts, maintain spacing principles (md: prefix)",
+      "desktop": "Full layout as designed, optimal viewing experience"
+    },
+    "commonPatterns": {
+      "text": "text-5xl md:text-6xl (responsive text sizing)",
+      "grid": "grid-cols-1 md:grid-cols-2 (responsive grids)",
+      "flex": "flex-col md:flex-row (responsive flex direction)"
+    }
+  },
+  
+  "usageGuidelines": {
+    "forAI": {
+      "always": [
+        "Reference this file when building any feature",
+        "Use exact Tailwind classes specified in component implementations",
+        "Follow the component props API exactly",
+        "Maintain spacing scale consistency",
+        "Use colors from the core palette only (olive-green, warm-off-white, soft-charcoal, deep-olive, muted-gold)",
+        "Follow typography scale for text sizing",
+        "Apply design principles: restraint, provenance, editorial, craft",
+        "Use sentence case for headings (not all caps)",
+        "Prefer brevity: one strong sentence over three explanatory ones",
+        "Remember: If it isn't found in an olive grove, it doesn't belong in the palette"
+      ],
+      "never": [
+        "Create custom colors outside the palette",
+        "Use arbitrary values for spacing (use scale: xs, sm, md, lg, xl, 2xl, 3xl, 4xl)",
+        "Modify component implementations without updating this file",
+        "Use font-modern for anything except the logo",
+        "Create new components without documenting them here first",
+        "Use all caps for headings (use sentence case)",
+        "Add more button variants (only 2 allowed)",
+        "Use blue or purple in customer-facing UI",
+        "Over-explain in copy (prefer brevity)"
+      ]
+    },
+    "colorApplication": {
+      "oliveGreen": "Headers, navigation bars, primary backgrounds, key UI elements. 90% usage. Always with white or warm-off-white text.",
+      "warmOffWhite": "Main background color. Replaces generic white. Creates warmth and premium feel.",
+      "softCharcoal": "Primary text color on light backgrounds. Softer than pure black.",
+      "deepOlive": "Alternative text color, deeper sections. Darker than olive-green.",
+      "mutedGold": "Logo and sparing highlights only. ≤10% usage. Creates warmth without being too bright."
+    },
+    "typographyApplication": {
+      "modern": "ONLY for Logo component. Never use elsewhere.",
+      "sans": "All other text - navigation, headings, body, UI elements.",
+      "hierarchy": "hero (text-5xl/6xl) > section (text-4xl/5xl) > body (text-base/lg) > small (text-sm) > eyebrow (text-xs)",
+      "case": "Sentence case for headings. Uppercase only for navigation (optional) or eyebrow text."
+    }
+  },
+  
+  "syncInstructions": {
+    "whenChanging": "When making changes to this file:",
+    "steps": [
+      "1. Update design-system.json with new specifications",
+      "2. Run: npm run sync:design-system",
+      "3. Run: npm run generate:tailwind (if colors/spacing/fonts changed)",
+      "4. Update component files to match new specifications",
+      "5. Test changes in the application",
+      "6. Update any copy/language to match brand voice guidelines"
+    ],
+    "scripts": {
+      "sync": "npm run sync:design-system - Syncs changes from design-system.json to codebase",
+      "validate": "npm run validate:design-system - Validates codebase matches design-system.json",
+      "generate": "npm run generate:tailwind - Generates Tailwind config from design-system.json"
+    }
+  }
+}

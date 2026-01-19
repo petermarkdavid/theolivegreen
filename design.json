@@ -1,0 +1,488 @@
+{
+  "designSystem": {
+    "name": "The Olive Green Design System",
+    "version": "1.0.0",
+    "lastUpdated": "2024",
+    "sourceOfTruth": true,
+    "philosophy": "Clean, modern design with a focus on natural elements, quality, and approachability. The design balances sophistication with warmth, reflecting the connection to nature and community.",
+    "note": "This file is the single source of truth for all design decisions. Use scripts/sync-design-system.js to validate configurations and scripts/generate-tailwind-config.js to generate Tailwind config from this file.",
+    
+    "colorPalette": {
+      "primary": {
+        "oliveGreen": {
+          "value": "#6B8E23",
+          "usage": "Primary background for header, navigation, and key UI elements. Represents nature and natural elements. Olive green tone (OliveDrab).",
+          "contrast": "Use with white or light text for optimal readability"
+        },
+        "goldenYellow": {
+          "value": "#d4af37",
+          "usage": "Logo and brand accent color. Represents quality, premium, and warmth.",
+          "contrast": "Use on dark backgrounds for maximum impact"
+        }
+      },
+      "secondary": {
+        "lightBlue": {
+          "value": "#e8f4f8",
+          "usage": "Background for content sections, providing contrast and breathing room.",
+          "contrast": "Use with black or dark text"
+        },
+        "deepPurple": {
+          "value": "#4a2c5a",
+          "usage": "Use for accents, overlays, gradients, or depth. Complements the olive green palette.",
+          "contrast": "Use with white text"
+        }
+      },
+      "neutral": {
+        "white": {
+          "value": "#ffffff",
+          "usage": "Primary text color on dark backgrounds, hero text overlays, and clean backgrounds.",
+          "contrast": "High contrast on olive green and purple backgrounds"
+        },
+        "black": {
+          "value": "#000000",
+          "usage": "Primary text color on light backgrounds, headings, and body text.",
+          "contrast": "High contrast on light blue and white backgrounds"
+        }
+      }
+    },
+    
+    "typography": {
+      "fontFamilies": {
+        "modern": {
+          "family": "-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+          "usage": "Logo and brand name. Modern, clean, contemporary feel.",
+          "characteristics": "Contemporary, sophisticated, premium feel"
+        },
+        "sansSerif": {
+          "family": "sans-serif",
+          "usage": "Body text, navigation, and UI elements. Modern, clean, and readable.",
+          "characteristics": "Clean, approachable, contemporary"
+        }
+      },
+      "scale": {
+        "logo": {
+          "size": "large",
+          "weight": "bold for 'OLIVE GREEN', normal for 'THE'",
+          "usage": "Brand name display - 'THE' smaller (text-xs), 'OLIVE GREEN' larger (text-3xl), stacked vertically. Uses modern sans-serif font stack with semibold weight for main text and wider tracking for 'THE'.",
+          "fontFamily": "modern (-apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif)",
+          "letterSpacing": "wider tracking for 'THE', tighter tracking for 'OLIVE GREEN'"
+        },
+        "hero": {
+          "size": "extra-large",
+          "weight": "bold",
+          "usage": "Main hero heading - bold, impactful statement"
+        },
+        "heading": {
+          "size": "large",
+          "weight": "bold",
+          "usage": "Section headings like 'NATURE FIRST' - strong, clear hierarchy"
+        },
+        "body": {
+          "size": "medium",
+          "weight": "normal",
+          "usage": "Paragraph text, descriptions, and body content"
+        },
+        "navigation": {
+          "size": "medium",
+          "weight": "normal",
+          "usage": "Navigation links - clear, readable, uppercase styling"
+        },
+        "small": {
+          "size": "small",
+          "weight": "normal",
+          "usage": "Secondary information, announcements, fine print"
+        }
+      },
+      "styles": {
+        "uppercase": {
+          "usage": "Navigation items, announcements - creates emphasis and structure",
+          "examples": ["ABOUT US", "VISIT US", "CONTACT", "SHOP", "LOGIN"]
+        },
+        "case": {
+          "usage": "Body text and headings use standard sentence case",
+          "examples": ["Nature First", "Our design comes from..."]
+        }
+      }
+    },
+    
+    "spacing": {
+      "principle": "Generous spacing creates breathing room and emphasizes content hierarchy. Use consistent spacing units throughout.",
+      "scale": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px",
+        "2xl": "48px",
+        "3xl": "64px",
+        "4xl": "96px"
+      },
+      "sectionSpacing": {
+        "betweenSections": "0px",
+        "note": "Sections flow seamlessly into each other with no gaps, creating full-width visual blocks"
+      },
+      "componentSpacing": {
+        "headerPadding": "vertical: medium, horizontal: large",
+        "heroPadding": "generous vertical padding to create impact",
+        "contentPadding": "vertical: large, horizontal: large"
+      }
+    },
+    
+    "layout": {
+      "structure": {
+        "principle": "Full-width sections stacked vertically. Each section is a distinct visual block with its own background color.",
+        "sections": [
+          {
+            "name": "Header",
+            "background": "oliveGreen",
+            "layout": "flex, horizontal",
+            "alignment": "items-center, justify-between"
+          },
+          {
+            "name": "Hero",
+            "background": "image with overlay",
+            "layout": "full-width, centered content",
+            "alignment": "content positioned center-left"
+          },
+          {
+            "name": "Content",
+            "background": "lightBlue",
+            "layout": "two-column or split layout",
+            "alignment": "left: heading, right: body text"
+          }
+        ]
+      },
+      "grid": {
+        "principle": "Flexible, responsive grid system. Content can be centered, left-aligned, or split into columns.",
+        "maxWidth": "Full width for sections, content can be constrained for readability"
+      },
+      "alignment": {
+        "header": "Logo left, navigation center-right, cart/login far right",
+        "hero": "Content center-left with text overlay",
+        "content": "Split layouts with clear visual separation"
+      }
+    },
+    
+    "components": {
+      "header": {
+        "description": "Full-width navigation bar with olive green background",
+        "structure": {
+          "logo": {
+            "position": "far left",
+            "style": "modern sans-serif font stack, golden-yellow color (#d4af37), stacked text, bold weight for 'OLIVE GREEN', normal weight for 'THE'",
+            "hierarchy": "'THE' smaller (text-xs) above 'OLIVE GREEN' (text-3xl)",
+            "letterSpacing": "wider tracking for 'THE', tighter tracking for 'OLIVE GREEN'",
+            "fontFamily": "modern font stack: -apple-system, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif",
+            "tailwindClasses": {
+              "container": "flex flex-col font-modern",
+              "the": "text-golden-yellow text-xs font-normal leading-tight tracking-wider",
+              "oliveGreen": "text-golden-yellow text-3xl font-bold leading-tight tracking-tight"
+            }
+          },
+          "announcement": {
+            "position": "above main navigation",
+            "style": "small, light text, white color",
+            "content": "Informational text or announcements"
+          },
+          "navigation": {
+            "position": "center-right",
+            "style": "white text, uppercase, medium size",
+            "items": ["ABOUT US", "VISIT US", "CONTACT", "SHOP"],
+            "spacing": "horizontal spacing between items"
+          },
+          "userActions": {
+            "position": "far right",
+            "items": ["LOGIN", "Cart icon with count"],
+            "style": "white text, aligned right"
+          }
+        },
+        "height": "sufficient to accommodate logo, announcement, and navigation comfortably"
+      },
+      
+      "hero": {
+        "description": "Large, impactful section with background image and text overlay",
+        "structure": {
+          "background": {
+            "type": "full-width image",
+            "style": "slightly blurred or soft focus, close-up of natural elements",
+            "overlay": "text overlays directly on image"
+          },
+          "content": {
+            "mainHeading": {
+              "position": "center-left",
+              "style": "extra-large, bold, white text",
+              "content": "Bold, impactful statement"
+            },
+            "supportingText": {
+              "position": "to the right of main heading",
+              "style": "medium size, white text, readable blocks",
+              "content": "Descriptive paragraphs about the brand/product"
+            }
+          },
+          "designElements": {
+            "diagonalShapes": "Optional geometric shapes or lines for visual interest and depth"
+          }
+        },
+        "height": "full viewport or substantial height for impact"
+      },
+      
+      "contentSection": {
+        "description": "Light background section with text content",
+        "structure": {
+          "background": "lightBlue",
+          "layout": "split or two-column",
+          "leftColumn": {
+            "content": "Large heading",
+            "style": "black, sans-serif, large, bold"
+          },
+          "rightColumn": {
+            "content": "Body text paragraphs",
+            "style": "black, sans-serif, medium size, normal weight"
+          }
+        },
+        "padding": "generous vertical and horizontal padding"
+      },
+      
+      "navigation": {
+        "links": {
+          "style": "white text, uppercase, medium size",
+          "hover": "subtle interaction (underline, color change, or opacity)",
+          "spacing": "consistent horizontal spacing"
+        },
+        "active": "indicate current page with subtle styling"
+      },
+      
+      "buttons": {
+        "baseClasses": "px-xl py-md font-sans text-base uppercase tracking-wide transition-all duration-200",
+        "variants": {
+          "primary": {
+            "description": "Primary action button with olive green background",
+            "tailwindClasses": "bg-olive-green text-white hover:bg-opacity-90",
+            "usage": "Main call-to-action buttons"
+          },
+          "primaryAccent": {
+            "description": "Accent button with golden yellow background",
+            "tailwindClasses": "bg-golden-yellow text-olive-green hover:bg-opacity-90",
+            "usage": "Premium or highlighted actions"
+          },
+          "secondary": {
+            "description": "Secondary button with transparent background and white border",
+            "tailwindClasses": "bg-transparent text-white border-2 border-white hover:bg-white hover:text-olive-green",
+            "usage": "Secondary actions on dark backgrounds"
+          },
+          "secondaryDark": {
+            "description": "Secondary button with transparent background and olive green border",
+            "tailwindClasses": "bg-transparent text-olive-green border-2 border-olive-green hover:bg-olive-green hover:text-white",
+            "usage": "Secondary actions on light backgrounds"
+          }
+        },
+        "props": {
+          "variant": "primary | primaryAccent | secondary | secondaryDark (default: primary)",
+          "onClick": "function - click handler",
+          "className": "string - additional classes",
+          "type": "string - button type (default: 'button')"
+        }
+      },
+      
+      "icons": {
+        "style": "simple, clean line icons",
+        "color": "white on dark backgrounds, black on light backgrounds",
+        "size": "medium, proportional to text",
+        "sizes": {
+          "sm": "w-4 h-4",
+          "md": "w-6 h-6",
+          "lg": "w-8 h-8"
+        },
+        "colors": {
+          "white": "text-white",
+          "black": "text-black",
+          "olive-green": "text-olive-green",
+          "golden-yellow": "text-golden-yellow"
+        },
+        "availableIcons": ["cart", "user", "menu", "close", "arrow"],
+        "props": {
+          "name": "cart | user | menu | close | arrow",
+          "color": "white | black | olive-green | golden-yellow (default: white)",
+          "size": "sm | md | lg (default: md)",
+          "className": "string - additional classes"
+        }
+      },
+      
+      "textBlocks": {
+        "paragraph": {
+          "spacing": "margin-bottom between paragraphs",
+          "lineHeight": "generous for readability",
+          "maxWidth": "comfortable reading width (not too wide)",
+          "tailwindClasses": "text-base font-sans leading-relaxed"
+        },
+        "heading": {
+          "spacing": "margin-bottom after heading",
+          "hierarchy": "clear size differentiation",
+          "sizes": {
+            "small": "text-2xl",
+            "medium": "text-3xl",
+            "large": "text-5xl",
+            "hero": "text-6xl md:text-7xl"
+          },
+          "tailwindClasses": "font-bold font-sans mb-lg"
+        },
+        "props": {
+          "heading": "string - heading text",
+          "text": "string - body text",
+          "headingSize": "small | medium | large | hero (default: large)",
+          "textColor": "black | white | olive-green (default: black)",
+          "className": "string - additional classes"
+        }
+      },
+      "cards": {
+        "variants": {
+          "default": {
+            "tailwindClasses": "bg-white border border-gray-200 rounded overflow-hidden transition-transform hover:scale-105"
+          },
+          "elevated": {
+            "tailwindClasses": "bg-white shadow-lg rounded overflow-hidden transition-transform hover:scale-105"
+          },
+          "dark": {
+            "tailwindClasses": "bg-olive-green text-white rounded overflow-hidden transition-transform hover:scale-105"
+          }
+        },
+        "props": {
+          "title": "string - card title",
+          "description": "string - card description",
+          "image": "string | element - card image",
+          "action": "element - action button/link",
+          "variant": "default | elevated | dark (default: default)"
+        }
+      }
+    },
+    
+    "designPrinciples": {
+      "natureFirst": {
+        "description": "Design reflects connection to nature and natural elements",
+        "manifestation": "Natural imagery, organic shapes, color palette inspired by nature"
+      },
+      "quality": {
+        "description": "Premium feel without being pretentious",
+        "manifestation": "Clean typography, generous spacing, thoughtful color choices, modern logo font for contemporary sophistication"
+      },
+      "approachability": {
+        "description": "Welcoming and accessible, not intimidating",
+        "manifestation": "Readable fonts, clear hierarchy, friendly tone, balanced sophistication"
+      },
+      "clarity": {
+        "description": "Clear communication and visual hierarchy",
+        "manifestation": "Strong contrast, distinct sections, clear typography scale, organized layout"
+      },
+      "breathingRoom": {
+        "description": "Generous spacing prevents crowding",
+        "manifestation": "Ample padding, comfortable line heights, space between elements"
+      }
+    },
+    
+    "visualStyle": {
+      "aesthetic": "Modern, clean, sophisticated yet approachable",
+      "imagery": {
+        "style": "Natural, close-up photography of natural elements",
+        "treatment": "Slightly soft focus or subtle blur for depth, rich colors",
+        "usage": "Full-width backgrounds, hero sections, supporting content"
+      },
+      "shapes": {
+        "principle": "Minimal geometric elements, organic flow",
+        "usage": "Optional diagonal lines or shapes for visual interest and transitions"
+      },
+      "effects": {
+        "overlays": "Text overlays directly on images with sufficient contrast",
+        "transitions": "Smooth transitions between sections",
+        "interactions": "Subtle hover effects, clean state changes"
+      }
+    },
+    
+    "responsive": {
+      "principle": "Design adapts gracefully across screen sizes",
+      "breakpoints": {
+        "mobile": "Stack navigation, adjust text sizes, full-width sections maintained",
+        "tablet": "Adjust column layouts, maintain spacing principles",
+        "desktop": "Full layout as designed, optimal viewing experience"
+      }
+    },
+    
+    "usageGuidelines": {
+      "colorApplication": {
+        "oliveGreen": "Use for headers, navigation bars, primary backgrounds, and key UI elements. Olive green tone (#6B8E23 - OliveDrab) provides natural, earthy foundation. Excellent contrast with white text.",
+        "goldenYellow": "Reserve for logo and premium accents - use sparingly for maximum impact. Creates warmth and premium feel against olive green backgrounds.",
+        "lightBlue": "Use for content sections, providing visual breaks and contrast. Soft, calming background for extended reading.",
+        "deepPurple": "Use for gradients, accents, and depth. Works well in hero backgrounds and overlays.",
+        "white": "Primary text on dark backgrounds (especially olive green), clean backgrounds, hero text overlays",
+        "black": "Primary text on light backgrounds (especially light blue), body content, headings"
+      },
+      "typographyApplication": {
+        "modern": "Exclusively for logo/brand name - modern sans-serif font stack with system font fallbacks. Use bold weight for main brand text, normal weight for 'THE'. Apply wider letter spacing to 'THE' and tighter spacing to main text.",
+        "sansSerif": "All other text - navigation, headings, body, UI elements. Standard sans-serif for maximum compatibility.",
+        "hierarchy": "Maintain clear size differentiation - hero (text-6xl/7xl) > heading (text-5xl) > body (text-base) > small (text-sm/xs)",
+        "weights": {
+          "logo": "bold for main text, normal for 'THE'",
+          "hero": "bold",
+          "heading": "bold",
+          "body": "normal",
+          "navigation": "normal"
+        }
+      },
+      "spacingApplication": {
+        "sections": "No gaps between major sections - seamless flow",
+        "components": "Generous padding within sections",
+        "text": "Comfortable line heights and paragraph spacing"
+      },
+      "imageryApplication": {
+        "hero": "Full-width, impactful, natural elements",
+        "overlay": "Ensure text contrast on images - white text on dark images",
+        "quality": "High-quality photography that reflects brand values"
+      }
+    },
+    
+    "implementation": {
+      "framework": "React with Vite",
+      "styling": "Tailwind CSS v3",
+      "tailwindConfig": {
+        "colors": {
+          "olive-green": "#6B8E23",
+          "golden-yellow": "#d4af37",
+          "light-blue": "#e8f4f8",
+          "deep-purple": "#4a2c5a"
+        },
+        "fontFamily": {
+          "modern": ["-apple-system", "BlinkMacSystemFont", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+          "sans": ["sans-serif"]
+        },
+        "spacing": {
+          "xs": "4px",
+          "sm": "8px",
+          "md": "16px",
+          "lg": "24px",
+          "xl": "32px",
+          "2xl": "48px",
+          "3xl": "64px",
+          "4xl": "96px"
+        }
+      },
+      "components": {
+        "Header": "Full-width navigation with logo, announcement bar, navigation links, and user actions",
+        "Hero": "Large section with background image/gradient and text overlay",
+        "Button": "Primary, primaryAccent, secondary, and secondaryDark variants",
+        "Navigation": "Uppercase navigation links with hover states",
+        "ContentSection": "Split layout sections with headings and body text",
+        "Card": "Default, elevated, and dark variants",
+        "Icon": "Simple line icons (cart, user, menu, close, arrow)",
+        "TextBlock": "Typography components with various heading sizes",
+        "Logo": "Stacked brand name with modern font",
+        "CartIcon": "Shopping cart icon with count badge"
+      },
+      "currentVersion": "1.0.0",
+      "lastUpdated": "2024",
+      "sourceOfTruth": "design.json is the single source of truth. All configurations should be derived from this file.",
+      "scripts": {
+        "sync": "npm run sync:design - Validates that Tailwind config matches design.json",
+        "generate": "npm run generate:tailwind - Generates tailwind.config.js from design.json"
+      }
+    }
+  }
+}
