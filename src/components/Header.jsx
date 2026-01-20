@@ -7,12 +7,7 @@ import CartIcon from './CartIcon'
 const Header = () => {
   return (
     <header className="w-full bg-olive-green">
-      <div className="px-xl py-md">
-        {/* Announcement */}
-        <div className="text-white text-xs mb-2 text-center opacity-90">
-          Grove tours available Saturday & Sunday 11AM - 3PM
-        </div>
-        
+      <div className="px-xl py-md">    
         {/* Main Header Content */}
         <div className="flex items-center justify-between">
           {/* Logo */}
