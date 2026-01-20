@@ -12,6 +12,7 @@ const Homepage = () => {
       <Hero 
         heading="Quietly Crafted. Exceptionally Pure."
         supportingText="Our olive oil comes from a deep respect for the grove, combined with dedicated care and attention. This commitment results in the highest quality fruit, leading to exceptional tasting oil."
+        backgroundImage="url(/images/hero-olive-branch.jpg)"
       />
       
       {/* From the Grove Section */}
@@ -31,8 +32,8 @@ const Homepage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-xl">
             <Card
               variant="product"
-              title="Extra Virgin"
-              description="Cold-pressed from the first harvest. Rich, fruity, and perfectly balanced."
+              title="2026 Extra Virgin Olive Oil"
+              description="WAIT LISTED. Cold-pressed from the first harvest. Rich, fruity, and perfectly balanced."
               action={
                 <Link to="/shop">
                   <Button variant="primary">Shop Now</Button>
@@ -41,18 +42,8 @@ const Homepage = () => {
             />
             <Card
               variant="product"
-              title="Harvest Reserve"
-              description="Limited edition from our finest groves. Complex and elegant."
-              action={
-                <Link to="/shop">
-                  <Button variant="primary">Shop Now</Button>
-                </Link>
-              }
-            />
-            <Card
-              variant="product"
-              title="Everyday Classic"
-              description="Our signature blend. Versatile and approachable for daily use."
+              title="2025 Harvest Reserve"
+              description="SOLD OUT. Complex and elegant."
               action={
                 <Link to="/shop">
                   <Button variant="primary">Shop Now</Button>
@@ -74,18 +65,15 @@ const Homepage = () => {
       {/* Visit Us CTA */}
       <section className="w-full bg-olive-green py-4xl px-xl">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-white text-4xl md:text-5xl font-bold font-sans mb-lg tracking-tight">
-            Visit Our Grove
-          </h2>
           <p className="text-white text-lg md:text-xl leading-relaxed mb-3xl max-w-2xl mx-auto">
             Experience the harvest, tour our groves, and taste our oil at the source.
           </p>
           <div className="flex flex-col sm:flex-row gap-lg justify-center">
             <Link to="/about">
-              <Button variant="secondary">Plan Your Visit</Button>
+              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Register Interest for Harvest</Button>
             </Link>
             <Link to="/accommodation">
-              <Button variant="primary">Book Accommodation</Button>
+              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Book Accommodation</Button>
             </Link>
           </div>
         </div>

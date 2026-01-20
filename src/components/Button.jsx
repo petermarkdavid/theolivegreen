@@ -7,10 +7,10 @@ const Button = ({
   className = '',
   type = 'button'
 }) => {
-  const baseClasses = 'px-xl py-md font-sans text-base uppercase tracking-wide transition-all duration-200'
+  const baseClasses = 'px-xl py-md font-sans text-base uppercase tracking-wide transition-all duration-200 box-border min-w-[200px]'
   
   const variants = {
-    primary: 'bg-olive-green text-white hover:bg-opacity-90',
+    primary: 'bg-olive-green text-white hover:bg-opacity-90 border-2 border-transparent',
     secondary: 'bg-transparent text-olive-green border-2 border-olive-green hover:bg-olive-green hover:text-white',
   }
   

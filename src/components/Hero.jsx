@@ -7,11 +7,11 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: backgroundImage || 'url(https://images.unsplash.com/photo-1587049352846-4a222e784d38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80)',
+          backgroundImage: backgroundImage || 'url(/images/hero-olive-branch.jpg)',
           filter: 'blur(1px)',
         }}
       >
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute right-0 bottom-0 w-full h-full bg-black/20"></div>
       </div>
       
       {/* Content */}
