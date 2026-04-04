@@ -2,9 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    @apply bg-surface font-body text-on-surface antialiased;
+  }
+
+  /* Never pure black — warm charcoal only; serif display for headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Newsreader, Georgia, serif;
+    @apply text-on-surface;
+  }
+
+  .font-headline {
+    font-family: Newsreader, Georgia, serif;
+  }
+}
+
+@layer components {
+  /* Section rhythm: min 32px mobile, 80px desktop — no hard divider lines */
+  .section-grove {
+    @apply px-section py-2xl md:px-section-lg md:py-4xl;
+  }
+
+  .glass-header {
+    @apply border-b border-outline-variant/15 bg-surface/80 backdrop-blur-[16px];
+  }
+
+  /* Buttons — Digital Estate */
+  .btn-primary-grove {
+    @apply rounded-md bg-gradient-to-b from-primary to-primary-container px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-on-primary shadow-ambient-sm transition-all duration-grove hover:brightness-105 active:brightness-95 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Style guide: secondary = light neutral surface + dark text (not solid tan) */
+  .btn-secondary-grove {
+    @apply rounded-md bg-surface-container-highest px-8 py-3.5 font-body text-sm font-semibold uppercase tracking-wide text-on-surface shadow-ambient-sm transition-all duration-grove hover:bg-surface-container disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-tertiary-grove {
+    @apply font-body text-sm font-semibold text-primary underline-offset-4 transition-colors duration-grove hover:underline;
+  }
+
+  /* Cards — tonal lift, no harsh borders */
+  .card-grove {
+    @apply rounded-md bg-surface-container-low transition-all duration-grove hover:bg-surface-container-highest hover:shadow-ambient;
+  }
+
+  /* Minimalist well inputs */
+  .input-well-grove {
+    @apply rounded-sm bg-surface-container-lowest px-3 py-3 font-body text-on-surface placeholder:text-on-surface-variant/70 focus:border-0 focus:outline-none focus:ring-2 focus:ring-primary/25;
+    border-bottom: 1px solid rgba(198, 200, 184, 0.4);
+  }
+
+  .label-grove {
+    @apply font-body text-label-md text-on-surface-variant;
+  }
+
+  /* Ghost border when structure needs an edge (accessibility) */
+  .border-grove-ghost {
+    border: 1px solid rgba(198, 200, 184, 0.15);
+  }
+
+  /* Timeline dot — harvest schedules */
+  .timeline-marker-grove {
+    @apply h-3 w-3 shrink-0 rounded-full bg-secondary ring-4 ring-surface-container-low;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.25rem;
+  line-height: 1;
 }

@@ -68,7 +68,7 @@ const AboutUs = () => {
       </section>
 
       {/* Visit Us */}
-      <section className="w-full bg-olive-green py-4xl px-xl">
+      <section className="w-full bg-primary py-4xl px-xl">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-white text-4xl md:text-5xl font-bold font-sans mb-lg tracking-tight">
             Visit Our Grove
@@ -78,14 +78,10 @@ const AboutUs = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-lg justify-center">
             <Link to="/harvest">
-              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">
-                Harvest day
-              </Button>
+              <Button variant="ghost">Harvest day</Button>
             </Link>
             <a href="mailto:olivegreenmartinborough@gmail.com">
-              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">
-                Contact us
-              </Button>
+              <Button variant="ghost">Contact us</Button>
             </a>
           </div>
         </div>

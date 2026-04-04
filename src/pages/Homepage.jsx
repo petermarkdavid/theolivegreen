@@ -33,7 +33,7 @@ const Homepage = () => {
             <Card
               variant="product"
               title="2026 Extra Virgin Olive Oil"
-              description="WAIT LISTED. Cold-pressed from the first harvest. Rich, fruity, and perfectly balanced."
+              description="Waitlisted. Cold-pressed from the first harvest. Rich, fruity, and perfectly balanced."
               action={
                 <Link to="/shop">
                   <Button variant="primary">Shop Now</Button>
@@ -61,20 +61,6 @@ const Homepage = () => {
         background="warm-off-white"
         layout="centered"
       />
-      
-      {/* Visit Us CTA */}
-      <section className="w-full bg-olive-green py-4xl px-xl">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white text-lg md:text-xl leading-relaxed mb-3xl max-w-2xl mx-auto">
-            Experience the harvest, tour our groves, and taste our oil at the source.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-lg justify-center">
-            <Link to="/harvest">
-              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Register Interest for Harvest</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

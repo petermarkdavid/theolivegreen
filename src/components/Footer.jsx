@@ -3,58 +3,60 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-olive-green py-3xl px-xl">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3xl mb-3xl">
-          {/* Brand */}
-          <div>
-            <h3 className="text-white text-xl font-bold font-sans mb-md">Olive Green Martinborough</h3>
-            <p className="text-white text-sm leading-relaxed opacity-90">
-              Quietly crafted, exceptionally pure olive oil from our family grove.
-            </p>
-          </div>
-          
-          {/* Navigation */}
-          <div>
-            <h4 className="text-white text-sm font-bold font-sans mb-md uppercase tracking-wide">Navigate</h4>
-            <nav className="flex flex-col gap-sm">
-              <Link to="/" className="text-white text-sm hover:opacity-80 transition-opacity">Home</Link>
-              <Link to="/shop" className="text-white text-sm hover:opacity-80 transition-opacity">Shop</Link>
-              <Link to="/harvest" className="text-white text-sm hover:opacity-80 transition-opacity">Harvest</Link>
-            </nav>
-          </div>
-          
-          {/* Contact */}
-          <div>
-            <h4 className="text-white text-sm font-bold font-sans mb-md uppercase tracking-wide">Contact</h4>
-            <div className="text-white text-sm space-y-xs opacity-90">
-              <p><a href="mailto:olivegreenmartinborough@gmail.com" className="hover:opacity-80 transition-opacity">olivegreenmartinborough@gmail.com</a></p>
-              <p><a href="tel: 022 124 1310" className="hover:opacity-80 transition-opacity">+1 (555) 123-4567</a></p>
-            </div>
-          </div>
-          
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-white text-sm font-bold font-sans mb-md uppercase tracking-wide">Stay Connected</h4>
-            <p className="text-white text-sm mb-md opacity-90">
-              Receive updates about harvest, new releases, and grove events.
-            </p>
-            <div className="flex gap-sm">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-md py-sm text-sm bg-white/10 border border-white/20 text-white placeholder-white/60 rounded focus:outline-none focus:border-white/40"
-              />
-              <button className="px-lg py-sm bg-muted-gold text-olive-green text-sm font-bold hover:bg-opacity-90 transition-opacity rounded">
-                Subscribe
-              </button>
-            </div>
-          </div>
+    <footer className="w-full border-t border-stone-200/40 bg-stone-100">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-8 py-16 font-body text-sm md:grid-cols-3">
+        <div className="space-y-6">
+          <div className="font-headline text-xl text-brand-primary">Olive Green Martinborough</div>
+          <p className="max-w-xs leading-relaxed text-stone-500">
+            Premium extra virgin olive oil from the heart of Martinborough.
+          </p>
         </div>
-        
-        <div className="border-t border-white/20 pt-xl text-center">
-          <p className="text-white text-sm opacity-90">
-            © 2026 Olive Green Martinborough. All rights reserved.
+
+        <div className="space-y-6">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-primary">Quick links</h4>
+          <ul className="space-y-4">
+            <li>
+              <Link to="/" className="text-stone-500 transition-colors hover:text-brand-secondary">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/shop" className="text-stone-500 transition-colors hover:text-brand-secondary">
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link to="/harvest" className="text-stone-500 transition-colors hover:text-brand-secondary">
+                Harvest
+              </Link>
+            </li>
+            <li>
+              <a
+                href="mailto:olivegreenmartinborough@gmail.com"
+                className="text-stone-500 transition-colors hover:text-brand-secondary"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="space-y-6">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-brand-primary">Newsletter</h4>
+          <p className="text-stone-500">Receive harvest updates and seasonal releases.</p>
+          <div className="flex gap-2">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="min-w-0 flex-grow border-b border-stone-300 bg-transparent py-2 text-on-surface placeholder:text-stone-400 focus:border-primary focus:outline-none"
+              aria-label="Newsletter email"
+            />
+            <button type="button" className="shrink-0 font-bold text-primary hover:opacity-70">
+              Join
+            </button>
+          </div>
+          <p className="mt-8 text-[10px] text-stone-400">
+            © {new Date().getFullYear()} Olive Green Martinborough. Crafted for the harvest.
           </p>
         </div>
       </div>

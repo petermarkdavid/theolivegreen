@@ -1,43 +1,42 @@
 import React from 'react'
 
-const Card = ({ 
-  title, 
-  description, 
-  image, 
+const Card = ({
+  title,
+  description,
+  image,
   action,
-  variant = 'editorial' // 'editorial' | 'product' | 'note'
+  variant = 'editorial',
 }) => {
   const variants = {
-    editorial: 'bg-warm-off-white',
-    product: 'bg-white border-0',
-    note: 'bg-warm-off-white border-l-4 border-muted-gold',
+    editorial: 'card-grove',
+    product: 'card-grove',
+    /* Soft accent — no heavy divider; warm sand line */
+    note: 'card-grove border-l-2 border-secondary/25',
   }
-  
+
   return (
-    <div className={`${variants[variant] || variants.editorial} rounded-sm overflow-hidden transition-opacity hover:opacity-95`}>
+    <div
+      className={`${variants[variant] || variants.editorial} overflow-hidden rounded-md transition-all duration-grove`}
+    >
       {image && (
-        <div className="w-full h-64 bg-deep-olive bg-cover bg-center">
+        <div className="h-64 w-full overflow-hidden bg-deep-olive">
           {typeof image === 'string' ? (
-            <div className="w-full h-full bg-gradient-to-br from-deep-olive to-olive-green"></div>
-          ) : image}
+            <div className="h-full w-full bg-gradient-to-br from-deep-olive to-primary/90" />
+          ) : (
+            image
+          )}
         </div>
       )}
       <div className="p-xl">
         {title && (
-          <h3 className="text-soft-charcoal text-xl font-bold font-sans mb-md">
+          <h3 className="font-headline mb-md text-xl font-semibold tracking-tight text-on-surface md:text-2xl">
             {title}
           </h3>
         )}
         {description && (
-          <p className="text-soft-charcoal text-base font-sans leading-relaxed mb-lg">
-            {description}
-          </p>
+          <div className="font-body text-body-lg text-on-surface-variant mb-lg leading-relaxed">{description}</div>
         )}
-        {action && (
-          <div className="mt-lg">
-            {action}
-          </div>
-        )}
+        {action && <div className="mt-lg">{action}</div>}
       </div>
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = ({ heading, supportingText, backgroundImage }) => {
   return (
-    <section className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[min(360px,52vh)] w-full items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -15,7 +15,7 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-xl py-4xl">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-xl py-12 md:py-16">
         <div className="flex flex-col md:flex-row items-start gap-3xl">
           {/* Main Heading */}
           <div className="flex-1">
@@ -35,7 +35,8 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
                     Our design comes from a deep respect for nature, combined with dedicated care and attention.
                   </p>
                   <p>
-                    This commitment results in the highest quality experiences, leading to exceptional user interfaces.
+                    This commitment results in the highest quality experiences, leading to exceptional flavour in every
+                    bottle.
                   </p>
                 </>
               )}

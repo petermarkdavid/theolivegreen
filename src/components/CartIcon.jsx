@@ -1,12 +1,12 @@
 import React from 'react'
 
-const CartIcon = ({ count = 0 }) => {
+const CartIcon = ({ count = 0, className = 'text-brand-primary' }) => {
   const hasItems = count > 0
   
   return (
     <div className="relative flex items-center">
       <svg
-        className={`w-6 h-6 text-white transition-all ${hasItems ? 'scale-110' : ''}`}
+        className={`h-6 w-6 transition-all ${className} ${hasItems ? 'scale-110' : ''}`}
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"

@@ -1,28 +1,69 @@
 import React, { useState } from 'react'
-import Button from '../components/Button'
 
-/** Replace with your venue details — shown only after successful interest registration. */
 const VENUE_AFTER_SUBMIT = {
   name: 'Olive Green Martinborough',
   addressLine: 'Martinborough, Wairarapa, New Zealand',
   directions:
-    'From Martinborough village, follow local signage toward the grove. If you use a maps app, search for “Olive Green Martinborough” or the address we email you. Parking is on site; please drive slowly on the gravel approach.',
+    'From Martinborough village, follow local signage toward the grove. If you use a map app, search for “Olive Green Martinborough” or the address we email you. Parking is on site; please drive slowly on the gravel approach.',
 }
 
 const TIMELINE = [
-  { time: '10:00', title: 'Start (flexible)', detail: 'Arrive when suits you — we’ll be in the grove.' },
-  { time: '11:30', title: 'Morning tea', detail: 'A pause mid-morning.' },
-  { time: '15:30', title: 'Harvest meal', detail: 'A long, late lunch together.' },
+  {
+    time: '10:00',
+    title: 'Start (flexible)',
+    detail:
+      'On arrival, grab a hand rake and aim for 80% of the olives off the tree and into the nets.',
+  },
+  {
+    time: '11:30',
+    title: 'Morning tea',
+    detail: 'Cheese scones and a rest break near the pizza oven.',
+  },
+  {
+    time: '15:30',
+    title: 'Harvest meal',
+    detail:
+      "A long, late lunch and drinks into the evening. Don't forget to take a bottle of 2025 oil with you when you leave.",
+  },
 ]
 
-const EXPECT = [
-  'Hands-on picking — we’ll guide you',
-  'Relaxed pace',
-  'Outdoor winter setting',
-  'Long, late lunch',
+const EXPECT_ITEMS = [
+  {
+    icon: 'eco',
+    title: 'Hands-on picking',
+  },
+  {
+    icon: 'local_cafe',
+    title: 'Morning tea',
+  },
+  {
+    icon: 'schedule',
+    title: 'Relaxed pace',
+  },
+  {
+    icon: 'ac_unit',
+    title: 'Outdoor winter setting',
+  },
+  {
+    icon: 'restaurant',
+    title: 'Long, late lunch',
+  },
+  {
+    icon: 'shopping_bag',
+    title: 'A bottle of 2025 oil to take home',
+  },
 ]
 
-const overviewCopy = `Harvest day is a seasonal moment we share with friends of the grove. It is not a spectacle — it is shared effort, good food, and time together among the trees. We work at an unhurried rhythm, pause for morning tea, and finish with a long meal. Whether you know every row or it is your first visit, you are welcome. Come as you are, dress for the weather, and leave room for conversation.`
+const GALLERY_BENTO = [
+  { src: '/images/grove1.jpg', alt: 'Olive grove', className: 'md:col-span-2' },
+  { src: '/images/petergrove.jpg', alt: 'In the grove', className: 'md:col-span-1' },
+  { src: '/images/mattfrank.jpg', alt: 'People in the grove', className: 'md:col-span-1' },
+  {
+    src: '/images/dougtrish.jpg',
+    alt: 'Gathering at the grove',
+    className: 'md:col-span-2 md:col-start-2',
+  },
+]
 
 const Harvest = () => {
   const [name, setName] = useState('')
@@ -73,110 +114,165 @@ const Harvest = () => {
   }
 
   return (
-    <div className="min-h-screen bg-warm-off-white">
-      {/* Hero — Olive Harvest Day */}
-      <section className="relative w-full min-h-[min(70vh,640px)] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/images/hero-olive-branch.jpg)',
-            filter: 'blur(1px)',
-          }}
-        >
-          <div className="absolute inset-0 bg-olive-green/45" />
-          <div className="absolute inset-0 bg-black/25" />
+    <div className="min-h-screen bg-surface font-body text-on-surface selection:bg-primary-fixed-dim/40">
+      {/* Hero */}
+      <section className="relative flex min-h-[min(240px,40vh)] items-center justify-center overflow-hidden px-6 py-8 md:py-10">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/hero-olive-branch.jpg"
+            alt="Olive grove"
+            className="h-full w-full object-cover brightness-[0.75]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-surface/40" />
         </div>
-        <div className="relative z-10 w-full max-w-3xl mx-auto px-xl py-4xl text-center md:text-left">
-          <p className="text-white/90 font-sans text-xs uppercase tracking-[0.2em] mb-md text-muted-gold">
-            Olive Green Martinborough · Harvest Day
-          </p>
-          <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight mb-lg">
-            2026 Olive Harvest - King's Birthday Weekend
+        <div className="relative z-10 max-w-4xl space-y-6 text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-white">Martinborough, New Zealand</p>
+          <h1 className="font-headline text-3xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            2026 Olive Harvest — King&apos;s Birthday Weekend
           </h1>
-          <p className="text-white/95 font-sans text-lg md:text-xl mb-md">Sunday 31 May · Martinborough</p>
-          <p className="text-white/90 font-sans text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
-            Join us for a day of harvesting, food, and time together in the grove.
+          <p className="font-headline text-xl font-semibold italic tracking-wide text-white/90 md:text-2xl">
+            Sunday 31 May · Martinborough
+          </p>
+          <div className="pt-8">
+            <a
+              href="#register"
+              className="inline-block rounded-md bg-gradient-to-b from-primary to-primary-container px-10 py-4 font-medium text-on-primary shadow-ambient-sm transition-all hover:brightness-105"
+            >
+              Join the harvest
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* The harvest gathering */}
+      <section className="bg-surface px-8 py-24">
+        <div className="mx-auto max-w-3xl space-y-8 text-center">
+          <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Invitation to Harvest Day 2026
+            </p>
+            <span className="font-headline text-xl italic text-brand-secondary">Olive harvest experience</span>
+          </div>
+          <h2 className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
+            The olive grove has been tended and harvested for over 20 years by Doug, Trish and their friends, family and
+            neighbours. We&apos;re excited to continue the tradition and would love for you to join our first olive
+            harvest.
+          </h2>
+          <p className="font-headline text-lg font-semibold italic text-brand-secondary">Matt and Peter x</p>
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-on-surface-variant">
+            It&apos;s a relaxed day—pick as many or as few olives as you like, or just join us for the late lunch and
+            into the evening.
           </p>
         </div>
       </section>
 
-      <div className="max-w-3xl mx-auto px-xl py-4xl space-y-4xl">
-        {/* Overview */}
-        <section className="space-y-md">
-          <h2 className="font-serif text-soft-charcoal text-3xl md:text-4xl font-normal tracking-tight">
-            The harvest gathering
-          </h2>
-          <p className="text-soft-charcoal/90 font-sans text-base md:text-lg leading-relaxed">{overviewCopy}</p>
-        </section>
+      {/* The day + image */}
+      <section className="bg-surface-container-low px-8 py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-16">
+          <div className="space-y-12">
+            <h2 className="font-headline text-4xl text-on-surface">The day</h2>
+            <div className="ml-2 space-y-12 border-l border-outline-variant/40 pl-8">
+              {TIMELINE.map((item) => (
+                <div key={item.time} className="relative">
+                  <div className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-surface-container-low bg-secondary" />
+                  <h3 className="font-headline text-xl text-primary">
+                    {item.time} — {item.title}
+                  </h3>
+                  <p className="mt-2 text-on-surface-variant">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative flex justify-center overflow-hidden rounded-md shadow-sm md:justify-end">
+            <img
+              src="/images/2025menu.jpg"
+              alt="Harvest table and meal"
+              className="mx-auto h-auto w-full max-w-xs object-contain sm:max-w-sm"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
 
-        {/* The day — timeline */}
-        <section className="space-y-xl">
-          <h2 className="font-serif text-soft-charcoal text-3xl md:text-4xl font-normal tracking-tight">The day</h2>
-          <ul className="border-l border-muted-gold/50 pl-xl space-y-2xl ml-1">
-            {TIMELINE.map((item) => (
-              <li key={item.time} className="relative">
-                <span className="absolute -left-[calc(1rem+5px)] top-1.5 w-2.5 h-2.5 rounded-full bg-muted-gold/80 ring-4 ring-warm-off-white" />
-                <p className="text-muted-gold font-sans text-sm uppercase tracking-wider mb-xs">{item.time}</p>
-                <p className="text-soft-charcoal font-sans text-lg font-semibold">{item.title}</p>
-                <p className="text-soft-charcoal/80 font-sans text-base leading-relaxed mt-sm">{item.detail}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="text-soft-charcoal/75 font-sans text-sm italic leading-relaxed pl-1">
-            Come for part of the day or stay through — it’s flexible.
-          </p>
-        </section>
+      {/* What to expect + accommodation */}
+      <section className="bg-white px-8 py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-24 lg:grid-cols-2">
+          <div className="space-y-12">
+            <h2 className="font-headline text-4xl text-on-surface">What to expect</h2>
+            <ul className="space-y-6">
+              {EXPECT_ITEMS.map((item) => (
+                <li key={item.title} className="flex items-start gap-4">
+                  <span className="material-symbols-outlined mt-1 text-primary">{item.icon}</span>
+                  <div>
+                    <h4 className="text-lg font-bold">{item.title}</h4>
+                    {item.detail ? <p className="text-on-surface-variant">{item.detail}</p> : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col justify-center space-y-6 rounded-md border border-secondary/40 bg-secondary/15 p-10 md:p-12">
+            <span className="material-symbols-outlined text-4xl text-tertiary">hotel</span>
+            <h3 className="font-headline text-3xl text-on-surface">King&apos;s Birthday Weekend</h3>
+            <p className="text-lg leading-relaxed text-on-surface/80">
+              With the long weekend in Martinborough, accommodation may fill up quickly, and many places will have
+              two- or three-night minimums.
+            </p>
+            <a
+              href="https://www.google.com/maps/search/Martinborough+NZ+accommodation"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-bold text-tertiary hover:underline"
+            >
+              Explore local stays
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </section>
 
-        {/* What to expect */}
-        <section className="space-y-lg">
-          <h2 className="font-serif text-soft-charcoal text-3xl md:text-4xl font-normal tracking-tight">What to expect</h2>
-          <ul className="space-y-md font-sans text-soft-charcoal/90 text-base leading-relaxed list-disc pl-xl marker:text-muted-gold">
-            {EXPECT.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Accommodation callout */}
-        <aside className="rounded-sm bg-white border border-soft-charcoal/10 p-xl md:p-2xl shadow-sm">
-          <h3 className="font-serif text-soft-charcoal text-xl md:text-2xl mb-md">King’s Birthday Weekend</h3>
-          <p className="text-soft-charcoal/85 font-sans text-base leading-relaxed">
-            Accommodation in Martinborough books out early and often has 2–3 night minimum stays. If you’re planning to
-            stay, it’s worth booking soon.
-          </p>
-        </aside>
-
-        {/* Stage 1 — Register interest */}
-        <section id="register" className="scroll-mt-8 space-y-xl pb-2xl">
-          <h2 className="font-serif text-soft-charcoal text-3xl md:text-4xl font-normal tracking-tight">
-            Register interest
-          </h2>
-          <p className="text-soft-charcoal/80 font-sans text-base leading-relaxed">
-            A quick note of who you are and how many might come. We’ll email you closer to the date to confirm harvest,
-            meal, and final numbers.
-          </p>
+      {/* Register */}
+      <section id="register" className="scroll-mt-28 bg-primary px-8 py-32 text-on-primary">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-16 md:grid-cols-2 md:max-w-6xl">
+          <div className="space-y-6">
+            <h2 className="font-headline text-4xl md:text-5xl">Register your interest</h2>
+            <p className="text-lg text-primary-fixed-dim">
+              Space in the grove is limited to keep the catering manageable. Let us know if you&apos;d like to join the
+              2026 harvest gathering — we&apos;ll confirm details closer to the date.
+            </p>
+            <div className="flex flex-col gap-4 pt-4 text-on-primary/95">
+              <div className="flex items-center gap-4">
+                <span className="material-symbols-outlined">mail</span>
+                <a href="mailto:olivegreenmartinborough@gmail.com" className="hover:underline">
+                  olivegreenmartinborough@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="material-symbols-outlined">location_on</span>
+                <span>Martinborough, Wairarapa, NZ</span>
+              </div>
+            </div>
+          </div>
 
           {status === 'success' ? (
-            <div className="rounded-sm bg-white border border-soft-charcoal/10 p-xl md:p-2xl space-y-lg">
-              <p className="text-soft-charcoal font-sans text-lg leading-relaxed">
-                Thanks — we’ve got your details. We’ll be in touch closer to the date to confirm final numbers and
-                whether you’ll be joining for harvest, the meal, or both.
+            <div className="space-y-6 rounded-md border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
+              <p className="text-lg leading-relaxed">
+                Thanks — we&apos;ve got your details. We&apos;ll be in touch closer to the date to confirm final
+                numbers and whether you&apos;ll be joining for harvest, the meal, or both.
               </p>
-              <p className="text-soft-charcoal/85 font-sans text-base leading-relaxed">
-                Thank you for registering your interest — it means a lot to us.
-              </p>
-              <p className="text-soft-charcoal font-sans text-base font-medium">Peter & Matt</p>
-              <div className="pt-lg border-t border-soft-charcoal/10">
-                <h3 className="font-serif text-soft-charcoal text-xl mb-md">Where we’ll meet</h3>
-                <p className="text-soft-charcoal font-sans font-semibold">{VENUE_AFTER_SUBMIT.name}</p>
-                <p className="text-soft-charcoal/85 font-sans mt-sm">{VENUE_AFTER_SUBMIT.addressLine}</p>
-                <p className="text-soft-charcoal/80 font-sans text-sm leading-relaxed mt-md">{VENUE_AFTER_SUBMIT.directions}</p>
+              <p className="text-on-primary/90">Thank you for registering — it means a lot to us.</p>
+              <p className="font-medium">Matt & Peter</p>
+              <div className="border-t border-white/20 pt-6">
+                <h3 className="font-headline mb-3 text-xl">Where we&apos;ll meet</h3>
+                <p className="font-semibold">{VENUE_AFTER_SUBMIT.name}</p>
+                <p className="mt-2 text-on-primary/90">{VENUE_AFTER_SUBMIT.addressLine}</p>
+                <p className="mt-3 text-sm text-on-primary/80">{VENUE_AFTER_SUBMIT.directions}</p>
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="rounded-sm bg-white border border-soft-charcoal/10 p-xl md:p-2xl space-y-lg">
-              <div className="space-y-sm">
-                <label htmlFor="harvest-name" className="block font-sans text-sm text-soft-charcoal font-medium">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="harvest-name" className="mb-2 block text-sm font-medium opacity-90">
                   Name
                 </label>
                 <input
@@ -185,12 +281,13 @@ const Harvest = () => {
                   autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-md py-sm border border-soft-charcoal/20 rounded-sm bg-warm-off-white font-sans text-soft-charcoal focus:outline-none focus:ring-2 focus:ring-olive-green/40 focus:border-olive-green"
+                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
+                  placeholder="Your full name"
                 />
               </div>
-              <div className="space-y-sm">
-                <label htmlFor="harvest-email" className="block font-sans text-sm text-soft-charcoal font-medium">
-                  Email <span className="text-muted-gold">(required)</span>
+              <div>
+                <label htmlFor="harvest-email" className="mb-2 block text-sm font-medium opacity-90">
+                  Email *
                 </label>
                 <input
                   id="harvest-email"
@@ -199,11 +296,12 @@ const Harvest = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-md py-sm border border-soft-charcoal/20 rounded-sm bg-warm-off-white font-sans text-soft-charcoal focus:outline-none focus:ring-2 focus:ring-olive-green/40 focus:border-olive-green"
+                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
+                  placeholder="hello@example.com"
                 />
               </div>
-              <div className="space-y-sm">
-                <label htmlFor="harvest-guests" className="block font-sans text-sm text-soft-charcoal font-medium">
+              <div>
+                <label htmlFor="harvest-guests" className="mb-2 block text-sm font-medium opacity-90">
                   Number of people
                 </label>
                 <input
@@ -213,35 +311,60 @@ const Harvest = () => {
                   step={1}
                   value={guestCount}
                   onChange={(e) => setGuestCount(e.target.value)}
-                  className="w-full max-w-[8rem] px-md py-sm border border-soft-charcoal/20 rounded-sm bg-warm-off-white font-sans text-soft-charcoal focus:outline-none focus:ring-2 focus:ring-olive-green/40 focus:border-olive-green"
+                  className="w-full max-w-[12rem] border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
+                  placeholder="1"
                 />
               </div>
-              <div className="space-y-sm">
-                <label htmlFor="harvest-notes" className="block font-sans text-sm text-soft-charcoal font-medium">
-                  Notes <span className="text-soft-charcoal/60 font-normal">(optional)</span>
+              <div>
+                <label htmlFor="harvest-notes" className="mb-2 block text-sm font-medium opacity-90">
+                  Notes (optional)
                 </label>
                 <textarea
                   id="harvest-notes"
-                  rows={4}
+                  rows={3}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-md py-sm border border-soft-charcoal/20 rounded-sm bg-warm-off-white font-sans text-soft-charcoal focus:outline-none focus:ring-2 focus:ring-olive-green/40 focus:border-olive-green resize-y min-h-[100px]"
+                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
+                  placeholder="Questions or context for your group"
                 />
               </div>
-              {error ? <p className="text-deep-olive font-sans text-sm">{error}</p> : null}
-              <Button type="submit" variant="primary" className="min-w-0 w-full sm:w-auto" disabled={status === 'loading'}>
+              {error ? <p className="text-sm text-red-200">{error}</p> : null}
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full rounded-md bg-white py-4 text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-surface-container-low disabled:opacity-60"
+              >
                 {status === 'loading' ? 'Sending…' : 'Register interest'}
-              </Button>
-              {import.meta.env.DEV && !import.meta.env.VITE_HARVEST_INTEREST_WEBHOOK_URL ? (
-                <p className="text-soft-charcoal/55 font-sans text-xs leading-relaxed">
-                  Dev: set <code className="text-soft-charcoal/70">VITE_HARVEST_INTEREST_WEBHOOK_URL</code> to POST JSON
-                  (e.g. Zapier) to persist registrations.
-                </p>
-              ) : null}
+              </button>
             </form>
           )}
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="bg-surface px-8 py-24">
+        <div className="mx-auto max-w-7xl space-y-12">
+          <div className="space-y-4 text-center">
+            <h2 className="font-headline text-4xl text-on-surface">Moments from the grove</h2>
+            <p className="text-on-surface-variant">Memories of the 2025 harvest.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {GALLERY_BENTO.map((item) => (
+              <div
+                key={item.src}
+                className={`group h-72 overflow-hidden rounded-md md:h-96 ${item.className}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
