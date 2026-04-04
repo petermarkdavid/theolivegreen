@@ -68,11 +68,15 @@ const AboutUs = () => {
             We welcome visitors to experience the grove firsthand. Tours, tastings, and harvest participation available by arrangement.
           </p>
           <div className="flex flex-col sm:flex-row gap-lg justify-center">
-            <Link to="/accommodation">
-              <Button variant="secondary">Plan Your Visit</Button>
+            <Link to="/harvest">
+              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">
+                Harvest day
+              </Button>
             </Link>
             <a href="mailto:olivegreenmartinborough@gmail.com">
-              <Button variant="primary">Contact Us</Button>
+              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">
+                Contact us
+              </Button>
             </a>
           </div>
         </div>

@@ -20,7 +20,6 @@ const Footer = () => {
             <nav className="flex flex-col gap-sm">
               <Link to="/" className="text-white text-sm hover:opacity-80 transition-opacity">Home</Link>
               <Link to="/shop" className="text-white text-sm hover:opacity-80 transition-opacity">Shop</Link>
-              <Link to="/accommodation" className="text-white text-sm hover:opacity-80 transition-opacity">Accommodation</Link>
               <Link to="/harvest" className="text-white text-sm hover:opacity-80 transition-opacity">Harvest</Link>
               <Link to="/about" className="text-white text-sm hover:opacity-80 transition-opacity">About Us</Link>
             </nav>
@@ -31,8 +30,7 @@ const Footer = () => {
             <h4 className="text-white text-sm font-bold font-sans mb-md uppercase tracking-wide">Contact</h4>
             <div className="text-white text-sm space-y-xs opacity-90">
               <p><a href="mailto:olivegreenmartinborough@gmail.com" className="hover:opacity-80 transition-opacity">olivegreenmartinborough@gmail.com</a></p>
-              <p><a href="tel:+15551234567" className="hover:opacity-80 transition-opacity">+1 (555) 123-4567</a></p>
-              <p>Open Saturday & Sunday<br />11AM - 3PM</p>
+              <p><a href="tel: 022 124 1310" className="hover:opacity-80 transition-opacity">+1 (555) 123-4567</a></p>
             </div>
           </div>
           
@@ -57,7 +55,7 @@ const Footer = () => {
         
         <div className="border-t border-white/20 pt-xl text-center">
           <p className="text-white text-sm opacity-90">
-            © 2024 The Olive Green. All rights reserved.
+            © 2026 The Olive Green Martinborough. All rights reserved.
           </p>
         </div>
       </div>

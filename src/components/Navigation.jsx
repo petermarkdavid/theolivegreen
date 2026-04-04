@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 const Navigation = ({ items = [
   { label: 'Home', path: '/' },
   { label: 'Shop', path: '/shop' },
-  { label: 'Accommodation', path: '/accommodation' },
   { label: 'Harvest', path: '/harvest' },
   { label: 'About', path: '/about' }
 ] }) => {

@@ -72,9 +72,6 @@ const Homepage = () => {
             <Link to="/about">
               <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Register Interest for Harvest</Button>
             </Link>
-            <Link to="/accommodation">
-              <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Book Accommodation</Button>
-            </Link>
           </div>
         </div>
       </section>
