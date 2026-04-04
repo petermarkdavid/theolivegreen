@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3xl mb-3xl">
           {/* Brand */}
           <div>
-            <h3 className="text-white text-xl font-bold font-sans mb-md">The Olive Green</h3>
+            <h3 className="text-white text-xl font-bold font-sans mb-md">Olive Green Martinborough</h3>
             <p className="text-white text-sm leading-relaxed opacity-90">
               Quietly crafted, exceptionally pure olive oil from our family grove.
             </p>
@@ -55,7 +55,7 @@ const Footer = () => {
         
         <div className="border-t border-white/20 pt-xl text-center">
           <p className="text-white text-sm opacity-90">
-            © 2026 The Olive Green Martinborough. All rights reserved.
+            © 2026 Olive Green Martinborough. All rights reserved.
           </p>
         </div>
       </div>

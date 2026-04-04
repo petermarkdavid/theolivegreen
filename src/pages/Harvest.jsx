@@ -3,10 +3,10 @@ import Button from '../components/Button'
 
 /** Replace with your venue details — shown only after successful interest registration. */
 const VENUE_AFTER_SUBMIT = {
-  name: 'The Olive Green',
+  name: 'Olive Green Martinborough',
   addressLine: 'Martinborough, Wairarapa, New Zealand',
   directions:
-    'From Martinborough village, follow local signage toward the grove. If you use a maps app, search for “The Olive Green Martinborough” or the address we email you. Parking is on site; please drive slowly on the gravel approach.',
+    'From Martinborough village, follow local signage toward the grove. If you use a maps app, search for “Olive Green Martinborough” or the address we email you. Parking is on site; please drive slowly on the gravel approach.',
 }
 
 const TIMELINE = [
@@ -88,7 +88,7 @@ const Harvest = () => {
         </div>
         <div className="relative z-10 w-full max-w-3xl mx-auto px-xl py-4xl text-center md:text-left">
           <p className="text-white/90 font-sans text-xs uppercase tracking-[0.2em] mb-md text-muted-gold">
-            The Olive Green Harvest Day
+            Olive Green Martinborough · Harvest Day
           </p>
           <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight mb-lg">
             2026 Olive Harvest - King's Birthday Weekend

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `design-system.json` file in this folder is the **single source of truth** for all design decisions in The Olive Green application.
+The `design-system.json` file in this folder is the **single source of truth** for all design decisions in the Olive Green Martinborough application.
 
 ## Purpose
 

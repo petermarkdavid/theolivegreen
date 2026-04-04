@@ -1,4 +1,4 @@
-# The Olive Green
+# Olive Green Martinborough
 
 A premium olive oil brand website built with React, Vite, and Tailwind CSS. This site showcases the brand's commitment to quality, tradition, and the grove through a clean, editorial design system.
 
@@ -134,7 +134,7 @@ npm run deploy
 
 ## 🎨 Brand Voice
 
-The Olive Green represents a premium, provenance-led olive oil brand. The design system emphasizes:
+Olive Green Martinborough represents a premium, provenance-led olive oil brand. The design system emphasizes:
 
 - **Craft-centric** language over design-centric
 - **Confident restraint** in design choices

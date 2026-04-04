@@ -1,4 +1,4 @@
-# The Olive Green Design System
+# Olive Green Martinborough Design System
 
 ## Source of Truth
 

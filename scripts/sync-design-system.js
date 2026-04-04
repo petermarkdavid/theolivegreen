@@ -24,7 +24,7 @@ if (!fs.existsSync(designSystemPath)) {
 
 const designSystem = JSON.parse(fs.readFileSync(designSystemPath, 'utf-8'));
 
-console.log('🎨 The Olive Green Design System - Sync Utility\n');
+console.log('🎨 Olive Green Martinborough Design System - Sync Utility\n');
 console.log(`📋 Source: design/design-system.json (v${designSystem.meta.version})\n`);
 
 // Validate and sync Tailwind config
