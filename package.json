@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "VITE_BUILD=true vite build",
+    "build": "VITE_BUILD=true vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist",
+    "deploy": "npm run build && gh-pages -d dist -t",
     "sync:design-system": "node scripts/sync-design-system.js",
     "generate:tailwind": "node scripts/generate-tailwind-from-design-system.js",
     "validate:design-system": "node scripts/sync-design-system.js"
