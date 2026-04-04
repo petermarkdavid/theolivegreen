@@ -91,7 +91,7 @@ const Harvest = () => {
             The Olive Green Harvest Day
           </p>
           <h1 className="font-serif text-white text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight mb-lg">
-            Olive Harvest Day
+            2026 Olive Harvest - King's Birthday Weekend
           </h1>
           <p className="text-white/95 font-sans text-lg md:text-xl mb-md">Sunday 31 May · Martinborough</p>
           <p className="text-white/90 font-sans text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
@@ -162,6 +162,10 @@ const Harvest = () => {
                 Thanks — we’ve got your details. We’ll be in touch closer to the date to confirm final numbers and
                 whether you’ll be joining for harvest, the meal, or both.
               </p>
+              <p className="text-soft-charcoal/85 font-sans text-base leading-relaxed">
+                Thank you for registering your interest — it means a lot to us.
+              </p>
+              <p className="text-soft-charcoal font-sans text-base font-medium">Peter & Matt</p>
               <div className="pt-lg border-t border-soft-charcoal/10">
                 <h3 className="font-serif text-soft-charcoal text-xl mb-md">Where we’ll meet</h3>
                 <p className="text-soft-charcoal font-sans font-semibold">{VENUE_AFTER_SUBMIT.name}</p>

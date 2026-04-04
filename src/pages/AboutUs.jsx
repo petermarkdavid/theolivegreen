@@ -58,6 +58,15 @@ const AboutUs = () => {
         layout="centered"
       />
       
+      {/* Thank you */}
+      <section className="w-full bg-warm-off-white py-3xl px-xl text-center">
+        <p className="text-soft-charcoal/90 font-sans text-lg leading-relaxed max-w-2xl mx-auto">
+          Thank you for your interest in the grove — whether you visit, buy our oil, or simply follow along. We’re
+          grateful.
+        </p>
+        <p className="text-soft-charcoal font-sans text-base font-medium mt-md">Peter & Matt</p>
+      </section>
+
       {/* Visit Us */}
       <section className="w-full bg-olive-green py-4xl px-xl">
         <div className="max-w-4xl mx-auto text-center">
