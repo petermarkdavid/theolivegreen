@@ -1,11 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Homepage from './pages/Homepage'
 import Shop from './pages/Shop'
 import Harvest from './pages/Harvest'
-import AboutUs from './pages/AboutUs'
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/harvest" element={<Harvest />} />
-            <Route path="/about" element={<AboutUs />} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         <Footer />

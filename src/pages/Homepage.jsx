@@ -69,7 +69,7 @@ const Homepage = () => {
             Experience the harvest, tour our groves, and taste our oil at the source.
           </p>
           <div className="flex flex-col sm:flex-row gap-lg justify-center">
-            <Link to="/about">
+            <Link to="/harvest">
               <Button variant="secondary" className="text-white border-white hover:bg-white hover:text-olive-green">Register Interest for Harvest</Button>
             </Link>
           </div>

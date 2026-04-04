@@ -5,7 +5,6 @@ const Navigation = ({ items = [
   { label: 'Home', path: '/' },
   { label: 'Shop', path: '/shop' },
   { label: 'Harvest', path: '/harvest' },
-  { label: 'About', path: '/about' }
 ] }) => {
   const location = useLocation()
   

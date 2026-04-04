@@ -21,7 +21,6 @@ const Footer = () => {
               <Link to="/" className="text-white text-sm hover:opacity-80 transition-opacity">Home</Link>
               <Link to="/shop" className="text-white text-sm hover:opacity-80 transition-opacity">Shop</Link>
               <Link to="/harvest" className="text-white text-sm hover:opacity-80 transition-opacity">Harvest</Link>
-              <Link to="/about" className="text-white text-sm hover:opacity-80 transition-opacity">About Us</Link>
             </nav>
           </div>
           

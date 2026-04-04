@@ -22,9 +22,6 @@ const Header = () => {
           
           {/* User Actions */}
           <div className="flex items-center gap-lg">
-            <button className="text-white text-sm md:text-base font-sans tracking-wide hover:opacity-80 transition-opacity">
-              Login
-            </button>
             <Link to="/shop" className="hover:opacity-80 transition-opacity">
               <CartIcon count={0} />
             </Link>
