@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Olive Green Martinborough">
+  <!-- Warm neutral + primary olive; reads clearly at 16–32px -->
+  <rect width="32" height="32" rx="8" fill="#FAF9F6"/>
+  <path stroke="#6B7D3F" stroke-width="2" stroke-linecap="round" d="M16 6v6"/>
+  <circle cx="16" cy="16" r="3.5" fill="#6B7D3F"/>
+  <circle cx="11.5" cy="18" r="3.5" fill="#6B7D3F"/>
+  <circle cx="20.5" cy="18" r="3.5" fill="#6B7D3F"/>
+</svg>
