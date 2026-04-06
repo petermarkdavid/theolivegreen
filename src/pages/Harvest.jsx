@@ -17,7 +17,7 @@ const TIMELINE = [
   {
     time: '11:30',
     title: 'Morning tea',
-    detail: 'Cheese scones and a rest break near the pizza oven.',
+    detail: 'Cheese scones and a rest break. Served near the pizza oven.',
   },
   {
     time: '15:30',
@@ -153,15 +153,19 @@ const Harvest = () => {
             </p>
             <span className="font-headline text-xl italic text-brand-secondary">Olive harvest experience</span>
           </div>
-          <h2 className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
-            The olive grove has been tended and harvested for over 20 years by Doug, Trish and their friends, family and
-            neighbours. We&apos;re excited to continue the tradition and would love for you to join our first olive
-            harvest.
-          </h2>
-          <p className="font-headline text-lg font-semibold italic text-brand-secondary">Matt and Peter x</p>
+          <div className="space-y-4">
+            <h2 className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
+              Our olive grove has been tended and harvested for over 20 years by Doug and Trish, their family, friends and
+              neighbours.
+            </h2>
+            <p className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
+              We&apos;re excited to continue the tradition and would love for you to join our first olive harvest.
+            </p>
+          </div>
+          <p className="font-headline text-3xl font-semibold italic text-brand-secondary md:text-4xl">Matt and Peter</p>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-on-surface-variant">
-            It&apos;s a relaxed day—pick as many or as few olives as you like, or just join us for the late lunch and
-            into the evening.
+            It&apos;s a relaxed day—pick as many or as few olives as you like, or just join us for the late lunch, laughs
+            and drinks into the evening.
           </p>
         </div>
       </section>
@@ -215,11 +219,10 @@ const Harvest = () => {
             <span className="material-symbols-outlined text-4xl text-tertiary">hotel</span>
             <h3 className="font-headline text-3xl text-on-surface">King&apos;s Birthday Weekend</h3>
             <p className="text-lg leading-relaxed text-on-surface/80">
-              With the long weekend in Martinborough, accommodation may fill up quickly, and many places will have
-              two- or three-night minimums.
+              Why not make a weekend of it? Be aware that some places will have a two- or three-night minimum stay.
             </p>
             <a
-              href="https://www.google.com/maps/search/Martinborough+NZ+accommodation"
+              href="https://www.airbnb.co.nz/s/Martinborough--Wellington/homes?place_id=ChIJTdllNmMtR20R4OCiQ2HvAAU&refinement_paths%5B%5D=%2Fhomes&checkin=2026-05-30&checkout=2026-06-01&date_picker_type=calendar&adults=2&guests=3&search_type=unknown&query=Martinborough%2C%20Wellington&flexible_trip_lengths%5B%5D=one_week&monthly_start_date=2026-05-01&monthly_length=3&monthly_end_date=2026-08-01&search_mode=regular_search&price_filter_input_type=2&price_filter_num_nights=3&channel=EXPLORE&source=structured_search_input_header"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 font-bold text-tertiary hover:underline"
@@ -237,8 +240,8 @@ const Harvest = () => {
           <div className="space-y-6">
             <h2 className="font-headline text-4xl md:text-5xl">Register your interest</h2>
             <p className="text-lg text-primary-fixed-dim">
-              Space in the grove is limited to keep the catering manageable. Let us know if you&apos;d like to join the
-              2026 harvest gathering — we&apos;ll confirm details closer to the date.
+              Everyone is welcome, friends, family, kids and dogs. Please confirm your interest so we can properly plan,
+              and we will ask you to RSVP closer to the time for catering. More details a couple of weeks before.
             </p>
             <div className="flex flex-col gap-4 pt-4 text-on-primary/95">
               <div className="flex items-center gap-4">
