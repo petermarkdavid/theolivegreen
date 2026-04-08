@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { newsletterWebhookUrl } from '../config/publicEdgeFunctions'
+import { resolveSupabaseAnonKey, supabaseAnonKeyIssue } from '../config/resolveSupabaseAnonKey'
 
 const Footer = () => {
   const [email, setEmail] = useState('')
@@ -16,9 +17,14 @@ const Footer = () => {
       return
     }
     const webhook = newsletterWebhookUrl()
-    const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-    if (!anonKey?.trim()) {
+    const anonKey = resolveSupabaseAnonKey()
+    const keyIssue = supabaseAnonKeyIssue(anonKey)
+    if (keyIssue === 'missing') {
       setError('Newsletter is not fully configured yet.')
+      return
+    }
+    if (keyIssue === 'wrong_type') {
+      setError('Newsletter config: use the anon public key from Supabase (JWT eyJ…), not a secret key.')
       return
     }
 

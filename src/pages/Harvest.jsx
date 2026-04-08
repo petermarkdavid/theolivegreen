@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { harvestInterestWebhookUrl } from '../config/publicEdgeFunctions'
+import { resolveSupabaseAnonKey, supabaseAnonKeyIssue } from '../config/resolveSupabaseAnonKey'
 
 const VENUE_AFTER_SUBMIT = {
   name: 'Olive Green Martinborough',
@@ -96,9 +97,16 @@ const Harvest = () => {
     }
 
     const webhook = harvestInterestWebhookUrl()
-    const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-    if (!anonKey?.trim()) {
+    const anonKey = resolveSupabaseAnonKey()
+    const keyIssue = supabaseAnonKeyIssue(anonKey)
+    if (keyIssue === 'missing') {
       setError('This form is not fully configured yet—please email us directly.')
+      return
+    }
+    if (keyIssue === 'wrong_type') {
+      setError(
+        'Site config: use the anon public key from Supabase (Settings → API, JWT starting with eyJ)—not a secret key.',
+      )
       return
     }
 
