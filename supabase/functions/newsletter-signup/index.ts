@@ -12,7 +12,9 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 const RESEND_URL = 'https://api.resend.com/emails'
 
-type SendEmailResult = { ok: true } | { ok: false; status: number; body: string }
+type SendEmailResult =
+  | { ok: true; resendId?: string }
+  | { ok: false; status: number; body: string }
 
 async function sendResendEmail(params: {
   apiKey: string
@@ -36,11 +38,18 @@ async function sendResendEmail(params: {
       html: params.html,
     }),
   })
+  const raw = await res.text()
   if (!res.ok) {
-    const body = await res.text()
-    return { ok: false, status: res.status, body }
+    return { ok: false, status: res.status, body: raw }
   }
-  return { ok: true }
+  let resendId: string | undefined
+  try {
+    const j = JSON.parse(raw) as { id?: string }
+    resendId = j.id
+  } catch {
+    /* ignore */
+  }
+  return { ok: true, resendId }
 }
 
 const CORS_ALLOW_HEADERS = 'authorization, x-client-info, apikey, content-type'
@@ -122,11 +131,16 @@ Deno.serve(async (req) => {
     return json({ error: 'Could not subscribe. Please try again.' }, 502, origin)
   }
 
-  const resendKey = Deno.env.get('RESEND_API_KEY')
+  const resendKey = Deno.env.get('RESEND_API_KEY')?.trim()
   const resendFrom = Deno.env.get('RESEND_FROM')?.trim()
   const cc = (Deno.env.get('RESEND_CC')?.trim() || DEFAULT_CC).split(',').map((s) => s.trim()).filter(Boolean)
 
-  if (resendKey && resendFrom) {
+  if (!resendKey || !resendFrom) {
+    console.warn(
+      'newsletter-signup: Resend skipped — set RESEND_API_KEY and RESEND_FROM',
+      { hasApiKey: Boolean(resendKey), hasFrom: Boolean(resendFrom) },
+    )
+  } else {
     const html = `
       <p>Hi,</p>
       <p>Thanks for joining the Olive Green Martinborough mailing list. You’ll hear from us about harvest updates and seasonal releases.</p>
@@ -142,6 +156,8 @@ Deno.serve(async (req) => {
     })
     if (!sent.ok) {
       console.error('Resend newsletter email failed', sent.status, sent.body)
+    } else {
+      console.info('newsletter-signup: Resend OK', { resendId: sent.resendId, to: email })
     }
   }
 

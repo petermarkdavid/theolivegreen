@@ -21,7 +21,9 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 const RESEND_URL = 'https://api.resend.com/emails'
 
-type SendEmailResult = { ok: true } | { ok: false; status: number; body: string }
+type SendEmailResult =
+  | { ok: true; resendId?: string }
+  | { ok: false; status: number; body: string }
 
 async function sendResendEmail(params: {
   apiKey: string
@@ -45,11 +47,18 @@ async function sendResendEmail(params: {
       html: params.html,
     }),
   })
+  const raw = await res.text()
   if (!res.ok) {
-    const body = await res.text()
-    return { ok: false, status: res.status, body }
+    return { ok: false, status: res.status, body: raw }
   }
-  return { ok: true }
+  let resendId: string | undefined
+  try {
+    const j = JSON.parse(raw) as { id?: string }
+    resendId = j.id
+  } catch {
+    /* ignore */
+  }
+  return { ok: true, resendId }
 }
 
 /** Browsers send Authorization + apikey on fetch; gateway must allow them on preflight. */
@@ -137,11 +146,16 @@ Deno.serve(async (req) => {
     return json({ error: 'Could not save your registration. Please try again.' }, 502, origin)
   }
 
-  const resendKey = Deno.env.get('RESEND_API_KEY')
+  const resendKey = Deno.env.get('RESEND_API_KEY')?.trim()
   const resendFrom = Deno.env.get('RESEND_FROM')?.trim()
   const cc = (Deno.env.get('RESEND_CC')?.trim() || DEFAULT_CC).split(',').map((s) => s.trim()).filter(Boolean)
 
-  if (resendKey && resendFrom) {
+  if (!resendKey || !resendFrom) {
+    console.warn(
+      'harvest-interest: Resend skipped — set Edge Function secrets RESEND_API_KEY and RESEND_FROM (check names, no extra quotes).',
+      { hasApiKey: Boolean(resendKey), hasFrom: Boolean(resendFrom) },
+    )
+  } else {
     const displayName = name || 'there'
     const html = `
       <p>Hi ${escapeHtml(displayName)},</p>
@@ -163,6 +177,8 @@ Deno.serve(async (req) => {
     })
     if (!sent.ok) {
       console.error('Resend harvest email failed', sent.status, sent.body)
+    } else {
+      console.info('harvest-interest: Resend OK', { resendId: sent.resendId, to: email })
     }
   }
 
