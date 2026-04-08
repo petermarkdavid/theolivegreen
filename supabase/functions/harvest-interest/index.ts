@@ -6,7 +6,9 @@
 //   3. supabase link --project-ref YOUR_PROJECT_REF   (from Project Settings → General)
 //   4. supabase secrets set ALLOWED_ORIGIN=https://www.olivegreenmartinborough.com --project-ref pvtrqnvacjdquktdcqfh
 //      Or Dashboard → Edge Functions → Secrets. (Use ALLOWED_ORIGIN=* only for local testing.)
-//   5. supabase functions deploy harvest-interest
+//   5. Optional email (Resend): secrets set RESEND_API_KEY=re_...  RESEND_FROM="Olive Green <noreply@yourdomain>"
+//      (From must be a domain verified in Resend.)
+//   6. supabase functions deploy harvest-interest --no-verify-jwt
 //
 // Webhook URL for Vite (VITE_HARVEST_INTEREST_WEBHOOK_URL):
 //   https://pvtrqnvacjdquktdcqfh.supabase.co/functions/v1/harvest-interest
@@ -15,6 +17,9 @@
 
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { sendResendEmail } from '../_shared/resend'
+
+const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 
 /** Browsers send Authorization + apikey on fetch; gateway must allow them on preflight. */
 const CORS_ALLOW_HEADERS = 'authorization, x-client-info, apikey, content-type'
@@ -101,5 +106,42 @@ Deno.serve(async (req) => {
     return json({ error: 'Could not save your registration. Please try again.' }, 502, origin)
   }
 
+  const resendKey = Deno.env.get('RESEND_API_KEY')
+  const resendFrom = Deno.env.get('RESEND_FROM')?.trim()
+  const cc = (Deno.env.get('RESEND_CC')?.trim() || DEFAULT_CC).split(',').map((s) => s.trim()).filter(Boolean)
+
+  if (resendKey && resendFrom) {
+    const displayName = name || 'there'
+    const html = `
+      <p>Hi ${escapeHtml(displayName)},</p>
+      <p>Thanks for registering your interest in the Olive Green harvest. We’ve received your details.</p>
+      <ul>
+        <li><strong>People:</strong> ${guestCount}</li>
+        ${notes ? `<li><strong>Notes:</strong> ${escapeHtml(notes)}</li>` : ''}
+      </ul>
+      <p>We’ll be in touch closer to the date. If you have questions, reply to this email or write to <a href="mailto:olivegreenmartinborough@gmail.com">olivegreenmartinborough@gmail.com</a>.</p>
+      <p>— Olive Green Martinborough</p>
+    `
+    const sent = await sendResendEmail({
+      apiKey: resendKey,
+      from: resendFrom,
+      to: email,
+      cc,
+      subject: 'We’ve received your harvest interest — Olive Green Martinborough',
+      html,
+    })
+    if (!sent.ok) {
+      console.error('Resend harvest email failed', sent.status, sent.body)
+    }
+  }
+
   return json({ ok: true }, 200, origin)
 })
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}

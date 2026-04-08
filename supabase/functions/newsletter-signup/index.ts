@@ -4,9 +4,13 @@
 // Secrets: same as harvest-interest (SUPABASE_* auto; ALLOWED_ORIGIN for CORS).
 //
 // Vite: VITE_NEWSLETTER_WEBHOOK_URL=https://<ref>.supabase.co/functions/v1/newsletter-signup
+// Optional: RESEND_API_KEY, RESEND_FROM (verified domain), RESEND_CC (default olivegreenmartinborough@gmail.com)
 
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { sendResendEmail } from '../_shared/resend'
+
+const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 
 const CORS_ALLOW_HEADERS = 'authorization, x-client-info, apikey, content-type'
 
@@ -85,6 +89,29 @@ Deno.serve(async (req) => {
     }
     console.error(error)
     return json({ error: 'Could not subscribe. Please try again.' }, 502, origin)
+  }
+
+  const resendKey = Deno.env.get('RESEND_API_KEY')
+  const resendFrom = Deno.env.get('RESEND_FROM')?.trim()
+  const cc = (Deno.env.get('RESEND_CC')?.trim() || DEFAULT_CC).split(',').map((s) => s.trim()).filter(Boolean)
+
+  if (resendKey && resendFrom) {
+    const html = `
+      <p>Hi,</p>
+      <p>Thanks for joining the Olive Green Martinborough mailing list. You’ll hear from us about harvest updates and seasonal releases.</p>
+      <p>— Olive Green Martinborough</p>
+    `
+    const sent = await sendResendEmail({
+      apiKey: resendKey,
+      from: resendFrom,
+      to: email,
+      cc,
+      subject: 'You’re on the Olive Green list',
+      html,
+    })
+    if (!sent.ok) {
+      console.error('Resend newsletter email failed', sent.status, sent.body)
+    }
   }
 
   return json({ ok: true }, 200, origin)
