@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 
 const VENUE_AFTER_SUBMIT = {
   name: 'Olive Green Martinborough',
-  addressLine: 'Martinborough, Wairarapa, New Zealand',
-  directions:
-    'From Martinborough village, follow local signage toward the grove. If you use a map app, search for “Olive Green Martinborough” or the address we email you. Parking is on site; please drive slowly on the gravel approach.',
+  addressLine: '7 Hawkins Drive, Martinborough',
+  directions: 'Wairarapa, New Zealand. Parking is on site; please drive slowly on the gravel approach.',
 }
 
 const TIMELINE = [
@@ -99,9 +98,16 @@ const Harvest = () => {
     setStatus('loading')
     try {
       if (webhook) {
+        const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
         const res = await fetch(webhook, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            // Supabase Edge Functions gateway expects anon key (safe to expose in frontend).
+            ...(anonKey
+              ? { Authorization: `Bearer ${anonKey}`, apikey: anonKey }
+              : {}),
+          },
           body: JSON.stringify(payload),
         })
         if (!res.ok) throw new Error('Request failed')
@@ -252,7 +258,7 @@ const Harvest = () => {
               </div>
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined">location_on</span>
-                <span>Martinborough, Wairarapa, NZ</span>
+                <span>7 Hawkins Drive, Martinborough</span>
               </div>
             </div>
           </div>

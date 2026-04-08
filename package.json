@@ -13,9 +13,11 @@
     "validate:design-system": "node scripts/sync-design-system.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.102.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^7.12.0"
+    "react-router-dom": "^7.12.0",
+    "resend": "^6.10.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

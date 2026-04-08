@@ -1,0 +1,6 @@
+# Supabase CLI config. Run `supabase link` to attach your project.
+# https://supabase.com/docs/guides/cli/config
+
+[functions.harvest-interest]
+# Public form: browser must not send a Supabase login JWT.
+verify_jwt = false
