@@ -15,8 +15,13 @@ const Footer = () => {
       return
     }
     const webhook = import.meta.env.VITE_NEWSLETTER_WEBHOOK_URL
-    if (!webhook) {
+    const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+    if (!webhook?.trim()) {
       setError('Newsletter is not configured yet.')
+      return
+    }
+    if (!anonKey?.trim()) {
+      setError('Newsletter is not fully configured yet.')
       return
     }
 
@@ -28,12 +33,12 @@ const Footer = () => {
 
     setStatus('loading')
     try {
-      const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
       const res = await fetch(webhook, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...(anonKey ? { Authorization: `Bearer ${anonKey}`, apikey: anonKey } : {}),
+          Authorization: `Bearer ${anonKey}`,
+          apikey: anonKey,
         },
         body: JSON.stringify(payload),
       })

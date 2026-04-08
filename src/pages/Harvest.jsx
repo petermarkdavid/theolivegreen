@@ -95,23 +95,28 @@ const Harvest = () => {
     }
 
     const webhook = import.meta.env.VITE_HARVEST_INTEREST_WEBHOOK_URL
+    const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+    if (!webhook?.trim()) {
+      setError('This form is not connected yet—please email us directly.')
+      return
+    }
+    if (!anonKey?.trim()) {
+      setError('This form is not fully configured yet—please email us directly.')
+      return
+    }
+
     setStatus('loading')
     try {
-      if (webhook) {
-        const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-        const res = await fetch(webhook, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Supabase Edge Functions gateway expects anon key (safe to expose in frontend).
-            ...(anonKey
-              ? { Authorization: `Bearer ${anonKey}`, apikey: anonKey }
-              : {}),
-          },
-          body: JSON.stringify(payload),
-        })
-        if (!res.ok) throw new Error('Request failed')
-      }
+      const res = await fetch(webhook, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${anonKey}`,
+          apikey: anonKey,
+        },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('Request failed')
       setStatus('success')
     } catch {
       setStatus('idle')
