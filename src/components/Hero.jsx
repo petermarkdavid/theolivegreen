@@ -1,6 +1,12 @@
 import React from 'react'
 
+/** supportingText: one string, or an array of strings for multiple paragraphs */
 const Hero = ({ heading, supportingText, backgroundImage }) => {
+  const paragraphs = Array.isArray(supportingText)
+    ? supportingText
+    : supportingText
+      ? [supportingText]
+      : null
   return (
     <section className="relative flex min-h-[min(360px,52vh)] w-full items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -27,8 +33,8 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
           {/* Supporting Text */}
           <div className="flex-1 max-w-xl">
             <div className="text-white text-lg md:text-xl leading-relaxed space-y-md max-w-xl">
-              {supportingText ? (
-                <p>{supportingText}</p>
+              {paragraphs ? (
+                paragraphs.map((text, i) => <p key={i}>{text}</p>)
               ) : (
                 <>
                   <p>

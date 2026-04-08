@@ -4,3 +4,6 @@
 [functions.harvest-interest]
 # Public form: browser must not send a Supabase login JWT.
 verify_jwt = false
+
+[functions.newsletter-signup]
+verify_jwt = false

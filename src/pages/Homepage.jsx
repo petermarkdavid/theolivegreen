@@ -11,14 +11,8 @@ const Homepage = () => {
       {/* Hero Section */}
       <Hero 
         heading="Quietly Crafted. Exceptionally Pure."
-        supportingText="Our olive oil comes from a deep respect for the grove, combined with dedicated care and attention. This commitment results in the highest quality fruit, leading to exceptional tasting oil."
+        supportingText="Grown in Martinborough and pressed in Greytown, our Tuscan blend extra virgin olive oil delivers exceptional flavour — perfect for cooking, salads, and everyday use."
         backgroundImage="url(/images/hero-olive-branch.jpg)"
-      />
-      
-      {/* From the Grove Section */}
-      <ContentSection 
-        heading="Rooted in Nature"
-        content="Our connection to the grove shapes our journey. We focus on ethical production using low-impact methods and minimal intervention. Our hands nurture the trees, reflecting our commitment to the environment."
       />
       
       {/* Featured Products */}
