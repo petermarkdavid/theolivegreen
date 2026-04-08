@@ -1,8 +1,12 @@
 # Supabase CLI config. Run `supabase link` to attach your project.
 # https://supabase.com/docs/guides/cli/config
 
+# After changing verify_jwt, redeploy each function so the hosted project picks this up:
+#   supabase functions deploy harvest-interest --no-verify-jwt
+#   supabase functions deploy newsletter-signup --no-verify-jwt
+
 [functions.harvest-interest]
-# Public form: browser must not send a Supabase login JWT.
+# Public form: gateway should not require a user JWT (anon key may still be used for invoke).
 verify_jwt = false
 
 [functions.newsletter-signup]
