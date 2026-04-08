@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { newsletterWebhookUrl } from '../config/publicEdgeFunctions'
 
 const Footer = () => {
   const [email, setEmail] = useState('')
@@ -14,12 +15,8 @@ const Footer = () => {
       setError('Please enter your email.')
       return
     }
-    const webhook = import.meta.env.VITE_NEWSLETTER_WEBHOOK_URL
+    const webhook = newsletterWebhookUrl()
     const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-    if (!webhook?.trim()) {
-      setError('Newsletter is not configured yet.')
-      return
-    }
     if (!anonKey?.trim()) {
       setError('Newsletter is not fully configured yet.')
       return

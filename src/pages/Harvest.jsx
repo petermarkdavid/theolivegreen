@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { harvestInterestWebhookUrl } from '../config/publicEdgeFunctions'
 
 const VENUE_AFTER_SUBMIT = {
   name: 'Olive Green Martinborough',
@@ -94,12 +95,8 @@ const Harvest = () => {
       createdAt: new Date().toISOString(),
     }
 
-    const webhook = import.meta.env.VITE_HARVEST_INTEREST_WEBHOOK_URL
+    const webhook = harvestInterestWebhookUrl()
     const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-    if (!webhook?.trim()) {
-      setError('This form is not connected yet—please email us directly.')
-      return
-    }
     if (!anonKey?.trim()) {
       setError('This form is not fully configured yet—please email us directly.')
       return
