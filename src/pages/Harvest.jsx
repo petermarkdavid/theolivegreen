@@ -146,7 +146,7 @@ const Harvest = () => {
           <h1 className="font-headline text-3xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             2026 Olive Harvest — King&apos;s Birthday Weekend
           </h1>
-          <p className="font-headline text-xl font-semibold italic tracking-wide text-white/90 md:text-2xl">
+          <p className="font-headline text-2xl font-semibold italic tracking-wide text-white/90 sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-snug">
             Sunday 31 May · Martinborough
           </p>
           <div className="pt-8">
@@ -161,8 +161,8 @@ const Harvest = () => {
       </section>
 
       {/* The harvest gathering */}
-      <section className="bg-surface px-8 py-24">
-        <div className="mx-auto max-w-3xl space-y-8 text-center">
+      <section className="bg-surface px-8 py-12 md:py-16">
+        <div className="mx-auto max-w-3xl space-y-6 text-center">
           <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
               Invitation to Harvest Day 2026
@@ -187,11 +187,11 @@ const Harvest = () => {
       </section>
 
       {/* The day + image */}
-      <section className="bg-surface-container-low px-8 py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 md:grid-cols-2 md:gap-16">
-          <div className="space-y-12">
+      <section className="bg-surface-container-low px-8 py-12 md:py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10 lg:gap-12">
+          <div className="min-w-0 space-y-8">
             <h2 className="font-headline text-4xl text-on-surface">The day</h2>
-            <div className="ml-2 space-y-12 border-l border-outline-variant/40 pl-8">
+            <div className="ml-2 space-y-8 border-l border-outline-variant/40 pl-8">
               {TIMELINE.map((item) => (
                 <div key={item.time} className="relative">
                   <div className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-surface-container-low bg-secondary" />
@@ -203,11 +203,11 @@ const Harvest = () => {
               ))}
             </div>
           </div>
-          <div className="relative flex justify-center overflow-hidden rounded-md shadow-sm md:justify-end">
+          <div className="relative flex w-full justify-center overflow-hidden rounded-md shadow-sm md:w-auto md:shrink-0 md:self-center">
             <img
               src="/images/2025menu.jpg"
               alt="Harvest table and meal"
-              className="mx-auto h-auto w-full max-w-xs object-contain sm:max-w-sm"
+              className="mx-auto h-auto max-h-52 w-auto max-w-[9.5rem] object-contain sm:max-h-56 sm:max-w-[10.5rem] md:max-h-60 md:max-w-[11rem]"
               loading="lazy"
             />
           </div>
@@ -215,9 +215,9 @@ const Harvest = () => {
       </section>
 
       {/* What to expect + accommodation */}
-      <section className="bg-white px-8 py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-24 lg:grid-cols-2">
-          <div className="space-y-12">
+      <section className="bg-white px-8 py-12 md:py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="space-y-8">
             <h2 className="font-headline text-4xl text-on-surface">What to expect</h2>
             <ul className="space-y-6">
               {EXPECT_ITEMS.map((item) => (
@@ -251,8 +251,8 @@ const Harvest = () => {
       </section>
 
       {/* Register */}
-      <section id="register" className="scroll-mt-28 bg-primary px-8 py-32 text-on-primary">
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-16 md:grid-cols-2 md:max-w-6xl">
+      <section id="register" className="scroll-mt-28 bg-primary px-8 py-16 md:py-24 text-on-primary">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 md:grid-cols-2 md:max-w-6xl md:gap-12">
           <div className="space-y-6">
             <h2 className="font-headline text-4xl md:text-5xl">Register your interest</h2>
             <p className="text-lg text-primary-fixed-dim">
@@ -361,8 +361,8 @@ const Harvest = () => {
       </section>
 
       {/* Gallery */}
-      <section className="bg-surface px-8 py-24">
-        <div className="mx-auto max-w-7xl space-y-12">
+      <section className="bg-surface px-8 py-12 md:py-16">
+        <div className="mx-auto max-w-7xl space-y-8">
           <div className="space-y-4 text-center">
             <h2 className="font-headline text-4xl text-on-surface">Moments from the grove</h2>
             <p className="text-on-surface-variant">Memories of the 2025 harvest.</p>

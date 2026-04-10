@@ -4,6 +4,7 @@ const Card = ({
   title,
   description,
   image,
+  imageAlt = '',
   action,
   variant = 'editorial',
 }) => {
@@ -20,7 +21,15 @@ const Card = ({
     >
       {image && (
         <div className="h-64 w-full overflow-hidden bg-deep-olive">
-          {typeof image === 'string' ? (
+          {typeof image === 'string' &&
+          (image.startsWith('/') || image.startsWith('http')) ? (
+            <img
+              src={image}
+              alt={imageAlt}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          ) : typeof image === 'string' ? (
             <div className="h-full w-full bg-gradient-to-br from-deep-olive to-primary/90" />
           ) : (
             image
