@@ -17,7 +17,11 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
           filter: 'blur(1px)',
         }}
       >
-        <div className="absolute right-0 bottom-0 w-full h-full bg-black/20"></div>
+        {/* Soft gradient scrim for text contrast (avoids a flat rectangular veil) */}
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-black/35 via-black/15 to-black/30"
+          aria-hidden
+        />
       </div>
       
       {/* Content */}
@@ -50,9 +54,6 @@ const Hero = ({ heading, supportingText, backgroundImage }) => {
           </div>
         </div>
       </div>
-      
-      {/* Diagonal Design Element */}
-      <div className="absolute right-0 top-0 w-32 h-full bg-white/10 transform rotate-12 origin-top"></div>
     </section>
   )
 }
