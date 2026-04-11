@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { postHarvestInterest } from '../api/harvestInterest'
 import { harvestInterestWebhookUrl } from '../config/publicEdgeFunctions'
 import { resolveSupabaseAnonKey, supabaseAnonKeyIssue } from '../config/resolveSupabaseAnonKey'
 
@@ -73,6 +74,7 @@ const Harvest = () => {
   const [notes, setNotes] = useState('')
   const [status, setStatus] = useState('idle')
   const [error, setError] = useState('')
+  const [emailSentNotice, setEmailSentNotice] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -111,17 +113,10 @@ const Harvest = () => {
     }
 
     setStatus('loading')
+    setEmailSentNotice(false)
     try {
-      const res = await fetch(webhook, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${anonKey}`,
-          apikey: anonKey,
-        },
-        body: JSON.stringify(payload),
-      })
-      if (!res.ok) throw new Error('Request failed')
+      const { emailSent } = await postHarvestInterest(webhook, anonKey, payload)
+      setEmailSentNotice(emailSent)
       setStatus('success')
     } catch {
       setStatus('idle')
@@ -279,6 +274,11 @@ const Harvest = () => {
                 Thanks — we&apos;ve got your details. We&apos;ll be in touch closer to the date to confirm final
                 numbers and whether you&apos;ll be joining for harvest, the meal, or both.
               </p>
+              {emailSentNotice ? (
+                <p className="text-on-primary/90" data-testid="harvest-email-sent">
+                  We&apos;ve sent a short confirmation to your inbox.
+                </p>
+              ) : null}
               <p className="text-on-primary/90">Thank you for registering — it means a lot to us.</p>
               <p className="font-medium">Matt & Peter</p>
               <div className="border-t border-white/20 pt-6">

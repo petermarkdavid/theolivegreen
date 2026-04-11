@@ -29,4 +29,10 @@ function spaFallback404() {
 export default defineConfig({
   plugins: [react(), spaFallback404()],
   base: process.env.NODE_ENV === 'production' || process.env.VITE_BUILD ? basePath : '/',
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.js',
+    include: ['src/**/*.{test,spec}.{js,jsx}'],
+  },
 })
