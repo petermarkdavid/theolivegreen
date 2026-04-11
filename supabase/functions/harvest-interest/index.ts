@@ -30,6 +30,7 @@ async function sendResendEmail(params: {
   from: string
   to: string
   cc?: string[]
+  replyTo?: string
   subject: string
   html: string
 }): Promise<SendEmailResult> {
@@ -43,6 +44,7 @@ async function sendResendEmail(params: {
       from: params.from,
       to: [params.to],
       ...(params.cc?.length ? { cc: params.cc } : {}),
+      ...(params.replyTo ? { reply_to: params.replyTo } : {}),
       subject: params.subject,
       html: params.html,
     }),
@@ -150,6 +152,8 @@ Deno.serve(async (req) => {
   const resendFrom = Deno.env.get('RESEND_FROM')?.trim()
   const cc = (Deno.env.get('RESEND_CC')?.trim() || DEFAULT_CC).split(',').map((s) => s.trim()).filter(Boolean)
 
+  let emailSent = false
+
   if (!resendKey || !resendFrom) {
     console.warn(
       'harvest-interest: Resend skipped — set Edge Function secrets RESEND_API_KEY and RESEND_FROM (check names, no extra quotes).',
@@ -172,17 +176,19 @@ Deno.serve(async (req) => {
       from: resendFrom,
       to: email,
       cc,
+      replyTo: DEFAULT_CC,
       subject: 'We’ve received your harvest interest — Olive Green Martinborough',
       html,
     })
     if (!sent.ok) {
       console.error('Resend harvest email failed', sent.status, sent.body)
     } else {
+      emailSent = true
       console.info('harvest-interest: Resend OK', { resendId: sent.resendId, to: email })
     }
   }
 
-  return json({ ok: true }, 200, origin)
+  return json({ ok: true, emailSent }, 200, origin)
 })
 
 function escapeHtml(s: string): string {
