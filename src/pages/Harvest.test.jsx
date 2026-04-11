@@ -2,8 +2,11 @@ import React from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { HelmetProvider } from 'react-helmet-async'
 import Harvest from './Harvest'
 import { postHarvestInterest } from '../api/harvestInterest'
+
+const wrapper = ({ children }) => <HelmetProvider>{children}</HelmetProvider>
 
 vi.mock('../config/publicEdgeFunctions', () => ({
   harvestInterestWebhookUrl: () => 'https://pvtrqnvacjdquktdcqfh.supabase.co/functions/v1/harvest-interest',
@@ -25,7 +28,7 @@ describe('Harvest registration form', () => {
   })
 
   it('shows validation error when email is empty', () => {
-    render(<Harvest />)
+    render(<Harvest />, { wrapper })
 
     // HTML5 `required` on the email input blocks button submit in jsdom; submit the form directly
     // so React `handleSubmit` runs and our custom message appears (same as programmatic submit).
@@ -40,7 +43,7 @@ describe('Harvest registration form', () => {
   it('submits and shows confirmation when email was sent', async () => {
     postHarvestInterest.mockResolvedValue({ emailSent: true })
     const user = userEvent.setup()
-    render(<Harvest />)
+    render(<Harvest />, { wrapper })
 
     await user.type(screen.getByLabelText(/^name$/i), 'Alex')
     await user.type(screen.getByLabelText(/email/i), 'alex@example.com')
@@ -67,7 +70,7 @@ describe('Harvest registration form', () => {
   it('submits successfully but omits email line when API did not send email', async () => {
     postHarvestInterest.mockResolvedValue({ emailSent: false })
     const user = userEvent.setup()
-    render(<Harvest />)
+    render(<Harvest />, { wrapper })
 
     await user.type(screen.getByLabelText(/email/i), 'pat@example.com')
     await user.click(screen.getByRole('button', { name: /register interest/i }))
@@ -79,7 +82,7 @@ describe('Harvest registration form', () => {
   it('shows error when postHarvestInterest throws', async () => {
     postHarvestInterest.mockRejectedValue(new Error('Request failed'))
     const user = userEvent.setup()
-    render(<Harvest />)
+    render(<Harvest />, { wrapper })
 
     await user.type(screen.getByLabelText(/email/i), 'fail@example.com')
     await user.click(screen.getByRole('button', { name: /register interest/i }))

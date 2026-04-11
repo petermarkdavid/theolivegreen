@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
+import { SEO_SHOP } from '../seo/siteSeo'
 
 const Shop = () => {
   return (
     <div className="min-h-screen flex flex-col bg-warm-off-white">
+      <Seo {...SEO_SHOP} />
       <section className="w-full bg-primary py-4xl px-xl flex-1 flex items-center">
         <div className="max-w-2xl mx-auto text-center w-full">
           <p className="text-muted-gold text-xs uppercase tracking-wider font-sans mb-md">Shop</p>

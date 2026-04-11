@@ -4,10 +4,16 @@ import Hero from '../components/Hero'
 import ContentSection from '../components/ContentSection'
 import Card from '../components/Card'
 import Button from '../components/Button'
+import Seo from '../components/Seo'
+import { SEO_HOME } from '../seo/siteSeo'
 
 const Homepage = () => {
   return (
     <div className="min-h-screen">
+      <Seo
+        {...SEO_HOME}
+        imageAlt="Olive branch and fruit at the Martinborough grove"
+      />
       {/* Hero Section */}
       <Hero 
         heading="Quietly Crafted. Exceptionally Pure."

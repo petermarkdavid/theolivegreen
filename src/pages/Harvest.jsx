@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { postHarvestInterest } from '../api/harvestInterest'
 import { harvestInterestWebhookUrl } from '../config/publicEdgeFunctions'
 import { resolveSupabaseAnonKey, supabaseAnonKeyIssue } from '../config/resolveSupabaseAnonKey'
+import Seo from '../components/Seo'
+import { SEO_HARVEST } from '../seo/siteSeo'
 
 const VENUE_AFTER_SUBMIT = {
   name: 'Olive Green Martinborough',
@@ -126,6 +128,7 @@ const Harvest = () => {
 
   return (
     <div className="min-h-screen bg-surface font-body text-on-surface selection:bg-primary-fixed-dim/40">
+      <Seo {...SEO_HARVEST} />
       {/* Hero */}
       <section className="relative flex min-h-[min(240px,40vh)] items-center justify-center overflow-hidden px-6 py-8 md:py-10">
         <div className="absolute inset-0 z-0">
