@@ -24,6 +24,10 @@ import { normalizeResendFromAddress } from '../_shared/normalizeResendFrom.ts'
 const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 const RESEND_URL = 'https://api.resend.com/emails'
 
+/** Personal sign-off in the confirmation email (copy only; set RESEND_FROM display name in secrets if you want the same on the envelope). */
+const HOSTS_LINE = 'Matt & Peter'
+const HOSTS_INTRO = "We're Matt and Peter — we look after Olive Green here in Martinborough."
+
 /**
  * Public harvest day (matches site). Timed block 10:00–18:00 Pacific/Auckland, Sun 31 May 2026.
  * ICS uses UTC (NZST = UTC+12 on this date). Adjust icsDt* if NZ offset rules change.
@@ -201,7 +205,7 @@ Deno.serve(async (req) => {
       to: email,
       cc,
       replyTo: DEFAULT_CC,
-      subject: 'We’ve received your harvest interest — Olive Green Martinborough',
+      subject: `Thanks from ${HOSTS_LINE} — your harvest interest`,
       html,
       attachments: [{ filename: 'olive-green-harvest-2026.ics', content: icsBase64 }],
     })
@@ -247,7 +251,7 @@ function buildHarvestConfirmationEmailHtml(opts: {
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <meta name="supported-color-schemes" content="light" />
-  <title>Harvest interest — Olive Green</title>
+  <title>A note from ${HOSTS_LINE} — Olive Green</title>
   <!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
   <style type="text/css">
     @media only screen and (max-width: 620px) {
@@ -258,7 +262,7 @@ function buildHarvestConfirmationEmailHtml(opts: {
 </head>
 <body style="margin:0;padding:0;background-color:#f0ebe3;-webkit-text-size-adjust:100%;">
   <div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0;">
-    Thanks for registering your interest in the Olive Green harvest.
+    Matt and Peter from Olive Green — thanks for your harvest interest.
   </div>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f0ebe3;">
     <tr>
@@ -270,13 +274,14 @@ function buildHarvestConfirmationEmailHtml(opts: {
           <tr>
             <td class="email-pad" style="padding:28px 36px 8px 36px;background-color:#3d4a2e;">
               <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#d4c4a8;">Olive Green Martinborough</p>
-              <p style="margin:8px 0 0 0;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.25;font-weight:600;color:#faf8f3;">Harvest interest received</p>
+              <p style="margin:6px 0 0 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;font-style:italic;color:#e8e4dc;">${HOSTS_LINE}</p>
+              <p style="margin:10px 0 0 0;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.25;font-weight:600;color:#faf8f3;">Thanks — we’ve got your details</p>
             </td>
           </tr>
           <tr>
             <td class="email-pad" style="padding:28px 36px 8px 36px;">
               <p style="margin:0 0 18px 0;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.5;color:#2c2c2c;">Hi ${escapeHtml(displayName)},</p>
-              <p style="margin:0 0 22px 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:#3d3d3d;">Thanks for registering your interest in the <strong style="color:#3d4a2e;">Olive Green</strong> harvest. We’ve received your details and we’re delighted you’re keen to join us.</p>
+              <p style="margin:0 0 22px 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:#3d3d3d;">${HOSTS_INTRO} Thank you for putting your hand up for this year’s <strong style="color:#3d4a2e;">harvest</strong> — we’ve saved your details and we’re really glad you’re keen to join us.</p>
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:0 0 24px 0;background-color:#faf8f3;border-radius:6px;border:1px solid #e8e4dc;">
                 <tr>
                   <td style="padding:18px 20px;">
@@ -305,8 +310,10 @@ function buildHarvestConfirmationEmailHtml(opts: {
                 </tr>
               </table>
               <p style="margin:0 0 24px 0;font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:#5c5c5c;">You can also open the attached <strong style="color:#3d4a2e;">olive-green-harvest-2026.ics</strong> in Apple Calendar or Outlook.</p>
-              <p style="margin:0 0 20px 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:#3d3d3d;">We’ll be in touch closer to the date. Questions? Reply to this email or write to <a href="mailto:olivegreenmartinborough@gmail.com" style="color:#5a6b3a;font-weight:600;">olivegreenmartinborough@gmail.com</a>.</p>
-              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;color:#2c2c2c;">— Olive Green Martinborough</p>
+              <p style="margin:0 0 20px 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6;color:#3d3d3d;">We’ll be in touch closer to the date with timings and how to RSVP. If anything’s unclear before then, just <strong style="color:#3d4a2e;">reply to this email</strong> — we read every message. You can also reach us at <a href="mailto:olivegreenmartinborough@gmail.com" style="color:#5a6b3a;font-weight:600;">olivegreenmartinborough@gmail.com</a>.</p>
+              <p style="margin:0 0 4px 0;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.5;color:#2c2c2c;">Warmly,</p>
+              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:17px;line-height:1.4;font-weight:600;color:#3d4a2e;">${HOSTS_LINE}</p>
+              <p style="margin:6px 0 0 0;font-family:Georgia,'Times New Roman',serif;font-size:13px;line-height:1.4;color:#6a6a6a;">Olive Green Martinborough</p>
             </td>
           </tr>
           <tr>
@@ -369,6 +376,7 @@ function buildHarvestIcs(opts: { email: string; guestCount: number; notes: strin
       'RSVP and final times will be confirmed by email.',
       '',
       HARVEST_EVENT.url,
+      `— ${HOSTS_LINE}, Olive Green Martinborough.`,
     ]
       .filter(Boolean)
       .join('\n'),

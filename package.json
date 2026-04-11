@@ -12,6 +12,7 @@
     "generate:tailwind": "node scripts/generate-tailwind-from-design-system.js",
     "validate:design-system": "node scripts/sync-design-system.js",
     "test": "vitest",
+    "tests": "vitest run",
     "test:run": "vitest run"
   },
   "dependencies": {
