@@ -6,10 +6,11 @@
 //   3. supabase link --project-ref YOUR_PROJECT_REF   (from Project Settings → General)
 //   4. supabase secrets set ALLOWED_ORIGIN=https://www.olivegreenmartinborough.com --project-ref pvtrqnvacjdquktdcqfh
 //      Or Dashboard → Edge Functions → Secrets. (Use ALLOWED_ORIGIN=* only for local testing.)
-//   5. Resend: RESEND_API_KEY=re_...  RESEND_FROM must be exactly (no extra quotes in Dashboard):
-//        onboarding@resend.dev   OR   Olive Green <onboarding@resend.dev>
-//      CLI: supabase secrets set 'RESEND_FROM=Olive Green <onboarding@resend.dev>' --project-ref ...
-//      (Use your verified domain address once DNS is verified in Resend.)
+//   5. Resend: RESEND_API_KEY=re_...  Optional RESEND_FROM (no extra quotes in Dashboard).
+//      If unset, the function uses Olive Green <olivegreenmartinborough@gmail.com> (verify in Resend).
+//      Override: supabase secrets set 'RESEND_FROM=Olive Green <olivegreenmartinborough@gmail.com>' --project-ref ...
+//      Reply-To + CC use olivegreenmartinborough@gmail.com in code.
+//      In Resend → Domains / senders: add DMARC; optional: turn off open/click tracking.
 //   6. supabase functions deploy harvest-interest --no-verify-jwt
 //
 // Webhook URL for Vite (VITE_HARVEST_INTEREST_WEBHOOK_URL):
@@ -19,13 +20,16 @@
 
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'npm:@supabase/supabase-js@2'
-import { normalizeResendFromAddress } from '../_shared/normalizeResendFrom.ts'
+import {
+  DEFAULT_RESEND_FROM,
+  normalizeResendFromAddress,
+} from '../_shared/normalizeResendFrom.ts'
 
 const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 const RESEND_URL = 'https://api.resend.com/emails'
 
 /** Personal sign-off in the confirmation email (copy only; set RESEND_FROM display name in secrets if you want the same on the envelope). */
-const HOSTS_LINE = 'Matt & Peter'
+const HOSTS_LINE = 'Peter & Matt'
 
 /**
  * Public harvest day (matches site). Timed block 10:00–18:00 Pacific/Auckland, Sun 31 May 2026.
@@ -56,6 +60,8 @@ async function sendResendEmail(params: {
   replyTo?: string
   subject: string
   html: string
+  /** Multipart/alternative plain text — improves accessibility and Resend checks. */
+  text?: string
   attachments?: { filename: string; content: string }[]
 }): Promise<SendEmailResult> {
   const res = await fetch(RESEND_URL, {
@@ -71,6 +77,7 @@ async function sendResendEmail(params: {
       ...(params.replyTo ? { reply_to: params.replyTo } : {}),
       subject: params.subject,
       html: params.html,
+      ...(params.text ? { text: params.text } : {}),
       ...(params.attachments?.length ? { attachments: params.attachments } : {}),
     }),
   })
@@ -174,16 +181,17 @@ Deno.serve(async (req) => {
   }
 
   const resendKey = Deno.env.get('RESEND_API_KEY')?.trim()
-  const resendFrom = normalizeResendFromAddress(Deno.env.get('RESEND_FROM') ?? '')
+  const resendFrom =
+    normalizeResendFromAddress(Deno.env.get('RESEND_FROM') ?? '') || DEFAULT_RESEND_FROM
   /** Always CC the main inbox (not overridable — avoids wrong RESEND_CC in secrets). */
   const cc = [DEFAULT_CC]
 
   let emailSent = false
 
-  if (!resendKey || !resendFrom) {
+  if (!resendKey) {
     console.warn(
-      'harvest-interest: Resend skipped — set Edge Function secrets RESEND_API_KEY and RESEND_FROM (check names, no extra quotes).',
-      { hasApiKey: Boolean(resendKey), hasFrom: Boolean(resendFrom) },
+      'harvest-interest: Resend skipped — set Edge Function secret RESEND_API_KEY (RESEND_FROM defaults to Gmail if unset).',
+      { hasApiKey: Boolean(resendKey) },
     )
   } else {
     const displayName = name || 'there'
@@ -198,6 +206,12 @@ Deno.serve(async (req) => {
       notes,
       calHref,
     })
+    const text = buildHarvestConfirmationEmailPlainText({
+      displayName,
+      guestCount,
+      notes,
+      calUrl: googleCalUrl,
+    })
     const sent = await sendResendEmail({
       apiKey: resendKey,
       from: resendFrom,
@@ -206,6 +220,7 @@ Deno.serve(async (req) => {
       replyTo: DEFAULT_CC,
       subject: `Thanks from ${HOSTS_LINE} — your harvest interest`,
       html,
+      text,
       attachments: [{ filename: 'olive-green-harvest-2026.ics', content: icsBase64 }],
     })
     if (!sent.ok) {
@@ -261,7 +276,7 @@ function buildHarvestConfirmationEmailHtml(opts: {
 </head>
 <body style="margin:0;padding:0;background-color:#f0ebe3;-webkit-text-size-adjust:100%;">
   <div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0;">
-    Matt and Peter from Olive Green — thanks for your harvest interest.
+    Peter and Matt from Olive Green — thanks for your harvest interest.
   </div>
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#f0ebe3;">
     <tr>
@@ -328,6 +343,44 @@ function buildHarvestConfirmationEmailHtml(opts: {
   </table>
 </body>
 </html>`
+}
+
+function buildHarvestConfirmationEmailPlainText(opts: {
+  displayName: string
+  guestCount: number
+  notes: string
+  calUrl: string
+}): string {
+  const { displayName, guestCount, notes, calUrl } = opts
+  const blocks: string[] = [
+    `Hi ${displayName},`,
+    '',
+    'Thanks — we’ve got your details.',
+    '',
+    'YOUR REGISTRATION',
+    `People — ${guestCount}`,
+  ]
+  if (notes) blocks.push(`Notes — ${notes}`)
+  blocks.push(
+    '',
+    'SAVE THE DATE',
+    `${HARVEST_EVENT.summaryLine}. Full timing and RSVP will be confirmed closer to the day.`,
+    '',
+    'Add the day to your calendar (Google):',
+    calUrl,
+    '',
+    'Or open the attached olive-green-harvest-2026.ics in Apple Calendar or Outlook.',
+    '',
+    'We’ll be in touch closer to the date with timings and how to RSVP. If anything’s unclear before then, reply to this email — we read every message. You can also reach us at olivegreenmartinborough@gmail.com.',
+    '',
+    'Warmly,',
+    HOSTS_LINE,
+    'Olive Green Martinborough',
+    '',
+    HARVEST_EVENT.url,
+    'Martinborough, New Zealand',
+  )
+  return blocks.join('\n')
 }
 
 /** ICS TEXT / LOCATION escaping */

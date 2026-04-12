@@ -4,11 +4,14 @@
 // Secrets: same as harvest-interest (SUPABASE_* auto; ALLOWED_ORIGIN for CORS).
 //
 // Vite: VITE_NEWSLETTER_WEBHOOK_URL=https://<ref>.supabase.co/functions/v1/newsletter-signup
-// Optional: RESEND_API_KEY, RESEND_FROM (verified domain). CC is fixed to olivegreenmartinborough@gmail.com in code.
+// Optional: RESEND_API_KEY. RESEND_FROM defaults to olivegreenmartinborough@gmail.com in code if unset.
 
 import 'jsr:@supabase/functions-js/edge-runtime.d.ts'
 import { createClient } from 'npm:@supabase/supabase-js@2'
-import { normalizeResendFromAddress } from '../_shared/normalizeResendFrom.ts'
+import {
+  DEFAULT_RESEND_FROM,
+  normalizeResendFromAddress,
+} from '../_shared/normalizeResendFrom.ts'
 
 const DEFAULT_CC = 'olivegreenmartinborough@gmail.com'
 const RESEND_URL = 'https://api.resend.com/emails'
@@ -133,15 +136,15 @@ Deno.serve(async (req) => {
   }
 
   const resendKey = Deno.env.get('RESEND_API_KEY')?.trim()
-  const resendFrom = normalizeResendFromAddress(Deno.env.get('RESEND_FROM') ?? '')
+  const resendFrom =
+    normalizeResendFromAddress(Deno.env.get('RESEND_FROM') ?? '') || DEFAULT_RESEND_FROM
   /** Always CC the main inbox. */
   const cc = [DEFAULT_CC]
 
-  if (!resendKey || !resendFrom) {
-    console.warn(
-      'newsletter-signup: Resend skipped — set RESEND_API_KEY and RESEND_FROM',
-      { hasApiKey: Boolean(resendKey), hasFrom: Boolean(resendFrom) },
-    )
+  if (!resendKey) {
+    console.warn('newsletter-signup: Resend skipped — set RESEND_API_KEY', {
+      hasApiKey: Boolean(resendKey),
+    })
   } else {
     const html = `
       <p>Hi,</p>

@@ -1,4 +1,9 @@
 /**
+ * Default From when the `RESEND_FROM` secret is unset or blank (verify this sender in Resend).
+ */
+export const DEFAULT_RESEND_FROM = 'Olive Green <olivegreenmartinborough@gmail.com>'
+
+/**
  * Resend API: `from` must be `email@example.com` or `Name <email@example.com>`.
  * Dashboard/CLI secrets often accidentally include wrapping quotes or newlines.
  */
