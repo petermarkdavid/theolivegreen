@@ -1,5 +1,5 @@
-# Build + test on push/PR. Uses Node 24–compatible action major versions to avoid
-# GitHub’s Node 20 deprecation warnings (see https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/).
+# Build + test; on push to main, publish dist/ to gh-pages (what GitHub Pages serves for this repo).
+# Pushing to main alone does not update the live site until gh-pages is updated — see GITHUB_PAGES_SETUP.md
 
 name: build
 
@@ -31,10 +31,37 @@ jobs:
 
       - run: npm run test:run
 
-      - run: npm run build
+      - name: Build production bundle
+        run: npm run build
+        env:
+          VITE_BUILD: 'true'
+          # Required for harvest form + edge calls on the deployed site (same values as local .env.production).
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_HARVEST_INTEREST_WEBHOOK_URL: ${{ secrets.VITE_HARVEST_INTEREST_WEBHOOK_URL }}
 
       - uses: actions/upload-artifact@v6
         with:
           name: dist
           path: dist
           if-no-files-found: error
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+          force_orphan: true
