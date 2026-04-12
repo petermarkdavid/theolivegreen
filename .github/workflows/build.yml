@@ -1,0 +1,40 @@
+# Build + test on push/PR. Uses Node 24–compatible action major versions to avoid
+# GitHub’s Node 20 deprecation warnings (see https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/).
+
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run test:run
+
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
