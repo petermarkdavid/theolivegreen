@@ -6,8 +6,12 @@
  *
  * Dashboard → Settings → API → anon public: JWT (eyJ…) or sb_publishable_…
  * Do NOT use sb_secret_* or service_role keys in the frontend.
+ *
+ * Fallback matches project pvtrqnvacjdquktdcqfh (HarvestRegistrations) so GitHub Pages
+ * builds work without Actions secrets; override with VITE_SUPABASE_ANON_KEY when needed.
  */
-export const PUBLIC_ANON_KEY_FALLBACK = ''
+export const PUBLIC_ANON_KEY_FALLBACK =
+  'sb_publishable_ER9krzubZzu9fHt3AEOoqA_4b-SrYso'
 
 export function resolveSupabaseAnonKey() {
   const fromEnv = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim()
