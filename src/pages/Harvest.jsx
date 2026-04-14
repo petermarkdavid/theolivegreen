@@ -148,14 +148,13 @@ const Harvest = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-surface/40" />
         </div>
         <div className="relative z-10 max-w-4xl space-y-6 text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-white">Martinborough, New Zealand</p>
           <h1 className="font-headline text-3xl leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
             <span className="block">2026 Olive Harvest</span>
             <span className="mt-1 block sm:mt-1.5">King&apos;s Birthday Weekend</span>
           </h1>
           <p className="font-headline text-2xl font-semibold italic tracking-wide text-white/90 sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-snug">
             <span className="block">Sunday 31 May</span>
-            <span className="mt-1 block sm:mt-1.5">Martinborough</span>
+            <span className="mt-1 block sm:mt-1.5">7 Hawkins Drive, Martinborough</span>
           </p>
           <div className="pt-8">
             <a
