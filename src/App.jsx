@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Homepage from './pages/Homepage'
 import Shop from './pages/Shop'
 import Harvest from './pages/Harvest'
+import HarvestThankYou from './pages/HarvestThankYou'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/harvest" element={<Harvest />} />
+            <Route path="/harvest-thank-you" element={<HarvestThankYou />} />
             <Route path="/about" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

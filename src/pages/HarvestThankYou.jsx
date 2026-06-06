@@ -1,0 +1,221 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
+
+const STATS = [
+  { number: '~200', label: 'Olive trees' },
+  { number: '950 kg', label: 'Olives picked' },
+  { number: '144 L', label: 'Oil yielded' },
+  { number: '15.2%', label: 'Extraction rate' },
+]
+
+const VARIETIES = [
+  { name: 'Frantoio', note: 'Structure and longevity — robust, grassy intensity that softens over time.' },
+  { name: 'Barnea', note: 'Brightness and fresh fruit — lighter body that lifts the blend.' },
+  { name: 'Leccino', note: 'A milder, buttery note that rounds everything out.' },
+  { name: 'Koroneiki', note: 'The tiny Greek powerhouse — peppery intensity and high polyphenols.' },
+]
+
+const GALLERY = [
+  { src: '/images/photo-1.jpg', alt: 'Crew gathering in the grove' },
+  { src: '/images/photo-2.jpg', alt: 'Freshly harvested olives' },
+  { src: '/images/photo-3.jpg', alt: 'End of day harvest crates' },
+  { src: '/images/photo-5.jpg', alt: 'Spreading the nets' },
+  { src: '/images/photo-6.jpg', alt: 'Post-harvest lunch' },
+  { src: '/images/picking-nets.jpg', alt: 'Pickers working the nets under the trees' },
+]
+
+const HarvestThankYou = () => {
+  return (
+    <div className="min-h-screen bg-surface font-body text-on-surface">
+      <Seo
+        title="Thank you — 2026 Olive Harvest | Olive Green Martinborough"
+        description="A thank-you to everyone who picked with us at the 2026 olive harvest in Martinborough."
+        path="/harvest-thank-you"
+      />
+
+      {/* Hero */}
+      <section className="relative flex min-h-[min(520px,55vh)] items-end overflow-hidden">
+        <img
+          src="/images/hero.jpg"
+          alt="The full 2026 harvest crew at Olive Green Martinborough"
+          className="absolute inset-0 h-full w-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="relative z-10 w-full px-8 pb-14 text-center text-white md:pb-20">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+            Martinborough · 2026
+          </p>
+          <h1 className="font-headline text-4xl leading-tight md:text-6xl">
+            You picked with us.
+            <br />
+            <em className="text-brand-secondary">Thank you.</em>
+          </h1>
+          <p className="mt-4 text-base text-white/75 md:text-lg">
+            The Olive Green harvest — Frantoio, Barnea, Leccino &amp; Koroneiki
+          </p>
+        </div>
+      </section>
+
+      {/* Thank-you note */}
+      <section className="bg-white px-8 py-16 md:py-24">
+        <div className="mx-auto max-w-2xl space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+            A note from Peter &amp; Matt
+          </p>
+          <h2 className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
+            We couldn&apos;t have done it without you.
+          </h2>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            {/* PERSONALISE: Opening line — e.g. "What a day. What a season. What a crew." */}
+            Every year when harvest rolls around we find ourselves genuinely moved by the people who show up —
+            often at an ungodly hour, often without much more than a hat and good humour — and give their Saturday
+            to our little grove.
+          </p>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            {/* PERSONALISE: Add a specific memory — the weather, a funny moment, a first-timer's reaction. */}
+            This year was no different. Having you out there, hands in the branches, made the whole thing feel less
+            like work and more like something we&apos;ll talk about for years.
+          </p>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and honestly,
+            neither would the day.
+          </p>
+        </div>
+      </section>
+
+      {/* Harvest stats */}
+      <section className="bg-primary px-8 py-16 text-on-primary md:py-20">
+        <div className="mx-auto max-w-4xl space-y-10">
+          <h2 className="text-center font-headline text-3xl text-on-primary md:text-4xl">
+            2026 harvest by the numbers
+          </h2>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            {STATS.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-md border border-white/15 bg-white/10 px-6 py-8 text-center"
+              >
+                <div className="font-headline text-3xl text-on-primary md:text-4xl">{s.number}</div>
+                <div className="mt-2 text-xs font-semibold uppercase tracking-widest text-on-primary/60">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-sm italic text-on-primary/60">
+            A 15.2% yield is a really strong result — typical extra-virgin cold-press runs 12–14%.
+            That&apos;s down to the quality of the fruit, and the care everyone put into the pick.
+          </p>
+        </div>
+      </section>
+
+      {/* Photo gallery */}
+      <section className="bg-surface-container-low px-8 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl space-y-10">
+          <div className="space-y-2 text-center">
+            <h2 className="font-headline text-3xl text-on-surface md:text-4xl">From the grove</h2>
+            <p className="text-on-surface-variant">
+              {/* PERSONALISE: Add a warm caption here. */}
+              A few snaps from the day.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {GALLERY.map((photo) => (
+              <div
+                key={photo.src}
+                className="group overflow-hidden rounded-md bg-surface-container"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="h-64 w-full object-cover transition-[filter] duration-700 group-hover:brightness-[1.03] md:h-72"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About the oil */}
+      <section className="bg-white px-8 py-16 md:py-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
+          <div className="space-y-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              The 2026 oil
+            </p>
+            <h2 className="font-headline text-3xl leading-snug text-on-surface md:text-4xl">
+              About this year&apos;s oil
+            </h2>
+            <div className="space-y-4">
+              {VARIETIES.map((v) => (
+                <div key={v.name} className="flex gap-4">
+                  <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-primary" />
+                  <p className="text-on-surface-variant">
+                    <strong className="text-on-surface">{v.name}</strong> — {v.note}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <blockquote className="border-l-2 border-secondary pl-5 text-base italic leading-relaxed text-on-surface-variant">
+              Bright grassy green on the nose. Pepper on the finish — a proper Martinborough bite.
+              Fresh-pressed stone-fruit mid-palate. Best used within 18 months.
+            </blockquote>
+          </div>
+          <div className="overflow-hidden rounded-md">
+            <img
+              src="/images/harvest-picking.jpg"
+              alt="Freshly harvested olives from the Martinborough grove"
+              className="h-full max-h-[520px] w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Discount */}
+      <section className="bg-surface-container-low px-8 py-16 md:py-20">
+        <div className="mx-auto max-w-xl space-y-8 rounded-md border border-outline-variant/20 bg-white px-10 py-14 text-center shadow-ambient-sm">
+          <div className="space-y-3">
+            <h2 className="font-headline text-3xl text-on-surface">Your harvest discount</h2>
+            <p className="text-on-surface-variant">
+              You earned this — literally. Here&apos;s 50% off your first order of the 2026 oil.
+            </p>
+          </div>
+          <div className="rounded-md bg-primary px-8 py-5 font-mono text-2xl font-bold tracking-[0.15em] text-on-primary">
+            IPICKEDIN26
+          </div>
+          <p className="text-sm italic text-on-surface-variant">Copy the code, then head to the shop</p>
+          <a
+            href="https://www.olivegreenmartinborough.com/shop"
+            className="btn-primary-grove inline-block"
+          >
+            Shop the Olive Green
+          </a>
+          {/* OPTIONAL: add expiry — e.g. "Valid until 31 December 2026" */}
+        </div>
+      </section>
+
+      {/* Sign-off */}
+      <section className="bg-primary px-8 py-16 text-center text-on-primary md:py-24">
+        <div className="mx-auto max-w-xl space-y-6">
+          <h2 className="font-headline text-3xl md:text-4xl">
+            See you in the grove next year.
+          </h2>
+          <p className="text-lg text-on-primary/80">
+            {/* PERSONALISE: A final warm line. */}
+            In the meantime, enjoy the oil. You picked it. You earned it.
+          </p>
+          <p className="text-on-primary/70">With enormous gratitude,</p>
+          <p className="font-headline text-2xl italic text-brand-secondary">Peter &amp; Matt</p>
+          <p className="text-xs uppercase tracking-widest text-on-primary/40">
+            The Olive Green · Martinborough, Wairarapa
+          </p>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default HarvestThankYou
