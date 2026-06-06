@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — Olive Harvest 2026 | The Olive Green, Martinborough</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --olive-dark:   #3a4a2e;   /* deep grove green */
+      --olive-mid:    #5c7040;   /* main brand green */
+      --olive-light:  #8fa66b;   /* accent / highlight */
+      --cream:        #f8f4ec;   /* warm page background */
+      --cream-dark:   #ede8db;   /* card / section tint */
+      --gold:         #c8973a;   /* harvest gold */
+      --text-dark:    #2c2c2c;
+      --text-mid:     #4a4a4a;
+      --text-light:   #717171;
+      --white:        #ffffff;
+      --radius:       8px;
+      --max-w:        820px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; }
+
+    /* ── Utilities ── */
+    .section { padding: 64px 24px; }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ── 1. Hero ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 540px;
+      background: var(--olive-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .hero__placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #4a5e35 0%, #2a3820 60%, #1c2615 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero__placeholder::before {
+      content: "🫒";
+      font-size: 48px;
+      opacity: 0.4;
+    }
+    /* Swap: replace .hero__placeholder with an <img> tag when you have the photo */
+    /* Suggested size: 1600 × 900px — wide landscape of the grove or harvest day */
+    .hero__overlay {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(to top, rgba(25,35,18,0.88) 0%, transparent 100%);
+      padding: 48px 24px 56px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero__eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--olive-light);
+      margin-bottom: 12px;
+    }
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero__title em { font-style: italic; color: #c8d8a4; }
+    .hero__subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── 2. Thank-you note ── */
+    .thankyou { background: var(--white); }
+    .thankyou__inner { max-width: var(--max-w); margin: 0 auto; }
+    .thankyou__kicker {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--olive-light);
+      margin-bottom: 16px;
+    }
+    .thankyou h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--olive-dark);
+      margin-bottom: 28px;
+    }
+    .thankyou p {
+      color: var(--text-mid);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      max-width: 680px;
+    }
+    .thankyou p:last-child { margin-bottom: 0; }
+
+    /* ── 3. Harvest highlights ── */
+    .highlights { background: var(--olive-dark); color: var(--white); }
+    .highlights__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .highlights h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: #c8d8a4;
+      text-align: center;
+    }
+    .stat {
+      text-align: center;
+      padding: 24px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+    }
+    .stat__number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat__label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .highlights__note {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      font-style: italic;
+    }
+
+    /* ── 4. Photo gallery ── */
+    .gallery { background: var(--cream-dark); }
+    .gallery h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--olive-dark);
+      margin-bottom: 8px;
+    }
+    .gallery__intro {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+    }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .photo-slot {
+      position: relative;
+      background: #d8d2c6;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #8a8070;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 16px;
+    }
+    .photo-slot__icon { font-size: 28px; opacity: 0.5; }
+    .photo-slot__dim { opacity: 0.6; font-weight: 400; letter-spacing: 0; text-transform: none; font-size: 10px; }
+    /* Swap: replace .photo-slot with <img src="your-photo.jpg" alt="…" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%"> */
+
+    /* ── 5. About the oil ── */
+    .about-oil { background: var(--white); }
+    .about-oil__inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-oil h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--olive-dark); margin-bottom: 20px; }
+    .about-oil p { color: var(--text-mid); font-size: 1rem; margin-bottom: 16px; }
+    .about-oil p:last-child { margin-bottom: 0; }
+    .variety-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .badge--green { background: var(--olive-mid); color: var(--white); }
+    .badge--gold  { background: var(--gold); color: var(--white); }
+    .tasting-notes {
+      border-left: 3px solid var(--olive-light);
+      padding-left: 16px;
+      font-style: italic;
+      color: var(--text-mid);
+      font-size: 0.95rem;
+    }
+    .oil-image-slot {
+      background: #dde4d5;
+      border-radius: var(--radius);
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #7a8a6a;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 16px;
+    }
+    .oil-image-slot__icon { font-size: 36px; opacity: 0.45; }
+    /* Swap: product shot or grove image, ~600 × 800px */
+
+    /* ── 6. Discount ── */
+    .discount { background: var(--cream-dark); }
+    .discount__card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 48px 40px;
+      text-align: center;
+      box-shadow: 0 4px 32px rgba(58,74,46,0.08);
+      border: 1px solid rgba(58,74,46,0.1);
+    }
+    .discount__icon { font-size: 40px; margin-bottom: 16px; }
+    .discount h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--olive-dark); margin-bottom: 12px; }
+    .discount__sub { color: var(--text-light); font-size: 0.95rem; margin-bottom: 32px; }
+    .code-block {
+      display: inline-block;
+      background: var(--olive-dark);
+      color: var(--white);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+    }
+    .code-note {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn--primary { background: var(--olive-mid); color: var(--white); }
+    .btn--primary:hover { background: var(--olive-dark); transform: translateY(-1px); }
+    .discount__expiry { margin-top: 16px; font-size: 0.8rem; color: var(--text-light); }
+
+    /* ── 7. Closing sign-off ── */
+    .signoff { background: var(--olive-dark); color: var(--white); text-align: center; }
+    .signoff__inner { max-width: 600px; margin: 0 auto; }
+    .signoff__leaf { font-size: 48px; margin-bottom: 24px; opacity: 0.7; }
+    .signoff h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); color: #c8d8a4; margin-bottom: 24px; }
+    .signoff p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 16px; }
+    .signoff__names {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-top: 32px;
+    }
+    .signoff__location { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 8px; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1c2615;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: var(--olive-light); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .about-oil__inner { grid-template-columns: 1fr; }
+      .oil-image-slot { aspect-ratio: 16/9; }
+      .discount__card { padding: 32px 24px; }
+      .code-block { font-size: 1.2rem; padding: 14px 20px; }
+      .section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       1. HERO
+       Swap .hero__placeholder with an <img> when ready.
+       Recommended: 1600 × 900px landscape — harvest day, people picking, or grove rows.
+  ═══════════════════════════════════════ -->
+  <header class="hero">
+    <img src="public/images/hero.jpg" alt="The Olive Green harvest crew, Martinborough 2026" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+    <div class="hero__overlay">
+      <p class="hero__eyebrow">Martinborough · 2026</p>
+      <h1 class="hero__title">You picked with us.<br><em>Thank you.</em></h1>
+      <p class="hero__subtitle">The Olive Green harvest — Frantoio &amp; Barnea</p>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       2. THANK-YOU NOTE
+       Personalise the copy below — this is placeholder text.
+  ═══════════════════════════════════════ -->
+  <section class="section thankyou">
+    <div class="thankyou__inner">
+      <p class="thankyou__kicker">A note from Peter &amp; Matt</p>
+      <h2>We couldn't have done it without you.</h2>
+      <p>
+        [PERSONALISE: Opening line — e.g. "What a day. What a season. What a crew."]
+        Every year when harvest rolls around we find ourselves genuinely moved by the people who show up — often at an ungodly hour, often without much more than a hat and good humour — and give their Saturday to our little grove.
+      </p>
+      <p>
+        This year was no different. [PERSONALISE: Add a specific memory or moment — the weather, a funny moment, a first-timer's reaction.]
+        Having you out there, hands in the branches, made the whole thing feel less like work and more like something we'll talk about for years.
+      </p>
+      <p>
+        From the bottom of our hearts — thank you. The oil wouldn't be the same without you, and honestly, neither would the day.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       3. HARVEST HIGHLIGHTS
+  ═══════════════════════════════════════ -->
+  <section class="section highlights">
+    <div class="container">
+      <h2>2026 Harvest by the numbers</h2>
+      <div class="highlights__grid">
+        <div class="stat">
+          <div class="stat__number">~200</div>
+          <div class="stat__label">Olive trees</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">950 kg</div>
+          <div class="stat__label">Olives picked</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">144 L</div>
+          <div class="stat__label">Oil yielded</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number">15.2%</div>
+          <div class="stat__label">Extraction rate</div>
+        </div>
+      </div>
+      <p class="highlights__note">
+        A 15.2% yield is a really strong result — typical extra-virgin cold-press runs 12–14%.<br>
+        That's down to the quality of the fruit, and the care everyone put into the pick.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       4. PHOTO GALLERY
+       Replace each .photo-slot div with:
+       <img src="harvest-01.jpg" alt="[description]"
+            style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%">
+       Recommended: 800 × 600 px per photo, JPG at 85% quality.
+  ═══════════════════════════════════════ -->
+  <section class="section gallery">
+    <div class="container">
+      <h2>From the grove</h2>
+      <p class="gallery__intro">A few snaps from the day.</p>
+      <div class="gallery__grid">
+
+        <img src="public/images/photo-1.jpg" alt="Picking in the grove" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <img src="public/images/photo-2.jpg" alt="Harvested olives" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <img src="public/images/photo-3.jpg" alt="End of day harvest crates" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <img src="public/images/photo-5.jpg" alt="Picking in the grove" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <img src="public/images/photo-6.jpg" alt="Harvest crew at the table" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+        <img src="public/images/picking-nets.jpg" alt="Three pickers working the nets under the trees" style="border-radius:8px;aspect-ratio:4/3;object-fit:cover;width:100%" />
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       5. ABOUT THE OIL
+       Replace .oil-image-slot with a product or grove photo.
+       Recommended: 600 × 800 px portrait.
+  ═══════════════════════════════════════ -->
+  <section class="section about-oil">
+    <div class="about-oil__inner">
+      <div>
+        <div class="variety-badges">
+          <span class="badge badge--green">Frantoio</span>
+          <span class="badge badge--gold">Barnea</span>
+          <span class="badge badge--green">Leccino</span>
+          <span class="badge badge--gold">Koroneiki</span>
+        </div>
+        <h2>About this year's oil</h2>
+        <p>
+          Our grove grows four varieties that each bring something to the blend. <strong>Frantoio</strong> — the classic Tuscan cultivar — gives structure and longevity, with a robust, grassy intensity that softens beautifully over time. <strong>Barnea</strong> adds brightness and fresh fruit. <strong>Leccino</strong> contributes a milder, buttery note that rounds the blend out, while <strong>Koroneiki</strong> — the tiny Greek powerhouse — punches in with peppery intensity and high polyphenols.
+        </p>
+        <p>
+          Together they make an oil that's genuinely versatile: good raw over bread, great in dressings, and honest enough to just taste on its own with a crust of sourdough.
+        </p>
+        <blockquote class="tasting-notes">
+          Bright grassy green on the nose. Pepper on the finish — a proper Martinborough bite. Fresh-pressed stone-fruit mid-palate. Best used within 18 months.
+        </blockquote>
+      </div>
+      <img src="public/images/photo-2.jpg" alt="Freshly harvested olives" style="border-radius:8px;aspect-ratio:3/4;object-fit:cover;width:100%" />
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       6. DISCOUNT OFFER
+  ═══════════════════════════════════════ -->
+  <section class="section discount">
+    <div class="container">
+      <div class="discount__card">
+        <div class="discount__icon">🫒</div>
+        <h2>Your harvest discount</h2>
+        <p class="discount__sub">
+          You earned this — literally. As a thank-you for picking with us, here's 50% off your first order of the 2026 oil. Use the code below at checkout.
+        </p>
+        <div class="code-block">IPICKEDIN26</div>
+        <p class="code-note">Copy the code, then head to the shop</p>
+        <a href="https://www.olivegreenmartinborough.com/shop" class="btn btn--primary">
+          Shop The Olive Green
+        </a>
+        <p class="discount__expiry">[OPTIONAL: Add an expiry date, e.g. "Code valid until 31 December 2026"]</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       7. CLOSING SIGN-OFF
+  ═══════════════════════════════════════ -->
+  <section class="section signoff">
+    <div class="signoff__inner">
+      <div class="signoff__leaf">🌿</div>
+      <h2>See you in the grove next year.</h2>
+      <p>
+        [PERSONALISE: A final warm line — e.g. "The 2027 harvest will be here before we know it. We hope you'll be back."]
+        In the meantime, enjoy the oil. You picked it. You earned it.
+      </p>
+      <p>
+        With enormous gratitude,
+      </p>
+      <div class="signoff__names">Peter &amp; Matt</div>
+      <div class="signoff__location">The Olive Green · Martinborough, Wairarapa</div>
+    </div>
+  </section>
+
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>
+      &copy; 2026 The Olive Green, Martinborough &nbsp;·&nbsp;
+      <a href="https://www.olivegreenmartinborough.com">olivegreenmartinborough.com</a>
+    </p>
+  </footer>
+
+</body>
+</html>
