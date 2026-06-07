@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 
 const STATS = [
-  { number: '~200', label: 'Olive trees' },
+  { number: '~180', label: 'Olive trees' },
   { number: '950 kg', label: 'Olives picked' },
   { number: '144 L', label: 'Oil yielded' },
   { number: '15.2%', label: 'Extraction rate' },
@@ -30,7 +30,7 @@ const HarvestThankYou = () => {
     <div className="min-h-screen bg-surface font-body text-on-surface">
       <Seo
         title="Thank you — 2026 Olive Harvest | Olive Green Martinborough"
-        description="A thank-you to everyone who picked with us at the 2026 olive harvest in Martinborough."
+        description="A massive thank you to everyone who picked with us at the 2026 olive harvest."
         path="/harvest-thank-you"
       />
 
@@ -68,18 +68,18 @@ const HarvestThankYou = () => {
           </h2>
           <p className="text-lg leading-relaxed text-on-surface-variant">
             {/* PERSONALISE: Opening line — e.g. "What a day. What a season. What a crew." */}
-            Every year when harvest rolls around we find ourselves genuinely moved by the people who show up —
-            often at an ungodly hour, often without much more than a hat and good humour — and give their Saturday
+            Thank you to everyone that made it and gave up their Sunday
             to our little grove.
+
+            We were humbled by all the help we had and the massive effort everyone put in.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
             {/* PERSONALISE: Add a specific memory — the weather, a funny moment, a first-timer's reaction. */}
-            This year was no different. Having you out there, hands in the branches, made the whole thing feel less
-            like work and more like something we&apos;ll talk about for years.
+            Having you all out there, hands in the branches, made the whole thing feel less
+            like work and more like something very special.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and honestly,
-            neither would the day.
+            From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and neither would the day.
           </p>
         </div>
       </section>
@@ -180,9 +180,9 @@ const HarvestThankYou = () => {
           <div className="space-y-3">
             <h2 className="font-headline text-3xl text-on-surface">Your harvest discount</h2>
             <p className="text-on-surface-variant">
-              You earned this — literally. Here&apos;s 50% off your first order of the 2026 oil.
+              You earned this, quite literally. Here&apos;s 50% code for all of the 2026 oil.
             </p>
-          </div>
+          </div>z
           <div className="rounded-md bg-primary px-8 py-5 font-mono text-2xl font-bold tracking-[0.15em] text-on-primary">
             IPICKEDIN26
           </div>
@@ -201,11 +201,11 @@ const HarvestThankYou = () => {
       <section className="bg-primary px-8 py-16 text-center text-on-primary md:py-24">
         <div className="mx-auto max-w-xl space-y-6">
           <h2 className="font-headline text-3xl md:text-4xl">
-            See you in the grove next year.
+            See you in the grove next year - Kings Birthday Sunday.
           </h2>
           <p className="text-lg text-on-primary/80">
             {/* PERSONALISE: A final warm line. */}
-            In the meantime, enjoy the oil. You picked it. You earned it.
+            If you can wait until next year you will be able to take home a bottle of 2026 oil. You picked it. You earned it.
           </p>
           <p className="text-on-primary/70">With enormous gratitude,</p>
           <p className="font-headline text-2xl italic text-brand-secondary">Peter &amp; Matt</p>
