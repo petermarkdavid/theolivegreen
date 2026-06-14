@@ -35,7 +35,7 @@ const Homepage = () => {
               image="/images/olive-oil-bottle-unlabeled.jpg"
               imageAlt="Clear glass bottle of extra virgin olive oil without a label"
               title="2026 Extra Virgin Olive Oil"
-              description="Waitlisted. Pressed from the first harvest. Rich, fruity, and perfectly balanced."
+              description="Our premium Tuscan blend — bright, grassy and peppery, with a proper Martinborough bite. Limited 2026 release of 200 bottles. 500ml."
               action={
                 <Link to="/shop">
                   <Button variant="primary">Shop Now</Button>
@@ -47,11 +47,11 @@ const Homepage = () => {
               image="/images/olive-oil-bottle-reserve-unlabeled.jpg"
               imageAlt="Dark glass bottle of reserve extra virgin olive oil without a label"
               title="2025 Harvest Reserve"
-              description="SOLD OUT. Complex and elegant."
+              description="Complex and elegant — our 2025 vintage. Now sold out."
               action={
-                <Link to="/shop">
-                  <Button variant="primary">Shop Now</Button>
-                </Link>
+                <Button variant="secondary" disabled>
+                  Sold out
+                </Button>
               }
             />
           </div>
