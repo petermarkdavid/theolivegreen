@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 // Check if CNAME exists to determine if using custom domain
 import { existsSync, copyFileSync, readFileSync, writeFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
-import { SITE_ORIGIN, SEO_HARVEST, SEO_SHOP } from './src/seo/siteSeo.js'
+import { SITE_ORIGIN, SEO_SHOP } from './src/seo/siteSeo.js'
 
 const hasCustomDomain = existsSync(join(__dirname, 'public/CNAME'))
 const basePath = hasCustomDomain ? '/' : '/theolivegreen/'
@@ -91,9 +91,9 @@ function spaFallback404AndRouteMeta() {
 
       const raw = readFileSync(indexHtml, 'utf8')
 
-      const harvestDir = join(dist, 'harvest')
-      mkdirSync(harvestDir, { recursive: true })
-      writeFileSync(join(harvestDir, 'index.html'), routeShareIndexHtml(raw, SEO_HARVEST), 'utf8')
+      // Note: /harvest is intentionally hidden — no crawler index.html is
+      // emitted, so it stays reachable by direct link (via 404 SPA fallback)
+      // but is not discoverable. Re-add a harvest block here for 2027.
 
       const shopDir = join(dist, 'shop')
       mkdirSync(shopDir, { recursive: true })
