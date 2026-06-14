@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 // Check if CNAME exists to determine if using custom domain
 import { existsSync, copyFileSync, readFileSync, writeFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
-import { SITE_ORIGIN, SEO_SHOP } from './src/seo/siteSeo.js'
+import { SITE_ORIGIN, SEO_SHOP, SEO_THANKS } from './src/seo/siteSeo.js'
 
 const hasCustomDomain = existsSync(join(__dirname, 'public/CNAME'))
 const basePath = hasCustomDomain ? '/' : '/theolivegreen/'
@@ -75,6 +75,17 @@ function routeShareIndexHtml(fromBuiltIndex, meta) {
     /<meta name="twitter:image:alt" content="[^"]*"/,
     `<meta name="twitter:image:alt" content="${alt}"`,
   )
+  if (meta.image) {
+    const img = `${SITE_ORIGIN}${meta.image}`
+    html = html.replace(/<meta property="og:image" content="[^"]*"/, `<meta property="og:image" content="${img}"`)
+    html = html.replace(/<meta name="twitter:image" content="[^"]*"/, `<meta name="twitter:image" content="${img}"`)
+  }
+  if (meta.noindex) {
+    html = html.replace(
+      /<meta name="robots" content="[^"]*"\s*\/>/,
+      '<meta name="robots" content="noindex, follow" />',
+    )
+  }
   return html
 }
 
@@ -98,6 +109,11 @@ function spaFallback404AndRouteMeta() {
       const shopDir = join(dist, 'shop')
       mkdirSync(shopDir, { recursive: true })
       writeFileSync(join(shopDir, 'index.html'), routeShareIndexHtml(raw, SEO_SHOP), 'utf8')
+
+      // /thanks: rich share/email preview (crew photo), but noindex (kept out of search).
+      const thanksDir = join(dist, 'thanks')
+      mkdirSync(thanksDir, { recursive: true })
+      writeFileSync(join(thanksDir, 'index.html'), routeShareIndexHtml(raw, SEO_THANKS), 'utf8')
     },
   }
 }

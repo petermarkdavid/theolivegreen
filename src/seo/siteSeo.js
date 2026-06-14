@@ -22,11 +22,15 @@ export const SEO_SHOP = {
   imageAlt: 'Olive Green Martinborough — premium olive oil',
 }
 
-export const SEO_HARVEST_THANKYOU = {
+export const SEO_THANKS = {
   path: '/thanks',
-  title: 'Thank you — 2026 Harvest | Olive Green Martinborough',
+  title: 'Thank you — from Peter & Matt',
   description:
-    'A thank-you to everyone who picked with us at the 2026 olive harvest in Martinborough, with photos, harvest stats, and a discount on the oil.',
+    'To everyone who picked with us at the 2026 olive harvest in Martinborough — thank you. Photos from the day, and the oil you helped make.',
+  image: '/images/og-thanks.jpg',
+  imageAlt: 'The 2026 olive harvest crew in the Martinborough grove',
+  // Rich preview when shared, but kept out of search results.
+  noindex: true,
 }
 
 export const SEO_HARVEST = {
