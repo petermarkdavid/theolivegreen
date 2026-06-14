@@ -203,7 +203,7 @@ const HarvestThankYou = () => {
           <div className="space-y-3">
             <h2 className="font-headline text-3xl text-on-surface">Your harvest discount</h2>
             <p className="text-on-surface-variant">
-              You earned this, quite literally. Here&apos;s 50% code for all of the 2026 oil.
+              You earned this, quite literally — here&apos;s 50% off all of the 2026 oil.
             </p>
           </div>
           <div className="rounded-md bg-primary px-8 py-5 font-mono text-2xl font-bold tracking-[0.15em] text-on-primary">
@@ -255,11 +255,10 @@ const HarvestThankYou = () => {
       <section className="bg-primary px-8 py-16 text-center text-on-primary md:py-24">
         <div className="mx-auto max-w-xl space-y-6">
           <h2 className="font-headline text-3xl md:text-4xl">
-            See you in the grove next year - Kings Birthday Sunday.
+            See you in the grove next year — King&apos;s Birthday Sunday.
           </h2>
           <p className="text-lg text-on-primary/80">
-            {/* PERSONALISE: A final warm line. */}
-            If you can wait until next year you will be able to take home a bottle of 2026 oil. You picked it. You earned it.
+            Grab a bottle of the 2026 oil from the shop with your code above. You picked it. You earned it.
           </p>
           <p className="text-on-primary/70">With enormous gratitude,</p>
           <p className="font-headline text-2xl italic text-brand-secondary">Peter &amp; Matt</p>
