@@ -19,13 +19,13 @@ const VARIETIES = [
 const FRIENDS = [
   {
     title: 'Among the Olives',
-    by: 'Coleen wrote about the day on her Maia Food blog',
+    by: 'Colleen wrote about the day on her Maia Food blog',
     href: 'https://maiafood.substack.com/p/among-the-olives',
     cta: 'Read the blog post',
   },
   {
     title: 'Maia Food',
-    by: 'Coleen’s food writing and recipes',
+    by: 'Colleen’s food writing and recipes',
     href: 'https://maiafood.co.nz/blog/',
     cta: 'Visit Maia Food',
   },
@@ -101,6 +101,11 @@ const HarvestThankYou = () => {
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
             From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and neither would the day.
+          </p>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            You&apos;re welcome to join us again next year on Sunday 6th June 2027. And if you
+            can&apos;t wait until then to get your hands on the oil you made, grab the discount code
+            below and head to the shop.
           </p>
         </div>
       </section>
