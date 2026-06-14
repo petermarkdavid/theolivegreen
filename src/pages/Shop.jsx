@@ -60,8 +60,14 @@ const Shop = () => {
             </h1>
             <p className="text-lg leading-relaxed text-on-surface-variant">
               A premium Tuscan blend, cold-pressed from our 2026 harvest — Frantoio, Barnea, Leccino
-              and Koroneiki. Bright, grassy and peppery, with a proper Martinborough bite. Just 200
-              bottles pressed this year; once they&apos;re gone, they&apos;re gone. 500ml.
+              and Koroneiki. Just 200 bottles pressed this year; once they&apos;re gone, they&apos;re
+              gone. 500ml.
+            </p>
+            <p className="leading-relaxed text-on-surface-variant">
+              The colour alone tells you something — a luminous yellow-green, almost lime, that
+              signals something freshly made. On the palate it opens smooth and almost buttery, then
+              a gentle bitterness arrives, and just as you swallow, a warm, pleasant prickle blooms
+              at the back of the throat. It tastes alive — young and vital in the best possible way.
             </p>
 
             <div className="flex items-baseline gap-3">

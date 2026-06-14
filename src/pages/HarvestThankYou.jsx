@@ -180,8 +180,10 @@ const HarvestThankYou = () => {
               ))}
             </div>
             <blockquote className="border-l-2 border-secondary pl-5 text-base italic leading-relaxed text-on-surface-variant">
-              Bright grassy green on the nose. Pepper on the finish — a proper Martinborough bite.
-              Fresh-pressed stone-fruit mid-palate. Best used within 18 months.
+              The colour alone tells you something — a luminous yellow-green, almost lime, that
+              signals something freshly made. On the palate it opens smooth and almost buttery, then
+              a gentle bitterness arrives, and just as you swallow, a warm, pleasant prickle blooms
+              at the back of the throat. It tastes alive — young and vital in the best possible way.
             </blockquote>
           </div>
           <div className="overflow-hidden rounded-md">
