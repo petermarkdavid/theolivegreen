@@ -119,10 +119,6 @@ const Shop = () => {
 
             <div className="space-y-2 border-t border-outline-variant/30 pt-6 text-sm text-on-surface-variant">
               <p>
-                <strong className="text-on-surface">Got a harvest discount code?</strong> Enter it at
-                checkout for 50% off.
-              </p>
-              <p>
                 <strong className="text-on-surface">Pickup / drop-off:</strong> Wellington City only
                 — no shipping. We&apos;ll be in touch to arrange a time after your order.
               </p>
