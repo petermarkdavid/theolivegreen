@@ -7,9 +7,9 @@ export const SEO_HOME = {
   path: '/',
   title: 'Olive Green Martinborough — Premium Olive Oil',
   description:
-    'Quietly crafted. Exceptionally pure. Tuscan blend extra virgin olive oil from Martinborough, pressed in Greytown, Wairarapa, New Zealand.',
+    'Quietly crafted. Exceptionally pure. Tuscan blend extra virgin olive oil from Martinborough, pressed in Featherston, Wairarapa, New Zealand.',
   keywords:
-    'Olive Green Martinborough, extra virgin olive oil, Martinborough olive oil, Wairarapa olive oil, New Zealand EVOO, Tuscan blend olive oil, Greytown pressed oil, Martinborough grove, NZ artisan olive oil, Wairarapa food',
+    'Olive Green Martinborough, extra virgin olive oil, Martinborough olive oil, Wairarapa olive oil, New Zealand EVOO, Tuscan blend olive oil, Featherston pressed oil, Martinborough grove, NZ artisan olive oil, Wairarapa food',
 }
 
 export const SEO_SHOP = {

@@ -125,7 +125,7 @@ const HarvestThankYou = () => {
             ))}
           </div>
           <p className="text-center text-sm italic text-on-primary/60">
-            A 15.2% yield is a really strong result — typical extra-virgin cold-press runs 12–14%.
+            A 15.2% yield is a really strong result — typical extra-virgin pressings run 12–14%.
             That&apos;s down to the quality of the fruit, and the care everyone put into the pick.
           </p>
         </div>

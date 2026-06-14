@@ -17,7 +17,7 @@ const Homepage = () => {
       {/* Hero Section */}
       <Hero 
         heading="Quietly Crafted. Exceptionally Pure."
-        supportingText="Grown in Martinborough and pressed in Greytown, our Tuscan blend extra virgin olive oil reveals a clean, balanced flavour — designed for drizzling and finishing."
+        supportingText="Grown in Martinborough and pressed in Featherston, our Tuscan blend extra virgin olive oil reveals a clean, balanced flavour — designed for drizzling and finishing."
         backgroundImage="url(/images/hero-olive-branch.jpg)"
       />
       
@@ -35,7 +35,7 @@ const Homepage = () => {
               image="/images/olive-oil-bottle-unlabeled.jpg"
               imageAlt="Clear glass bottle of extra virgin olive oil without a label"
               title="2026 Extra Virgin Olive Oil"
-              description="Waitlisted. Cold-pressed from the first harvest. Rich, fruity, and perfectly balanced."
+              description="Waitlisted. Pressed from the first harvest. Rich, fruity, and perfectly balanced."
               action={
                 <Link to="/shop">
                   <Button variant="primary">Shop Now</Button>

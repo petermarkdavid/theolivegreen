@@ -59,7 +59,7 @@ const Shop = () => {
               Martinborough Harvest Blend
             </h1>
             <p className="text-lg leading-relaxed text-on-surface-variant">
-              A premium Tuscan blend, cold-pressed from our 2026 harvest — Frantoio, Barnea, Leccino
+              A premium Tuscan blend, pressed from our 2026 harvest — Frantoio, Barnea, Leccino
               and Koroneiki. Just 200 bottles pressed this year; once they&apos;re gone, they&apos;re
               gone. 500ml.
             </p>

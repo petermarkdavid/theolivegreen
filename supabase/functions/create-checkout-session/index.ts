@@ -22,7 +22,7 @@ const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions'
 /** Product config — single line item, fixed unit price. */
 const PRODUCT = {
   name: '2026 Martinborough Harvest Blend — 500ml',
-  description: 'Cold-pressed extra virgin olive oil. Frantoio, Barnea, Leccino & Koroneiki.',
+  description: 'Extra virgin olive oil. Frantoio, Barnea, Leccino & Koroneiki.',
   currency: 'nzd',
   unitAmount: 3000, // $30.00 NZD in cents
   maxQuantity: 24,
