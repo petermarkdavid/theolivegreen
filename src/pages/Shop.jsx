@@ -53,15 +53,15 @@ const Shop = () => {
           {/* Product detail */}
           <div className="space-y-6">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-              2026 Harvest · Limited release
+              2026 Harvest · Limited release of 200 bottles
             </p>
             <h1 className="font-headline text-4xl leading-tight text-on-surface md:text-5xl">
               Martinborough Harvest Blend
             </h1>
             <p className="text-lg leading-relaxed text-on-surface-variant">
-              Our 2026 cold-pressed extra virgin olive oil — a four-variety blend of Frantoio,
-              Barnea, Leccino and Koroneiki. Bright, grassy and peppery, with a proper Martinborough
-              bite. 500ml.
+              A premium Tuscan blend, cold-pressed from our 2026 harvest — Frantoio, Barnea, Leccino
+              and Koroneiki. Bright, grassy and peppery, with a proper Martinborough bite. Just 200
+              bottles pressed this year; once they&apos;re gone, they&apos;re gone. 500ml.
             </p>
 
             <div className="flex items-baseline gap-3">

@@ -16,7 +16,7 @@ export const SEO_SHOP = {
   path: '/shop',
   title: 'Shop — Olive Green Martinborough',
   description:
-    'Olive Green Martinborough online shop — premium extra virgin olive oil from the Wairarapa. Coming soon; email us to hear when bottles are available.',
+    'A premium Tuscan blend extra virgin olive oil from Martinborough — limited 2026 release of just 200 bottles. 500ml, $30 NZD. Wellington pickup or local drop-off.',
   keywords:
     'buy olive oil Martinborough, Olive Green shop, Martinborough olive oil, Wairarapa EVOO, New Zealand olive oil online, preorder olive oil NZ',
   imageAlt: 'Olive Green Martinborough — premium olive oil',

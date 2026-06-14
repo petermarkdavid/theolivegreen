@@ -16,6 +16,27 @@ const VARIETIES = [
   { name: 'Koroneiki', note: 'The tiny Greek powerhouse — peppery intensity and high polyphenols.' },
 ]
 
+const FRIENDS = [
+  {
+    title: 'Among the Olives',
+    by: 'Coleen wrote about the day on her Maia Food blog',
+    href: 'https://maiafood.substack.com/p/among-the-olives',
+    cta: 'Read the blog post',
+  },
+  {
+    title: 'Maia Food',
+    by: 'Coleen’s food writing and recipes',
+    href: 'https://maiafood.co.nz/blog/',
+    cta: 'Visit Maia Food',
+  },
+  {
+    title: 'Amore Rosé',
+    by: 'Rex & Emily’s wine — the perfect pour alongside the oil',
+    href: 'https://www.seicento.co.nz/product/amore',
+    cta: 'Find the wine',
+  },
+]
+
 const GALLERY = [
   { src: '/images/photo-1.jpg', alt: 'Crew gathering in the grove' },
   { src: '/images/photo-2.jpg', alt: 'Freshly harvested olives' },
@@ -182,7 +203,7 @@ const HarvestThankYou = () => {
             <p className="text-on-surface-variant">
               You earned this, quite literally. Here&apos;s 50% code for all of the 2026 oil.
             </p>
-          </div>z
+          </div>
           <div className="rounded-md bg-primary px-8 py-5 font-mono text-2xl font-bold tracking-[0.15em] text-on-primary">
             IPICKEDIN26
           </div>
@@ -194,6 +215,37 @@ const HarvestThankYou = () => {
             Shop the Olive Green
           </a>
           {/* OPTIONAL: add expiry — e.g. "Valid until 31 December 2026" */}
+        </div>
+      </section>
+
+      {/* Friends from the day */}
+      <section className="bg-white px-8 py-16 md:py-20">
+        <div className="mx-auto max-w-5xl space-y-10">
+          <div className="space-y-2 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Friends from the day
+            </p>
+            <h2 className="font-headline text-3xl text-on-surface md:text-4xl">
+              A few good people &amp; their good things
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {FRIENDS.map((f) => (
+              <a
+                key={f.href}
+                href={f.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-md bg-surface-container-low p-7 transition-colors hover:bg-surface-container"
+              >
+                <h3 className="font-headline text-xl text-on-surface">{f.title}</h3>
+                <p className="mt-2 flex-1 text-on-surface-variant">{f.by}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:underline">
+                  {f.cta} →
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
