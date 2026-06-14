@@ -5,7 +5,9 @@ const Navigation = ({
   items = [
     { label: 'Home', path: '/' },
     { label: 'Shop', path: '/shop' },
-    { label: 'Harvest', path: '/harvest' },
+    // Harvest page hidden until closer to the 2027 harvest — page still
+    // lives at /harvest; re-add this item to show it in the nav again.
+    // { label: 'Harvest', path: '/harvest' },
   ],
 }) => {
   const location = useLocation()

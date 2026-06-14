@@ -25,11 +25,13 @@ const Footer = () => {
                 Shop
               </Link>
             </li>
+            {/* Harvest link hidden until closer to the 2027 harvest (page still at /harvest).
             <li>
               <Link to="/harvest" className="text-stone-500 transition-colors hover:text-brand-secondary">
                 Harvest
               </Link>
             </li>
+            */}
             <li>
               <a
                 href="mailto:olivegreenmartinborough@gmail.com"
