@@ -88,28 +88,31 @@ const HarvestThankYou = () => {
             We couldn&apos;t have done it without you.
           </h2>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            {/* PERSONALISE: Opening line — e.g. "What a day. What a season. What a crew." */}
-            Thank you to everyone that made it and gave up their Sunday
-            to our little grove.
-
-            We were humbled by all the help we had and the massive effort everyone put in.
+            Thank you to everyone who joined us and gave up their Sunday to spend it in our little
+            grove. We were humbled by the support, the energy, and the incredible effort everyone
+            put in throughout the day.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            {/* PERSONALISE: Add a specific memory — the weather, a funny moment, a first-timer's reaction. */}
-            Having you all out there, hands in the branches, made the whole thing feel less
-            like work and more like something very special.
+            Having you all out there, hands in the branches, made the whole experience feel less
+            like work and more like something truly special.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and neither would the day.
+            From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you,
+            and neither would the day.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            The oil is amazing, and we are truly grateful that you helped us make it. Any revenue
-            from oil sales goes straight back into next year&apos;s harvest and pressing costs.
+            We&apos;re delighted to say the oil has turned out beautifully, and we&apos;re genuinely
+            grateful that you helped make it happen. Any revenue from oil sales goes directly back
+            into next year&apos;s harvest and pressing costs, helping us continue this tradition for
+            years to come.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
-            You&apos;re welcome to join us again next year on Sunday 6th June 2027. And if you
-            can&apos;t wait until then to get your hands on the oil you made, grab the discount code
-            below and head to the shop.
+            We&apos;d love to welcome you back next year on{' '}
+            <strong className="text-on-surface">Sunday, 6 June 2027</strong>.
+          </p>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            And if you can&apos;t wait until then to enjoy the oil you helped create, use the discount
+            code below and visit our shop to order your bottles.
           </p>
         </div>
       </section>
