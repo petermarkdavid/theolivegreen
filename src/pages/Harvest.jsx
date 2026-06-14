@@ -221,7 +221,7 @@ const Harvest = () => {
             </p>
             <div className="flex flex-col gap-4 pt-2">
               <Link
-                to="/harvest-thank-you"
+                to="/thanks"
                 className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-surface-container-low"
               >
                 See the 2026 thank-you

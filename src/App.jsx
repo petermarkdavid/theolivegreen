@@ -19,7 +19,9 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/shop/success" element={<ShopSuccess />} />
             <Route path="/harvest" element={<Harvest />} />
-            <Route path="/harvest-thank-you" element={<HarvestThankYou />} />
+            <Route path="/thanks" element={<HarvestThankYou />} />
+            {/* Old URL — keep redirecting so already-shared links still work */}
+            <Route path="/harvest-thank-you" element={<Navigate to="/thanks" replace />} />
             <Route path="/about" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

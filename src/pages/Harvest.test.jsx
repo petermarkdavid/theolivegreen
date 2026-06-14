@@ -27,7 +27,7 @@ describe('Harvest page — 2026 registrations closed', () => {
   it('links to the 2026 thank-you page', () => {
     render(<Harvest />, { wrapper })
     const link = screen.getByRole('link', { name: /see the 2026 thank-you/i })
-    expect(link).toHaveAttribute('href', '/harvest-thank-you')
+    expect(link).toHaveAttribute('href', '/thanks')
   })
 
   it('shows a 2027 placeholder for King’s Birthday weekend', () => {

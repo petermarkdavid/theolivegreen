@@ -23,7 +23,7 @@ export const SEO_SHOP = {
 }
 
 export const SEO_HARVEST_THANKYOU = {
-  path: '/harvest-thank-you',
+  path: '/thanks',
   title: 'Thank you — 2026 Harvest | Olive Green Martinborough',
   description:
     'A thank-you to everyone who picked with us at the 2026 olive harvest in Martinborough, with photos, harvest stats, and a discount on the oil.',

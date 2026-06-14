@@ -52,7 +52,7 @@ const HarvestThankYou = () => {
       <Seo
         title="Thank you — 2026 Olive Harvest | Olive Green Martinborough"
         description="A massive thank you to everyone who picked with us at the 2026 olive harvest."
-        path="/harvest-thank-you"
+        path="/thanks"
       />
 
       {/* Hero */}
@@ -101,6 +101,10 @@ const HarvestThankYou = () => {
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
             From the bottom of our hearts — thank you. The oil wouldn&apos;t be the same without you, and neither would the day.
+          </p>
+          <p className="text-lg leading-relaxed text-on-surface-variant">
+            The oil is amazing, and we are truly grateful that you helped us make it. Any revenue
+            from oil sales goes straight back into next year&apos;s harvest and pressing costs.
           </p>
           <p className="text-lg leading-relaxed text-on-surface-variant">
             You&apos;re welcome to join us again next year on Sunday 6th June 2027. And if you
