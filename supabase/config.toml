@@ -11,3 +11,7 @@ verify_jwt = false
 
 [functions.newsletter-signup]
 verify_jwt = false
+
+[functions.create-checkout-session]
+# Public shop: browser POSTs without a Supabase login. Stripe secret key lives in secrets.
+verify_jwt = false

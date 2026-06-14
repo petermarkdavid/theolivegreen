@@ -11,3 +11,10 @@ export function harvestInterestWebhookUrl() {
     DEFAULT_HARVEST_INTEREST_WEBHOOK_URL
   )
 }
+
+export const DEFAULT_CHECKOUT_SESSION_URL =
+  'https://pvtrqnvacjdquktdcqfh.supabase.co/functions/v1/create-checkout-session'
+
+export function checkoutSessionUrl() {
+  return import.meta.env.VITE_CHECKOUT_SESSION_URL?.trim() || DEFAULT_CHECKOUT_SESSION_URL
+}

@@ -1,15 +1,7 @@
-import React, { useState } from 'react'
-import { postHarvestInterest } from '../api/harvestInterest'
-import { harvestInterestWebhookUrl } from '../config/publicEdgeFunctions'
-import { resolveSupabaseAnonKey, supabaseAnonKeyIssue } from '../config/resolveSupabaseAnonKey'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import { SEO_HARVEST } from '../seo/siteSeo'
-
-const VENUE_AFTER_SUBMIT = {
-  name: 'Olive Green Martinborough',
-  addressLine: '7 Hawkins Drive, Martinborough',
-  directions: 'Wairarapa, New Zealand. Parking is on site; please drive slowly on the gravel approach.',
-}
 
 const GOOGLE_MAPS_VENUE_URL =
   'https://www.google.com/maps/search/?api=1&query=7%20Hawkins%20Drive%2C%20Martinborough%2C%20New%20Zealand'
@@ -78,62 +70,6 @@ const GALLERY_BENTO = [
 ]
 
 const Harvest = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [guestCount, setGuestCount] = useState('1')
-  const [notes, setNotes] = useState('')
-  const [status, setStatus] = useState('idle')
-  const [error, setError] = useState('')
-  const [emailSentNotice, setEmailSentNotice] = useState(false)
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-    const count = parseInt(String(guestCount), 10)
-    if (!email.trim()) {
-      setError('Please add your email so we can reach you.')
-      return
-    }
-    if (!Number.isFinite(count) || count < 1) {
-      setError('Please enter the number of people (at least 1).')
-      return
-    }
-
-    const payload = {
-      name: name.trim(),
-      email: email.trim(),
-      guestCount: count,
-      notes: notes.trim() || undefined,
-      source: 'harvest-2026-stage1',
-      createdAt: new Date().toISOString(),
-    }
-
-    const webhook = harvestInterestWebhookUrl()
-    const anonKey = resolveSupabaseAnonKey()
-    const keyIssue = supabaseAnonKeyIssue(anonKey)
-    if (keyIssue === 'missing') {
-      setError('This form is not fully configured yet—please email us directly.')
-      return
-    }
-    if (keyIssue === 'wrong_type') {
-      setError(
-        'Site config: use the anon public key from Supabase (Settings → API, JWT starting with eyJ)—not a secret key.',
-      )
-      return
-    }
-
-    setStatus('loading')
-    setEmailSentNotice(false)
-    try {
-      const { emailSent } = await postHarvestInterest(webhook, anonKey, payload)
-      setEmailSentNotice(emailSent)
-      setStatus('success')
-    } catch {
-      setStatus('idle')
-      setError('Something went wrong. Please try again or email us directly.')
-    }
-  }
-
   return (
     <div className="min-h-screen bg-surface font-body text-on-surface selection:bg-primary-fixed-dim/40">
       <Seo {...SEO_HARVEST} />
@@ -161,7 +97,7 @@ const Harvest = () => {
               href="#register"
               className="inline-block rounded-md bg-gradient-to-b from-primary to-primary-container px-10 py-4 font-medium text-on-primary shadow-ambient-sm transition-all hover:brightness-105"
             >
-              Join the harvest
+              Harvest 2027
             </a>
           </div>
         </div>
@@ -270,15 +206,27 @@ const Harvest = () => {
         </div>
       </section>
 
-      {/* Register */}
+      {/* Registrations closed + 2027 */}
       <section id="register" className="scroll-mt-28 bg-primary px-8 py-16 md:py-24 text-on-primary">
         <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 md:grid-cols-2 md:max-w-6xl md:gap-12">
           <div className="space-y-6">
-            <h2 className="font-headline text-4xl md:text-5xl">Register your interest</h2>
-            <p className="text-lg text-primary-fixed-dim">
-              Everyone is welcome, friends, family, kids and dogs. Please confirm your interest so we can properly plan,
-              and we will ask you to RSVP closer to the time for catering. More details a couple of weeks before.
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-fixed-dim">
+              Registrations closed
             </p>
+            <h2 className="font-headline text-4xl md:text-5xl">That&apos;s a wrap on 2026</h2>
+            <p className="text-lg text-primary-fixed-dim">
+              Thank you to everyone who came and picked with us — registrations for the 2026 harvest
+              are now closed. If you joined us this year, there&apos;s a little thank-you waiting for
+              you.
+            </p>
+            <div className="flex flex-col gap-4 pt-2">
+              <Link
+                to="/harvest-thank-you"
+                className="inline-flex w-fit items-center gap-2 rounded-md bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-surface-container-low"
+              >
+                See the 2026 thank-you
+              </Link>
+            </div>
             <div className="flex flex-col gap-4 pt-4 text-on-primary/95">
               <div className="flex items-center gap-4">
                 <span className="material-symbols-outlined">mail</span>
@@ -300,99 +248,23 @@ const Harvest = () => {
             </div>
           </div>
 
-          {status === 'success' ? (
-            <div className="space-y-6 rounded-md border border-white/20 bg-white/10 p-8 backdrop-blur-sm">
-              <p className="text-lg leading-relaxed">
-                Thanks — we&apos;ve got your details. We&apos;ll be in touch closer to the date to confirm final
-                numbers and whether you&apos;ll be joining for harvest, the meal, or both.
-              </p>
-              {emailSentNotice ? (
-                <p className="text-on-primary/90" data-testid="harvest-email-sent">
-                  We&apos;ve sent a short confirmation to your inbox.
-                </p>
-              ) : null}
-              <p className="text-on-primary/90">Thank you for registering — it means a lot to us.</p>
-              <p className="font-medium">Peter & Matt</p>
-              <div className="border-t border-white/20 pt-6">
-                <h3 className="font-headline mb-3 text-xl">Where we&apos;ll meet</h3>
-                <p className="font-semibold">{VENUE_AFTER_SUBMIT.name}</p>
-                <p className="mt-2 text-on-primary/90">
-                  <a href={GOOGLE_MAPS_VENUE_URL} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    {VENUE_AFTER_SUBMIT.addressLine}
-                  </a>
-                </p>
-                <p className="mt-3 text-sm text-on-primary/80">{VENUE_AFTER_SUBMIT.directions}</p>
-              </div>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="harvest-name" className="mb-2 block text-sm font-medium opacity-90">
-                  Name
-                </label>
-                <input
-                  id="harvest-name"
-                  type="text"
-                  autoComplete="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
-                  placeholder="Your full name"
-                />
-              </div>
-              <div>
-                <label htmlFor="harvest-email" className="mb-2 block text-sm font-medium opacity-90">
-                  Email *
-                </label>
-                <input
-                  id="harvest-email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
-                  placeholder="hello@example.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="harvest-guests" className="mb-2 block text-sm font-medium opacity-90">
-                  Number of people
-                </label>
-                <input
-                  id="harvest-guests"
-                  type="number"
-                  min={1}
-                  step={1}
-                  value={guestCount}
-                  onChange={(e) => setGuestCount(e.target.value)}
-                  className="w-full max-w-[12rem] border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
-                  placeholder="1"
-                />
-              </div>
-              <div>
-                <label htmlFor="harvest-notes" className="mb-2 block text-sm font-medium opacity-90">
-                  Notes (optional)
-                </label>
-                <textarea
-                  id="harvest-notes"
-                  rows={3}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  className="w-full border-b border-white/30 bg-white/10 p-3 text-white placeholder:text-white/50 focus:border-white focus:outline-none"
-                  placeholder="Questions or context for your group"
-                />
-              </div>
-              {error ? <p className="text-sm text-red-200">{error}</p> : null}
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="w-full rounded-md bg-white py-4 text-sm font-bold uppercase tracking-widest text-primary transition-colors hover:bg-surface-container-low disabled:opacity-60"
-              >
-                {status === 'loading' ? 'Sending…' : 'Register interest'}
-              </button>
-            </form>
-          )}
+          <div className="flex flex-col justify-center space-y-5 rounded-md border border-white/20 bg-white/10 p-8 backdrop-blur-sm md:p-10">
+            <span className="material-symbols-outlined text-4xl text-secondary">event_upcoming</span>
+            <h3 className="font-headline text-3xl md:text-4xl">Harvest 2027</h3>
+            <p className="text-lg leading-relaxed text-on-primary/90">
+              We&apos;ll be back next year over King&apos;s Birthday weekend, June 2027 — same grove,
+              same long lunch. Dates and registration will open here closer to the time.
+            </p>
+            <p className="text-sm text-on-primary/70">
+              Want first dibs? Email us and we&apos;ll add you to the list for 2027.
+            </p>
+            <a
+              href="mailto:olivegreenmartinborough@gmail.com?subject=Olive%20Green%20—%202027%20harvest%20interest"
+              className="inline-flex w-fit items-center gap-2 rounded-md border border-white/60 px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-primary"
+            >
+              Keep me posted for 2027
+            </a>
+          </div>
         </div>
       </section>
 
