@@ -1,0 +1,29 @@
+name: Keep Supabase awake
+
+# Supabase free-tier projects pause after 7 days of inactivity, which stalls
+# the harvest form + shop checkout. This makes a real database read every
+# ~5 days so the project (pvtrqnvacjdquktdcqfh) stays live.
+
+on:
+  schedule:
+    # ~every 5 days at 09:00 UTC. The */5 day-of-month pattern hits
+    # 1,6,11,16,21,26,31 — max gap 5 days, comfortably under the 7-day limit.
+    - cron: '0 9 */5 * *'
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase REST (harvest_interest read)
+        run: |
+          # anon / publishable key — public by design (same key ships in the site JS).
+          ANON="sb_publishable_ER9krzubZzu9fHt3AEOoqA_4b-SrYso"
+          URL="https://pvtrqnvacjdquktdcqfh.supabase.co/rest/v1/harvest_interest?select=id&limit=1"
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$URL" \
+            -H "apikey: $ANON" -H "Authorization: Bearer $ANON")
+          echo "Supabase keep-alive ping → HTTP $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::Unexpected status $code from Supabase keep-alive ping"
+            exit 1
+          fi
