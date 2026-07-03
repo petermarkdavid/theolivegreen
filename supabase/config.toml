@@ -15,3 +15,7 @@ verify_jwt = false
 [functions.create-checkout-session]
 # Public shop: browser POSTs without a Supabase login. Stripe secret key lives in secrets.
 verify_jwt = false
+
+[functions.stripe-webhook]
+# Stripe calls this directly (no Supabase JWT); authenticity comes from the webhook signature.
+verify_jwt = false
