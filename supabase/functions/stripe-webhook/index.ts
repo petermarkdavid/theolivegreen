@@ -28,6 +28,15 @@ const RESEND_URL = 'https://api.resend.com/emails'
 /** Reject events older than this to limit replay attacks (Stripe's recommended default). */
 const SIGNATURE_TOLERANCE_SECONDS = 5 * 60
 
+type StripeAddress = {
+  line1?: string | null
+  line2?: string | null
+  city?: string | null
+  state?: string | null
+  postal_code?: string | null
+  country?: string | null
+}
+
 type StripeCheckoutSession = {
   id: string
   amount_total: number | null
@@ -38,6 +47,8 @@ type StripeCheckoutSession = {
     name?: string | null
     email?: string | null
     phone?: string | null
+    /** Collected via billing_address_collection — useful for arranging local drop-off. */
+    address?: StripeAddress | null
   } | null
   total_details?: {
     amount_discount?: number | null
@@ -224,6 +235,15 @@ function escapeHtml(s: string): string {
     .replace(/"/g, '&quot;')
 }
 
+/** Single-line billing address; '—' when Stripe collected nothing (e.g. wallet payment). */
+function formatAddress(addr: StripeAddress | null | undefined): string {
+  if (!addr) return '—'
+  const parts = [addr.line1, addr.line2, addr.city, addr.state, addr.postal_code, addr.country]
+    .map((p) => p?.trim())
+    .filter(Boolean)
+  return parts.length ? parts.join(', ') : '—'
+}
+
 function buildSaleEmail(
   session: StripeCheckoutSession,
   lineItems: StripeLineItem[],
@@ -231,6 +251,7 @@ function buildSaleEmail(
   const name = session.customer_details?.name?.trim() || 'Unknown name'
   const email = session.customer_details?.email?.trim() || '—'
   const phone = session.customer_details?.phone?.trim() || '—'
+  const address = formatAddress(session.customer_details?.address)
   const total = formatAmount(session.amount_total, session.currency)
   const discount = session.total_details?.amount_discount || 0
   const testNote = session.livemode === false ? ' [TEST MODE]' : ''
@@ -251,6 +272,7 @@ function buildSaleEmail(
     ['Name', name],
     ['Email', email],
     ['Phone', phone],
+    ['Address', address],
     ['Order', itemLines.join('; ')],
     ...(discount > 0
       ? ([['Discount', `-${formatAmount(discount, session.currency)} (promo code used)`]] as [
