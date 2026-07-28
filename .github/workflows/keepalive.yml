@@ -1,14 +1,23 @@
 name: Keep Supabase awake
 
 # Supabase free-tier projects pause after 7 days of inactivity, which stalls
-# the harvest form + shop checkout. This makes a real database read every
-# ~5 days so the project (pvtrqnvacjdquktdcqfh) stays live.
+# the harvest form + shop checkout. This makes a real database read daily so
+# the project (pvtrqnvacjdquktdcqfh) stays live. A paused project does not wake
+# on request, so a failing run here means someone must restore it by hand from
+# the Supabase dashboard.
+#
+# Caveat this workflow cannot fix: GitHub disables scheduled workflows after 60
+# days with no repository activity. If the repo goes quiet that long, this stops
+# running and the project pauses. Re-enable it from the Actions tab, or add an
+# external uptime pinger against the same REST URL as a backstop.
 
 on:
   schedule:
-    # ~every 5 days at 09:00 UTC. The */5 day-of-month pattern hits
-    # 1,6,11,16,21,26,31 — max gap 5 days, comfortably under the 7-day limit.
-    - cron: '0 9 */5 * *'
+    # Daily. A 5-day cadence left only 2 days of slack against the 7-day pause
+    # window, so a single skipped run (GitHub delays or drops scheduled runs
+    # under load) meant a 10-day gap and a paused project. Daily gives 6 spare
+    # runs before that happens.
+    - cron: '0 9 * * *'
   workflow_dispatch: {} # allow manual runs from the Actions tab
 
 jobs:
