@@ -1,0 +1,49 @@
+# Keep the free Supabase project active by making a real database API request.
+# Supabase's Free Plan pauses projects with too little user database activity
+# over a 7-day window. This runs every 3 days and uses the existing public
+# Supabase anon key already configured as a GitHub Actions secret.
+
+name: Supabase keepalive
+
+on:
+  schedule:
+    - cron: '17 2 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Query Supabase database
+        env:
+          SUPABASE_URL: https://pvtrqnvacjdquktdcqfh.supabase.co
+          SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "VITE_SUPABASE_ANON_KEY GitHub secret is not configured."
+            exit 1
+          fi
+
+          # Harmless read against the existing harvest_interest table.
+          # The query is intentionally small and does not create or modify data.
+          status=$(curl -sS -o /tmp/supabase-response.txt -w '%{http_code}' \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/harvest_interest?select=id&limit=1")
+
+          echo "Supabase HTTP status: $status"
+
+          if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
+            echo "Supabase database is responding."
+          elif [ "$status" = "401" ] || [ "$status" = "403" ]; then
+            echo "Supabase responded but rejected the public read request (likely RLS)."
+            echo "The request still reached the project, but the keepalive should be verified in Supabase logs."
+            exit 1
+          else
+            echo "Supabase request failed. Response body:"
+            cat /tmp/supabase-response.txt
+            exit 1
+          fi
